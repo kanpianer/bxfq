@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      width: 600px;
+      height: 600px;
+      background-color: #050608;
+      color: #ffffff;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", sans-serif;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 44px 44px;
+    }
+    .bg-grid {
+      position: absolute;
+      inset: 0;
+      background-size: 32px 32px;
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+    }
+    .glow {
+      position: absolute;
+      top: -80px;
+      left: -80px;
+      width: 380px;
+      height: 380px;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.09) 0%, rgba(255, 255, 255, 0) 70%);
+      filter: blur(40px);
+    }
+    .content {
+      position: relative;
+      z-index: 10;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .brand-icon {
+      width: 54px;
+      height: 54px;
+      border-radius: 14px;
+      background: #0e1117;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    }
+    .notice {
+      display: inline-block;
+      margin-top: 20px;
+      background: #e4e4e7;
+      color: #000000;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .title {
+      font-size: 36px;
+      font-weight: 800;
+      letter-spacing: -1px;
+      line-height: 1.2;
+      margin-top: 14px;
+      color: #ffffff;
+    }
+    .subtitle {
+      font-size: 15px;
+      color: #94a3b8;
+      margin-top: 10px;
+      line-height: 1.5;
+    }
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 24px;
+    }
+    .badge {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 8px;
+      padding: 6px 12px;
+      font-size: 12px;
+      font-mono;
+      color: #ffffff;
+    }
+    .footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 16px;
+      font-size: 12px;
+      color: #94a3b8;
+      display: flex;
+      justify-content: space-between;
+      font-family: ui-monospace, monospace;
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-grid"></div>
+  <div class="glow"></div>
+  <div class="content">
+    <div>
+      <div style="display: flex; align-items: center; justify-content: space-between;">
+        <div class="brand-icon" style="background: transparent; padding: 0; width: 48px; height: 48px;">
+          <img src="/home/gao/Projects/freevpn/public/logo.png" style="width: 48px; height: 48px; object-fit: contain;" alt="Logo" />
+        </div>
+        <span style="font-size: 15px; color: #94a3b8; font-weight: 700;">不想翻墙</span>
+      </div>
+      <div class="notice">本站所有梯子均可免费使用</div>
+      <h1 class="title">不想翻墙<br>备用梯子首选</h1>
+      <p class="subtitle">严格收录非盈利、开源与透明工具 · 杜绝国产流氓与实名钓鱼</p>
+      
+      <div class="badges">
+        <span class="badge">🛡️ OpenRung</span>
+        <span class="badge">🌐 FreeSocks</span>
+        <span class="badge">🧅 Tor Browser</span>
+        <span class="badge">🔒 Proton VPN</span>
+        <span class="badge">⚡ NthLink</span>
+        <span class="badge">🚀 1.1.1.1</span>
+      </div>
+    </div>
+
+    <div class="footer">
+      <span>Android · iOS · Win · Mac · Linux</span>
+      <span>freevpn.guide</span>
+    </div>
+  </div>
+</body>
+</html>
