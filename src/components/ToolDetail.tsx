@@ -49,9 +49,9 @@ export const ToolDetail: React.FC<ToolDetailProps> = ({ tool, onBack }) => {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [onBack]);
 
-  // Scroll to top upon opening
+  // Scroll to top upon opening instantly
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo(0, 0);
   }, [tool.id]);
 
   const showToast = (msg: string) => {
@@ -495,10 +495,7 @@ export const ToolDetail: React.FC<ToolDetailProps> = ({ tool, onBack }) => {
         {/* Bottom Back Button */}
         <div className="pt-4 flex items-center justify-center">
           <button
-            onClick={() => {
-              window.scrollTo(0, 0);
-              onBack();
-            }}
+            onClick={onBack}
             className="flex items-center gap-2 rounded-xl bg-obsidian-850 hover:bg-obsidian-800 border border-obsidian-750 px-6 py-3 text-xs font-mono font-medium text-white transition-colors shadow-md"
           >
             <ArrowLeft className="h-4 w-4 text-white" />

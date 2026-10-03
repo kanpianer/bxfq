@@ -37,7 +37,10 @@ export const App: React.FC = () => {
     window.addEventListener('hashchange', handleHashChange);
     return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
+  const scrollPosRef = React.useRef(0);
+
   const navigateToTool = (toolId: string) => {
+    scrollPosRef.current = window.scrollY;
     const updateDOM = () => {
       setSelectedToolId(toolId);
       window.location.hash = `tool-${toolId}`;
@@ -56,6 +59,9 @@ export const App: React.FC = () => {
       if (window.location.hash) {
         history.pushState(null, '', window.location.pathname + window.location.search);
       }
+      setTimeout(() => {
+        window.scrollTo(0, scrollPosRef.current);
+      }, 0);
     };
 
     if ('startViewTransition' in document) {
