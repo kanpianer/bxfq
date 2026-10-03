@@ -7,7 +7,6 @@ interface ShareQRCodeModalProps {
   onClose: () => void;
   toolName: string;
   websiteUrl: string;
-  LogoComponent: React.ComponentType<{ className?: string }>;
   onCopy?: () => void;
 }
 
@@ -16,7 +15,6 @@ export const ShareQRCodeModal: React.FC<ShareQRCodeModalProps> = ({
   onClose,
   toolName,
   websiteUrl,
-  LogoComponent,
   onCopy,
 }) => {
   const [qrDataUrl, setQrDataUrl] = useState<string | null>(null);
@@ -76,7 +74,7 @@ export const ShareQRCodeModal: React.FC<ShareQRCodeModalProps> = ({
       onClick={onClose}
     >
       <div
-        className="relative w-[310px] max-w-[92vw] aspect-square rounded-2xl border border-obsidian-750 bg-obsidian-900 p-5 shadow-2xl text-center flex flex-col justify-between items-center animate-in zoom-in-95 duration-200"
+        className="relative w-[310px] max-w-[92vw] aspect-square rounded-2xl border border-obsidian-750 bg-obsidian-900 p-5 shadow-2xl text-center flex flex-col justify-center items-center animate-in zoom-in-95 duration-200"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
@@ -88,21 +86,11 @@ export const ShareQRCodeModal: React.FC<ShareQRCodeModalProps> = ({
           <X className="h-4 w-4" />
         </button>
 
-        {/* Header: Tool/Website Logo placed directly in front of 分享 */}
-        <div className="flex items-center justify-center gap-2 pt-0.5">
-          <div className="flex h-5 w-5 items-center justify-center shrink-0">
-            <LogoComponent className="h-5 w-5 object-contain" />
-          </div>
-          <h3 className="text-sm sm:text-base font-bold text-white font-sans tracking-tight">
-            分享「{toolName}」
-          </h3>
-        </div>
-
-        {/* QR Code and Copy Link Button container with exact matching width */}
+        {/* QR Code and Copy Link Button container */}
         <div className="flex flex-col items-center justify-center w-full">
-          <div className="w-[176px] flex flex-col items-center">
+          <div className="w-[220px] sm:w-[240px] flex flex-col items-center">
             {/* QR Code Graphic Box */}
-            <div className="w-full bg-white p-2.5 rounded-xl shadow-md border border-neutral-200 aspect-square flex items-center justify-center">
+            <div className="w-[220px] h-[220px] sm:w-[240px] sm:h-[240px] bg-white p-3 rounded-xl shadow-md border border-neutral-200 flex items-center justify-center shrink-0">
               {qrDataUrl ? (
                 <img
                   src={qrDataUrl}

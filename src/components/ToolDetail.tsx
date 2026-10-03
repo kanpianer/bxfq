@@ -513,7 +513,6 @@ export const ToolDetail: React.FC<ToolDetailProps> = ({ tool, onBack }) => {
         onClose={() => setIsShareQRModalOpen(false)}
         toolName={tool.name}
         websiteUrl={tool.officialUrl}
-        LogoComponent={LogoComponent}
       />
     </div>
   );
