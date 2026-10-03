@@ -23,18 +23,13 @@ export const Navbar: React.FC<NavbarProps> = ({
               <img
                 src="/logo.png"
                 alt="不想翻墙 Logo"
-                className="h-10 w-auto sm:h-11 object-contain transition-transform group-hover:scale-105"
+                className="h-7 w-auto sm:h-[30px] object-contain transition-transform group-hover:scale-105"
               />
             </div>
-            <div>
-              <div className="flex items-center gap-2">
-                <span className="text-base sm:text-lg font-bold tracking-tight text-white transition-colors">
-                  不想翻墙
-                </span>
-              </div>
-              <p className="text-[11px] text-obsidian-400 hidden sm:block">
-                备用梯子首选
-              </p>
+            <div className="flex items-center gap-2">
+              <span className="text-lg sm:text-xl font-bold tracking-tight text-white transition-colors">
+                不想翻墙
+              </span>
             </div>
           </button>
         </div>
@@ -42,7 +37,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         {/* Center: Notice with larger, bold, balanced typography */}
         <div className="hidden sm:flex flex-1 items-center justify-center px-2 sm:px-4">
           <span className="text-sm sm:text-base md:text-lg font-bold text-white tracking-wide whitespace-nowrap">
-            本站所有梯子均可免费使用
+            免费备用梯子首选
           </span>
         </div>
 
@@ -51,10 +46,11 @@ export const Navbar: React.FC<NavbarProps> = ({
           {/* Beginner Safety Guide Modal Button */}
           <button
             onClick={onOpenGuide}
-            className="flex items-center gap-1.5 rounded-lg border border-obsidian-800 bg-obsidian-900/60 px-3 py-1.5 text-xs font-medium text-obsidian-400 hover:border-obsidian-700 hover:text-white transition-colors shadow-sm"
+            className="group flex items-center gap-1.5 rounded-lg border border-obsidian-800 bg-obsidian-900/80 hover:bg-obsidian-850 hover:border-obsidian-700 px-2.5 py-1.5 text-xs font-medium text-white transition-colors shadow-sm"
+            title="避坑指南"
           >
-            <BookOpen className="h-3.5 w-3.5 text-white" />
-            <span>避坑</span>
+            <BookOpen className="h-3.5 w-3.5 text-white shrink-0" />
+            <span className="font-sans font-medium text-white">避坑</span>
           </button>
 
           {/* Jiakuan Link Button */}
@@ -68,7 +64,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             <img
               src="/images/jiakuan-logo.png"
               alt="家宽导航"
-              className="h-4 w-4 rounded-sm object-contain shrink-0"
+              className="h-[11px] w-[11px] rounded-[2px] object-contain shrink-0"
             />
             <span className="font-sans font-medium text-white">家宽导航</span>
             <ExternalLink className="h-3 w-3 text-obsidian-400 group-hover:text-white transition-colors" />

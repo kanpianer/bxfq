@@ -6,6 +6,7 @@ import { FilterBar } from './components/FilterBar';
 import { ToolCard } from './components/ToolCard';
 import { ToolDetail } from './components/ToolDetail';
 import { BeginnerGuideModal } from './components/BeginnerGuideModal';
+import { BackToTop } from './components/BackToTop';
 import { Footer } from './components/Footer';
 import { SearchX } from 'lucide-react';
 
@@ -13,7 +14,6 @@ export const App: React.FC = () => {
   const [selectedToolId, setSelectedToolId] = useState<string | null>(null);
   const [selectedPlatform, setSelectedPlatform] = useState<Platform | 'all'>('all');
   const [selectedEntity, setSelectedEntity] = useState<EntityType | 'all'>('all');
-  const [onlyAvailable, setOnlyAvailable] = useState(false);
   const [isGuideOpen, setIsGuideOpen] = useState(() => {
     return typeof window !== 'undefined' && window.location.search.includes('test=guide');
   });
@@ -90,14 +90,9 @@ export const App: React.FC = () => {
         }
       }
 
-      // Only available filter
-      if (onlyAvailable && tool.status === 'unavailable') {
-        return false;
-      }
-
       return true;
     });
-  }, [selectedPlatform, selectedEntity, onlyAvailable]);
+  }, [selectedPlatform, selectedEntity]);
 
   return (
     <div className="min-h-screen bg-obsidian-950 text-obsidian-400 font-sans selection:bg-white/20 selection:text-white bg-grid-pattern transition-colors">
@@ -124,8 +119,6 @@ export const App: React.FC = () => {
               onSelectPlatform={setSelectedPlatform}
               selectedEntity={selectedEntity}
               onSelectEntity={setSelectedEntity}
-              onlyAvailable={onlyAvailable}
-              onToggleOnlyAvailable={() => setOnlyAvailable(!onlyAvailable)}
               totalFiltered={filteredTools.length}
             />
 
@@ -155,7 +148,6 @@ export const App: React.FC = () => {
                     onClick={() => {
                       setSelectedPlatform('all');
                       setSelectedEntity('all');
-                      setOnlyAvailable(false);
                     }}
                     className="mt-5 rounded-lg bg-white hover:bg-neutral-200 px-4 py-2 text-xs font-mono font-medium text-black transition-colors"
                   >
@@ -176,6 +168,9 @@ export const App: React.FC = () => {
 
       {/* Minimalist Footer */}
       <Footer onOpenGuide={() => setIsGuideOpen(true)} />
+
+      {/* Floating Back To Top Button */}
+      <BackToTop />
     </div>
   );
 };

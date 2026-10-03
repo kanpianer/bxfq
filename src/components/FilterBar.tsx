@@ -1,15 +1,13 @@
 import React from 'react';
 import { Platform, EntityType } from '../types';
-import { Smartphone, Apple, Monitor, Laptop, Terminal, Filter, CheckCircle2 } from 'lucide-react';
+import { Smartphone, Apple, Monitor, Laptop, Terminal, Filter } from 'lucide-react';
 
 interface FilterBarProps {
   selectedPlatform: Platform | 'all';
   onSelectPlatform: (p: Platform | 'all') => void;
   selectedEntity: EntityType | 'all';
   onSelectEntity: (e: EntityType | 'all') => void;
-  onlyAvailable: boolean;
-  onToggleOnlyAvailable: () => void;
-  totalFiltered: number;
+  totalFiltered?: number;
 }
 
 export const FilterBar: React.FC<FilterBarProps> = ({
@@ -17,9 +15,6 @@ export const FilterBar: React.FC<FilterBarProps> = ({
   onSelectPlatform,
   selectedEntity,
   onSelectEntity,
-  onlyAvailable,
-  onToggleOnlyAvailable,
-  totalFiltered,
 }) => {
   const platforms: { id: Platform | 'all'; label: string; icon?: React.ReactNode }[] = [
     { id: 'all', label: '全部平台' },
@@ -64,25 +59,6 @@ export const FilterBar: React.FC<FilterBarProps> = ({
               );
             })}
           </div>
-
-          {/* Right toggle: Only Available - horizontally aligned on mobile & desktop */}
-          <div className="flex items-center gap-2.5 sm:gap-3 shrink-0">
-            <button
-              onClick={onToggleOnlyAvailable}
-              className={`flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-mono font-medium transition-colors border whitespace-nowrap ${
-                onlyAvailable
-                  ? 'border-neutral-300/40 bg-neutral-200/15 text-white'
-                  : 'border-obsidian-800 bg-obsidian-900 text-obsidian-400 hover:text-white'
-              }`}
-            >
-              <CheckCircle2 className={`w-3.5 h-3.5 ${onlyAvailable ? 'text-white' : 'text-obsidian-400'}`} />
-              <span>仅看可用</span>
-            </button>
-
-            <span className="text-xs font-mono text-obsidian-400 hidden sm:inline whitespace-nowrap">
-              共 <strong className="text-white">{totalFiltered}</strong> 款
-            </span>
-          </div>
         </div>
 
         {/* Secondary: Entity Category Filter */}
@@ -110,11 +86,6 @@ export const FilterBar: React.FC<FilterBarProps> = ({
             })}
           </div>
         </div>
-
-        {/* Mobile item counter aligned on right of entity row */}
-        <span className="text-xs font-mono text-obsidian-400 shrink-0 sm:hidden whitespace-nowrap pl-1">
-          共 <strong className="text-white">{totalFiltered}</strong> 款
-        </span>
       </div>
       </div>
     </div>

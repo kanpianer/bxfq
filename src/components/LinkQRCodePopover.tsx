@@ -99,7 +99,7 @@ export const LinkQRCodePopover: React.FC<LinkQRCodePopoverProps> = ({
         className={`flex items-center justify-center h-[30px] w-[30px] rounded border transition-colors ${
           isOpen
             ? 'bg-neutral-200 border-neutral-300 text-black shadow-sm'
-            : 'bg-obsidian-900 hover:bg-obsidian-850 border-obsidian-800 text-obsidian-400 hover:text-white'
+            : 'bg-obsidian-800 hover:bg-obsidian-750 border-obsidian-700 text-white'
         }`}
         title="扫码直达链接"
         aria-label={`查看 ${label} 二维码`}

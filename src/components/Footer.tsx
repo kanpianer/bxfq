@@ -1,15 +1,10 @@
 import React from 'react';
-import { ArrowUp } from 'lucide-react';
 
 interface FooterProps {
   onOpenGuide: () => void;
 }
 
 export const Footer: React.FC<FooterProps> = ({ onOpenGuide }) => {
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
   return (
     <footer className="border-t border-obsidian-850 bg-obsidian-950 py-10 text-xs font-mono text-obsidian-400">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-6">
@@ -34,14 +29,6 @@ export const Footer: React.FC<FooterProps> = ({ onOpenGuide }) => {
             >
               开源代码
             </a>
-            <span className="text-obsidian-400 opacity-40">/</span>
-            <button
-              onClick={scrollToTop}
-              className="flex items-center gap-1 text-obsidian-400 hover:text-white hover:underline transition-colors"
-            >
-              <span>返回顶部</span>
-              <ArrowUp className="h-3.5 w-3.5" />
-            </button>
           </div>
         </div>
 

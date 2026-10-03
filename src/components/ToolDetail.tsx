@@ -87,9 +87,6 @@ export const ToolDetail: React.FC<ToolDetailProps> = ({ tool, onBack }) => {
           >
             <ArrowLeft className="h-4 w-4 text-white transition-transform group-hover:-translate-x-1" />
             <span>返回主页</span>
-            <kbd className="hidden sm:inline-block ml-1 rounded bg-obsidian-800 px-1.5 py-0.5 text-[10px] font-mono text-obsidian-400 border border-obsidian-750">
-              ESC
-            </kbd>
           </button>
 
           <div className="flex items-center gap-2">
@@ -100,7 +97,7 @@ export const ToolDetail: React.FC<ToolDetailProps> = ({ tool, onBack }) => {
             <button
               type="button"
               onClick={() => setIsShareQRModalOpen(true)}
-              className="flex items-center gap-1.5 rounded-lg border border-obsidian-800 bg-obsidian-900/60 text-obsidian-400 hover:text-white hover:border-obsidian-700 px-2.5 py-1.5 text-xs transition-all shadow-sm"
+              className="flex items-center gap-1.5 rounded-lg border border-obsidian-700 bg-obsidian-800 text-white hover:bg-obsidian-750 px-2.5 py-1.5 text-xs transition-all shadow-sm"
               title="分享此工具"
             >
               <Share2 className="h-3.5 w-3.5 text-white" />
@@ -185,10 +182,10 @@ export const ToolDetail: React.FC<ToolDetailProps> = ({ tool, onBack }) => {
                 href={tool.officialUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 rounded-lg bg-white hover:bg-neutral-200 text-black px-4 py-2 text-xs font-semibold font-mono transition-colors shadow-sm"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 rounded-lg bg-obsidian-800 hover:bg-obsidian-750 text-white border border-obsidian-700 px-4 py-2 text-xs font-semibold font-mono transition-colors shadow-sm"
               >
                 <span>访问官方网站</span>
-                <ExternalLink className="h-3.5 w-3.5" />
+                <ExternalLink className="h-3.5 w-3.5 text-white" />
               </a>
             </div>
           </div>
@@ -332,13 +329,13 @@ export const ToolDetail: React.FC<ToolDetailProps> = ({ tool, onBack }) => {
                   {/* Copy Link Button */}
                   <button
                     onClick={() => handleCopy(dl.url, dl.label)}
-                    className="flex items-center gap-1 rounded bg-obsidian-900 hover:bg-obsidian-850 border border-obsidian-800 px-2.5 py-1.5 text-xs text-obsidian-400 hover:text-white transition-colors"
+                    className="flex items-center gap-1 rounded bg-obsidian-800 hover:bg-obsidian-750 border border-obsidian-700 px-2.5 py-1.5 text-xs text-white transition-colors"
                     title="复制链接"
                   >
                     {copiedLink === dl.url ? (
                       <Check className="h-3.5 w-3.5 text-white" />
                     ) : (
-                      <Copy className="h-3.5 w-3.5 text-obsidian-400" />
+                      <Copy className="h-3.5 w-3.5 text-white" />
                     )}
                     <span className="text-[11px] font-mono">复制</span>
                   </button>
@@ -348,10 +345,10 @@ export const ToolDetail: React.FC<ToolDetailProps> = ({ tool, onBack }) => {
                     href={dl.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-1 rounded bg-white hover:bg-neutral-200 text-black px-3 py-1.5 text-xs font-mono font-semibold transition-colors shadow-sm"
+                    className="flex items-center gap-1 rounded bg-obsidian-800 hover:bg-obsidian-750 text-white border border-obsidian-700 px-3 py-1.5 text-xs font-mono font-semibold transition-colors shadow-sm"
                   >
                     <span>打开</span>
-                    <ExternalLink className="h-3.5 w-3.5" />
+                    <ExternalLink className="h-3.5 w-3.5 text-white" />
                   </a>
                 </div>
               </div>
@@ -498,11 +495,14 @@ export const ToolDetail: React.FC<ToolDetailProps> = ({ tool, onBack }) => {
         {/* Bottom Back Button */}
         <div className="pt-4 flex items-center justify-center">
           <button
-            onClick={onBack}
+            onClick={() => {
+              window.scrollTo(0, 0);
+              onBack();
+            }}
             className="flex items-center gap-2 rounded-xl bg-obsidian-850 hover:bg-obsidian-800 border border-obsidian-750 px-6 py-3 text-xs font-mono font-medium text-white transition-colors shadow-md"
           >
             <ArrowLeft className="h-4 w-4 text-white" />
-            <span>已了解完毕，返回主页工具列表</span>
+            <span>了解完毕，返回主页</span>
           </button>
         </div>
       </div>
@@ -514,10 +514,6 @@ export const ToolDetail: React.FC<ToolDetailProps> = ({ tool, onBack }) => {
         toolName={tool.name}
         websiteUrl={tool.officialUrl}
         LogoComponent={LogoComponent}
-        onCopy={() => {
-          navigator.clipboard.writeText(tool.officialUrl);
-          showToast('已复制项目网站网址');
-        }}
       />
     </div>
   );
