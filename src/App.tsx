@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { TOOLS_DATA } from './data/tools';
-import { Platform, EntityType } from './types';
+import { Platform } from './types';
 import { Navbar } from './components/Navbar';
 import { FilterBar } from './components/FilterBar';
 import { ToolCard } from './components/ToolCard';
@@ -13,7 +13,6 @@ import { SearchX } from 'lucide-react';
 export const App: React.FC = () => {
   const [selectedToolId, setSelectedToolId] = useState<string | null>(null);
   const [selectedPlatform, setSelectedPlatform] = useState<Platform | 'all'>('all');
-  const [selectedEntity, setSelectedEntity] = useState<EntityType | 'all'>('all');
   const [isGuideOpen, setIsGuideOpen] = useState(() => {
     return typeof window !== 'undefined' && window.location.search.includes('test=guide');
   });
@@ -82,21 +81,9 @@ export const App: React.FC = () => {
       if (selectedPlatform !== 'all' && !tool.platforms.includes(selectedPlatform)) {
         return false;
       }
-
-      // Entity filter
-      if (selectedEntity !== 'all') {
-        if (selectedEntity === 'non-profit') {
-          if (tool.entityType !== 'non-profit' && tool.entityType !== 'non-profit-supervised') {
-            return false;
-          }
-        } else if (tool.entityType !== selectedEntity) {
-          return false;
-        }
-      }
-
       return true;
     });
-  }, [selectedPlatform, selectedEntity]);
+  }, [selectedPlatform]);
 
   return (
     <div className="min-h-screen bg-obsidian-950 text-obsidian-400 font-sans selection:bg-white/20 selection:text-white bg-grid-pattern transition-colors">
@@ -118,12 +105,10 @@ export const App: React.FC = () => {
         ) : (
           /* Directory List View */
           <div className="pb-24 page-transition-enter">
-            {/* Platform & Entity Filter Bar */}
+            {/* Platform Filter Bar */}
             <FilterBar
               selectedPlatform={selectedPlatform}
               onSelectPlatform={setSelectedPlatform}
-              selectedEntity={selectedEntity}
-              onSelectEntity={setSelectedEntity}
               totalFiltered={filteredTools.length}
             />
 
@@ -152,7 +137,6 @@ export const App: React.FC = () => {
                   <button
                     onClick={() => {
                       setSelectedPlatform('all');
-                      setSelectedEntity('all');
                     }}
                     className="mt-5 rounded-lg bg-white hover:bg-neutral-200 px-4 py-2 text-xs font-mono font-medium text-black transition-colors"
                   >
