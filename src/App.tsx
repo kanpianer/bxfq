@@ -18,56 +18,55 @@ export const App: React.FC = () => {
     return typeof window !== 'undefined' && window.location.search.includes('test=guide');
   });
 
+  const scrollPosRef = React.useRef(0);
+
+  const scrollToPos = (y: number) => {
+    window.scrollTo(0, y);
+    if (document.documentElement) document.documentElement.scrollTop = y;
+    if (document.body) document.body.scrollTop = y;
+  };
+
   // Sync with URL Hash for deep linking (#tool-tor, etc.) and browser history
   useEffect(() => {
-    const handleHashChange = () => {
+    const handleLocationChange = () => {
       const hash = window.location.hash.replace('#', '');
       if (hash.startsWith('tool-')) {
         const toolId = hash.replace('tool-', '');
         const exists = TOOLS_DATA.some(t => t.id === toolId);
         if (exists) {
           setSelectedToolId(toolId);
+          scrollToPos(0);
           return;
         }
       }
       setSelectedToolId(null);
+      scrollToPos(scrollPosRef.current);
     };
 
-    handleHashChange();
-    window.addEventListener('hashchange', handleHashChange);
-    return () => window.removeEventListener('hashchange', handleHashChange);
+    handleLocationChange();
+    window.addEventListener('hashchange', handleLocationChange);
+    window.addEventListener('popstate', handleLocationChange);
+    return () => {
+      window.removeEventListener('hashchange', handleLocationChange);
+      window.removeEventListener('popstate', handleLocationChange);
+    };
   }, []);
-  const scrollPosRef = React.useRef(0);
 
   const navigateToTool = (toolId: string) => {
-    scrollPosRef.current = window.scrollY;
-    const updateDOM = () => {
-      window.scrollTo(0, 0);
-      setSelectedToolId(toolId);
+    scrollPosRef.current = window.scrollY || document.documentElement?.scrollTop || document.body?.scrollTop || 0;
+    setSelectedToolId(toolId);
+    scrollToPos(0);
+    if (window.location.hash !== `#tool-${toolId}`) {
       window.location.hash = `tool-${toolId}`;
-    };
-
-    if ('startViewTransition' in document) {
-      (document as any).startViewTransition(updateDOM);
-    } else {
-      updateDOM();
     }
   };
 
   const navigateBackToHome = () => {
-    const updateDOM = () => {
-      setSelectedToolId(null);
-      window.scrollTo(0, scrollPosRef.current);
-      if (window.location.hash) {
-        history.pushState(null, '', window.location.pathname + window.location.search);
-      }
-    };
-
-    if ('startViewTransition' in document) {
-      (document as any).startViewTransition(updateDOM);
-    } else {
-      updateDOM();
+    setSelectedToolId(null);
+    if (window.location.hash) {
+      history.pushState(null, '', window.location.pathname + window.location.search);
     }
+    scrollToPos(scrollPosRef.current);
   };
 
   // Selected tool object
@@ -118,7 +117,7 @@ export const App: React.FC = () => {
           />
         ) : (
           /* Directory List View */
-          <div className="pb-24 animate-in fade-in duration-150">
+          <div className="pb-24 page-transition-enter">
             {/* Platform & Entity Filter Bar */}
             <FilterBar
               selectedPlatform={selectedPlatform}

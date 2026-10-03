@@ -65,7 +65,7 @@ export const ToolDetail: React.FC<ToolDetailProps> = ({ tool, onBack }) => {
   };
 
   return (
-    <div className="min-h-screen pb-20 animate-in fade-in duration-150">
+    <div className="min-h-screen pb-20 page-transition-enter">
       {/* Toast Notification */}
       {toastMessage && (
         <div className="fixed bottom-6 right-6 z-50 flex items-center gap-2 rounded-xl bg-obsidian-850 border border-white/20 px-4 py-3 text-xs font-mono text-white shadow-2xl animate-bounce">
