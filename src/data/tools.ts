@@ -249,7 +249,7 @@ export const TOOLS_DATA: VPNTool[] = [
     status: 'needs-bridge',
     statusText: '国内需配置网桥',
     pricingModel: '100% 永久免费 / 全球志愿者资助',
-    platforms: ['android', 'ios', 'windows', 'macos', 'linux', 'appletv'],
+    platforms: ['android', 'ios', 'windows', 'macos', 'linux'],
     officialUrl: 'https://www.torproject.org/zh-CN',
     downloadLinks: [
       {

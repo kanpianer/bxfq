@@ -1,6 +1,6 @@
 import React from 'react';
 import { Platform, EntityType } from '../types';
-import { AndroidIcon, IosIcon, WindowsIcon, MacosIcon, LinuxIcon, AppleTvIcon } from './PlatformIcons';
+import { AndroidIcon, IosIcon, WindowsIcon, MacosIcon, LinuxIcon } from './PlatformIcons';
 
 interface FilterBarProps {
   selectedPlatform: Platform | 'all';
@@ -23,7 +23,6 @@ export const FilterBar: React.FC<FilterBarProps> = ({
     { id: 'windows', label: 'Windows', icon: <WindowsIcon className="w-3.5 h-3.5" /> },
     { id: 'macos', label: 'macOS', icon: <MacosIcon className="w-3.5 h-3.5" /> },
     { id: 'linux', label: 'Linux', icon: <LinuxIcon className="w-3.5 h-3.5" /> },
-    { id: 'appletv', label: 'Apple TV', icon: <AppleTvIcon className="w-4 h-3.5" /> },
   ];
 
   const entities: { id: EntityType | 'all'; label: string }[] = [
