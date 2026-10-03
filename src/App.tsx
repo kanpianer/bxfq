@@ -42,6 +42,7 @@ export const App: React.FC = () => {
   const navigateToTool = (toolId: string) => {
     scrollPosRef.current = window.scrollY;
     const updateDOM = () => {
+      window.scrollTo(0, 0);
       setSelectedToolId(toolId);
       window.location.hash = `tool-${toolId}`;
     };
@@ -56,12 +57,10 @@ export const App: React.FC = () => {
   const navigateBackToHome = () => {
     const updateDOM = () => {
       setSelectedToolId(null);
+      window.scrollTo(0, scrollPosRef.current);
       if (window.location.hash) {
         history.pushState(null, '', window.location.pathname + window.location.search);
       }
-      setTimeout(() => {
-        window.scrollTo(0, scrollPosRef.current);
-      }, 0);
     };
 
     if ('startViewTransition' in document) {
@@ -102,11 +101,13 @@ export const App: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-obsidian-950 text-obsidian-400 font-sans selection:bg-white/20 selection:text-white bg-grid-pattern transition-colors">
-      {/* Top Navbar */}
-      <Navbar
-        onOpenGuide={() => setIsGuideOpen(true)}
-        onBackToHome={navigateBackToHome}
-      />
+      {/* Top Navbar: only displayed on home page; tool detail page uses floating top buttons */}
+      {!activeTool && (
+        <Navbar
+          onOpenGuide={() => setIsGuideOpen(true)}
+          onBackToHome={navigateBackToHome}
+        />
+      )}
 
       {/* Main Content Area */}
       <main>
@@ -118,7 +119,7 @@ export const App: React.FC = () => {
           />
         ) : (
           /* Directory List View */
-          <div className="pb-24">
+          <div className="pb-24 animate-in fade-in duration-150">
             {/* Platform & Entity Filter Bar */}
             <FilterBar
               selectedPlatform={selectedPlatform}

@@ -58,11 +58,21 @@ html.light .bg-grid-pattern {
     linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
 }
 
-/* View transitions */
-::view-transition-old(root),
+/* Subtle, brief, natural page transition */
+::view-transition-old(root) {
+  animation: 140ms ease-out both page-fade-out;
+}
 ::view-transition-new(root) {
-  animation-duration: 0.22s;
-  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  animation: 160ms ease-out both page-fade-in;
+}
+
+@keyframes page-fade-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+@keyframes page-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 @media (prefers-reduced-motion: reduce) {

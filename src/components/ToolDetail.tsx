@@ -20,7 +20,12 @@ import {
   CheckCircle2, 
   Info, 
   Send, 
-  Share2
+  Share2,
+  Apple,
+  Smartphone,
+  Monitor,
+  Laptop,
+  Terminal
 } from 'lucide-react';
 
 interface ToolDetailProps {
@@ -49,11 +54,6 @@ export const ToolDetail: React.FC<ToolDetailProps> = ({ tool, onBack }) => {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [onBack]);
 
-  // Scroll to top upon opening instantly
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [tool.id]);
-
   const showToast = (msg: string) => {
     setToastMessage(msg);
     setTimeout(() => {
@@ -68,8 +68,25 @@ export const ToolDetail: React.FC<ToolDetailProps> = ({ tool, onBack }) => {
     setTimeout(() => setCopiedLink(null), 2000);
   };
 
+  const getPlatformIcon = (platform: string) => {
+    switch (platform.toLowerCase()) {
+      case 'ios':
+        return <Apple className="w-5 h-5 text-white" />;
+      case 'android':
+        return <Smartphone className="w-5 h-5 text-white" />;
+      case 'windows':
+        return <Monitor className="w-5 h-5 text-white" />;
+      case 'macos':
+        return <Laptop className="w-5 h-5 text-white" />;
+      case 'linux':
+        return <Terminal className="w-5 h-5 text-white" />;
+      default:
+        return <Download className="w-5 h-5 text-white" />;
+    }
+  };
+
   return (
-    <div className="min-h-screen pb-20">
+    <div className="min-h-screen pb-20 animate-in fade-in duration-150">
       {/* Toast Notification */}
       {toastMessage && (
         <div className="fixed bottom-6 right-6 z-50 flex items-center gap-2 rounded-xl bg-obsidian-850 border border-white/20 px-4 py-3 text-xs font-mono text-white shadow-2xl animate-bounce">
@@ -78,37 +95,35 @@ export const ToolDetail: React.FC<ToolDetailProps> = ({ tool, onBack }) => {
         </div>
       )}
 
-      {/* Top Breadcrumb & Back Bar - Exactly max-w-7xl aligned with Navbar */}
-      <div className="sticky top-16 z-30 border-b border-obsidian-850 bg-obsidian-950/90 backdrop-blur-md">
-        <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+      {/* Top Floating Actions - Strictly within content area max-w-7xl */}
+      <div className="fixed top-4 sm:top-5 left-0 right-[6px] z-40 pointer-events-none">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+          {/* Back to Home Button - Aligned with left of content */}
           <button
+            type="button"
             onClick={onBack}
-            className="group flex items-center gap-2 rounded-lg border border-obsidian-800 bg-obsidian-900/80 px-3 py-1.5 text-xs font-medium text-obsidian-400 hover:border-obsidian-600 hover:text-white transition-all shadow-sm"
+            className="pointer-events-auto group flex items-center gap-1.5 rounded-xl border border-obsidian-750 bg-obsidian-900/90 hover:bg-obsidian-800 hover:border-obsidian-700 text-obsidian-300 hover:text-white px-3.5 py-2 text-xs font-mono font-medium backdrop-blur-md shadow-xl transition-all duration-200 hover:scale-105 active:scale-95"
+            title="返回主页 (ESC)"
           >
-            <ArrowLeft className="h-4 w-4 text-white transition-transform group-hover:-translate-x-1" />
-            <span>返回主页</span>
+            <ArrowLeft className="h-4 w-4 text-white transition-transform duration-200 group-hover:-translate-x-0.5" />
+            <span className="font-sans font-medium text-white">返回主页</span>
           </button>
 
-          <div className="flex items-center gap-2">
-            <span className="text-xs font-mono text-obsidian-400 hidden sm:inline">
-              正在查看: <span className="text-white">{tool.name}</span>
-            </span>
-            {/* Direct Share Button */}
-            <button
-              type="button"
-              onClick={() => setIsShareQRModalOpen(true)}
-              className="flex items-center gap-1.5 rounded-lg border border-obsidian-700 bg-obsidian-800 text-white hover:bg-obsidian-750 px-2.5 py-1.5 text-xs transition-all shadow-sm"
-              title="分享此工具"
-            >
-              <Share2 className="h-3.5 w-3.5 text-white" />
-              <span className="hidden sm:inline">分享</span>
-            </button>
-          </div>
+          {/* Share Button - Aligned with right of content */}
+          <button
+            type="button"
+            onClick={() => setIsShareQRModalOpen(true)}
+            className="pointer-events-auto group flex items-center gap-1.5 rounded-xl border border-obsidian-750 bg-obsidian-900/90 hover:bg-obsidian-800 hover:border-obsidian-700 text-obsidian-300 hover:text-white px-3.5 py-2 text-xs font-mono font-medium backdrop-blur-md shadow-xl transition-all duration-200 hover:scale-105 active:scale-95"
+            title="分享此工具"
+          >
+            <Share2 className="h-4 w-4 text-white transition-transform duration-200 group-hover:scale-110" />
+            <span className="font-sans font-medium text-white">分享</span>
+          </button>
         </div>
       </div>
 
-      {/* Body Content - Exactly max-w-7xl aligned with Navbar */}
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-8 space-y-8">
+      {/* Body Content - Exactly max-w-7xl aligned with generous breathing room below floating buttons */}
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-16 sm:pt-20 space-y-8">
         {/* Tool Header Card */}
         <div className="relative rounded-2xl border border-obsidian-800 bg-obsidian-900/60 p-6 sm:p-8 backdrop-blur-sm overflow-hidden">
           {/* Background subtle gradient */}
@@ -288,37 +303,39 @@ export const ToolDetail: React.FC<ToolDetailProps> = ({ tool, onBack }) => {
             {tool.downloadLinks.map((dl, idx) => (
               <div
                 key={idx}
-                className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 rounded-lg border border-obsidian-800 bg-obsidian-950/80 p-3.5 hover:border-obsidian-700 transition-colors"
+                className="flex flex-col sm:flex-row sm:items-center justify-between gap-3.5 sm:gap-4 rounded-xl border border-obsidian-800 bg-obsidian-950/85 p-3.5 sm:p-4 hover:border-obsidian-700 transition-colors shadow-sm"
               >
-                <div className="flex items-start sm:items-center gap-3">
-                  <div className="mt-0.5 sm:mt-0 flex h-7 w-7 shrink-0 items-center justify-center rounded bg-obsidian-900 border border-obsidian-800 text-obsidian-400 text-xs font-mono uppercase">
-                    {dl.platform === 'ios' ? 'iOS' : dl.platform === 'android' ? 'APK' : dl.platform === 'windows' ? 'WIN' : 'DL'}
+                {/* Left: System icon and description */}
+                <div className="flex items-center gap-3.5 sm:gap-4 flex-1 min-w-0">
+                  <div className="flex h-11 w-11 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-xl bg-obsidian-900 border border-obsidian-750 text-white shadow-inner">
+                    {getPlatformIcon(dl.platform)}
                   </div>
-                  <div>
+                  <div className="flex-1 min-w-0">
                     <div className="flex flex-wrap items-center gap-2">
-                      <span className="text-xs sm:text-sm font-medium text-white">
+                      <span className="text-sm sm:text-base font-semibold text-white tracking-tight">
                         {dl.label}
                       </span>
                       {dl.isDirect && (
-                        <span className="rounded bg-white/10 px-1.5 py-0.5 text-[10px] font-mono text-white border border-white/20">
+                        <span className="rounded-md bg-white/10 px-2 py-0.5 text-[10px] font-mono text-white border border-white/20">
                           官方直链
                         </span>
                       )}
                       {dl.isMirror && (
-                        <span className="rounded bg-white/10 px-1.5 py-0.5 text-[10px] font-mono text-white border border-white/20">
+                        <span className="rounded-md bg-white/10 px-2 py-0.5 text-[10px] font-mono text-white border border-white/20">
                           免翻镜像
                         </span>
                       )}
                     </div>
                     {dl.note && (
-                      <p className="text-[11px] text-obsidian-400 mt-0.5">
+                      <p className="text-xs text-obsidian-400 mt-1 leading-relaxed">
                         {dl.note}
                       </p>
                     )}
                   </div>
                 </div>
 
-                <div className="flex items-center gap-1.5 sm:gap-2 shrink-0 self-end sm:self-auto">
+                {/* Right: Actions */}
+                <div className="flex items-center gap-2 shrink-0 pt-2.5 sm:pt-0 border-t border-obsidian-900/80 sm:border-0 justify-end sm:justify-start w-full sm:w-auto">
                   {/* QR Code Popover Button */}
                   <LinkQRCodePopover
                     url={dl.url}
@@ -329,7 +346,7 @@ export const ToolDetail: React.FC<ToolDetailProps> = ({ tool, onBack }) => {
                   {/* Copy Link Button */}
                   <button
                     onClick={() => handleCopy(dl.url, dl.label)}
-                    className="flex items-center gap-1 rounded bg-obsidian-800 hover:bg-obsidian-750 border border-obsidian-700 px-2.5 py-1.5 text-xs text-white transition-colors"
+                    className="flex items-center justify-center gap-1.5 rounded-lg bg-obsidian-800 hover:bg-obsidian-750 border border-obsidian-700 px-3 py-1.5 text-xs text-white transition-colors h-[32px]"
                     title="复制链接"
                   >
                     {copiedLink === dl.url ? (
@@ -337,15 +354,15 @@ export const ToolDetail: React.FC<ToolDetailProps> = ({ tool, onBack }) => {
                     ) : (
                       <Copy className="h-3.5 w-3.5 text-white" />
                     )}
-                    <span className="text-[11px] font-mono">复制</span>
+                    <span className="text-[11px] font-mono font-medium">复制</span>
                   </button>
 
-                  {/* Open Link Button (renamed from 直接打开 to 打开) */}
+                  {/* Open Link Button */}
                   <a
                     href={dl.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-1 rounded bg-obsidian-800 hover:bg-obsidian-750 text-white border border-obsidian-700 px-3 py-1.5 text-xs font-mono font-semibold transition-colors shadow-sm"
+                    className="flex items-center justify-center gap-1.5 rounded-lg bg-obsidian-800 hover:bg-obsidian-750 text-white border border-obsidian-700 px-3.5 py-1.5 text-xs font-mono font-semibold transition-colors shadow-sm h-[32px]"
                   >
                     <span>打开</span>
                     <ExternalLink className="h-3.5 w-3.5 text-white" />
