@@ -22,7 +22,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenGuide }) => {
             </button>
             <span className="text-obsidian-400 opacity-40">/</span>
             <a
-              href="https://github.com"
+              href="https://github.com/kanpianer/bxfq"
               target="_blank"
               rel="noopener noreferrer"
               className="text-obsidian-400 hover:text-white transition-colors"
