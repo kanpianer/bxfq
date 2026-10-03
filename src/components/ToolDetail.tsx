@@ -75,7 +75,7 @@ export const ToolDetail: React.FC<ToolDetailProps> = ({ tool, onBack }) => {
       )}
 
       {/* Top Floating Actions - Strictly within content area max-w-7xl */}
-      <div className="fixed top-4 sm:top-5 left-0 right-0 sm:right-[6px] z-40 pointer-events-none">
+      <div className="fixed top-4 sm:top-5 left-0 right-0 z-40 pointer-events-none">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex items-center justify-between">
           {/* Back to Home Button - Aligned with left of content */}
           <button

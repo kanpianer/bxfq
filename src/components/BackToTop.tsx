@@ -29,7 +29,7 @@ export const BackToTop: React.FC = () => {
   };
 
   return (
-    <div className="fixed bottom-5 sm:bottom-6 left-0 right-[6px] z-40 pointer-events-none">
+    <div className="fixed bottom-5 sm:bottom-6 left-0 right-0 z-40 pointer-events-none">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex justify-end">
         <button
           type="button"
