@@ -65,7 +65,7 @@ export const ToolDetail: React.FC<ToolDetailProps> = ({ tool, onBack }) => {
   };
 
   return (
-    <div className="min-h-screen pb-20 page-transition-enter">
+    <div className="min-h-screen pb-20">
       {/* Toast Notification */}
       {toastMessage && (
         <div className="fixed bottom-6 right-6 z-50 flex items-center gap-2 rounded-xl bg-obsidian-850 border border-white/20 px-4 py-3 text-xs font-mono text-white shadow-2xl animate-bounce">
@@ -75,7 +75,7 @@ export const ToolDetail: React.FC<ToolDetailProps> = ({ tool, onBack }) => {
       )}
 
       {/* Top Floating Actions - Strictly within content area max-w-7xl */}
-      <div className="fixed top-4 sm:top-5 left-0 right-[6px] z-40 pointer-events-none">
+      <div className="fixed top-4 sm:top-5 left-0 right-0 sm:right-[6px] z-40 pointer-events-none">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex items-center justify-between">
           {/* Back to Home Button - Aligned with left of content */}
           <button
@@ -102,7 +102,7 @@ export const ToolDetail: React.FC<ToolDetailProps> = ({ tool, onBack }) => {
       </div>
 
       {/* Body Content - Exactly max-w-7xl aligned with generous breathing room below floating buttons */}
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-16 sm:pt-20 space-y-8">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-16 sm:pt-20 space-y-8 page-transition-enter">
         {/* Tool Header Card */}
         <div className="relative rounded-2xl border border-obsidian-800 bg-obsidian-900/60 p-6 sm:p-8 backdrop-blur-sm overflow-hidden">
           {/* Background subtle gradient */}
