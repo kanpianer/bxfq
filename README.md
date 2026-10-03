@@ -14,7 +14,7 @@
 | **6. 迷雾通 Geph** | `[盈利性机构]` | 🟢 稳定可用 | Android, iOS, Win, Mac, Linux | 自研 Sosistab 深度抗审查混淆，免费版无限流量，极强穿透力 |
 | **7. 1.1.1.1** | `[商业机构]` | 🟢 稳定可用 | Android, iOS, Win, Mac, Linux | Cloudflare 全球 Anycast 骨干通道，提供大陆优选 IP 指导 |
 | **8. Cloudflare One**| `[商业机构]` | 🟢 稳定可用 | Android, iOS, Win, Mac, Linux | 企业级零信任通道，个人享受 50 席位免费配额，通道优先级高 |
-| **9. BeePass VPN** | `[自组织机构]` | 🟢 稳定可用 | Android, iOS | Shadowsocks 架构，专为受限地区研发的抗封锁工具，支持 Telegram 节点机器人 |
+| **9. BeePass VPN** | `[自组织机构]` | 🟢 稳定可用 | Android, iOS | Shadowsocks 架构，专为受限地区研发的抗封锁工具，支持 Telegram 与邮件自动获取节点，附官方 X |
 
 ## 🚀 快速上手与运行
 

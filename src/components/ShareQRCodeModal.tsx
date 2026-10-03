@@ -85,23 +85,24 @@ export const ShareQRCodeModal: React.FC<ShareQRCodeModalProps> = ({
       onClick={onClose}
     >
       <div
-        className="relative w-[310px] max-w-[92vw] aspect-square rounded-2xl border border-obsidian-750 bg-obsidian-900 p-5 shadow-2xl text-center flex flex-col justify-center items-center animate-in zoom-in-95 duration-200"
+        className="relative w-[320px] sm:w-[340px] max-w-[92vw] rounded-2xl border border-obsidian-750 bg-obsidian-900 p-6 pt-7 pb-6 shadow-2xl text-center flex flex-col justify-center items-center animate-in zoom-in-95 duration-200"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Close Button */}
+        {/* Close Button - positioned in top right corner with generous space from QR image */}
         <button
           onClick={onClose}
-          className="absolute top-3.5 right-3.5 rounded-lg p-1 text-obsidian-400 hover:text-white hover:bg-obsidian-800 transition-colors"
+          className="absolute top-2.5 right-2.5 sm:top-3 sm:right-3 z-20 flex h-7 w-7 items-center justify-center rounded-full bg-obsidian-800/80 hover:bg-obsidian-750 text-obsidian-400 hover:text-white border border-obsidian-700/60 transition-all shadow-sm"
           title="关闭"
+          aria-label="关闭"
         >
           <X className="h-4 w-4" />
         </button>
 
         {/* QR Code and Copy Link Button container */}
         <div className="flex flex-col items-center justify-center w-full">
-          <div className="w-[220px] sm:w-[240px] flex flex-col items-center">
+          <div className="w-[205px] sm:w-[215px] flex flex-col items-center">
             {/* QR Code Graphic Box */}
-            <div className="w-[220px] h-[220px] sm:w-[240px] sm:h-[240px] bg-white p-3 rounded-xl shadow-md border border-neutral-200 flex items-center justify-center shrink-0">
+            <div className="w-[205px] h-[205px] sm:w-[215px] sm:h-[215px] bg-white p-3 rounded-xl shadow-md border border-neutral-200 flex items-center justify-center shrink-0">
               {qrDataUrl ? (
                 <img
                   src={qrDataUrl}
@@ -119,7 +120,7 @@ export const ShareQRCodeModal: React.FC<ShareQRCodeModalProps> = ({
             <button
               type="button"
               onClick={handleCopyLink}
-              className={`mt-2.5 w-full flex items-center justify-center gap-1.5 rounded-lg py-2 px-3 text-xs font-mono font-medium transition-colors shadow-sm group ${
+              className={`mt-3 w-full flex items-center justify-center gap-1.5 rounded-lg py-2 px-3 text-xs font-mono font-medium transition-colors shadow-sm group ${
                 isCopied
                   ? 'bg-obsidian-750 text-white border border-obsidian-600'
                   : 'bg-obsidian-800 hover:bg-obsidian-750 text-white border border-obsidian-700'

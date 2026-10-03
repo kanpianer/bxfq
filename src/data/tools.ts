@@ -683,6 +683,12 @@ export const TOOLS_DATA: VPNTool[] = [
         url: 'https://telegram.me/beepassvpn_bot',
         platform: 'browser',
         note: '官方 Telegram 节点获取机器人'
+      },
+      {
+        label: '邮件获取节点 (Email)',
+        url: 'mailto:get@beepassvpn.com',
+        platform: 'browser',
+        note: '发送任意邮件至 get@beepassvpn.com 自动获取最新可用节点'
       }
     ],
     quickStartSteps: [
@@ -694,7 +700,7 @@ export const TOOLS_DATA: VPNTool[] = [
       {
         step: 2,
         title: '获取节点与密钥',
-        desc: '通过官方 Telegram 机器人 (@beepassvpn_bot) 获取实时可用抗封锁节点链接。'
+        desc: '通过官方 Telegram 机器人 (@beepassvpn_bot) 或发送邮件至 get@beepassvpn.com 自动获取最新抗封锁节点链接。'
       },
       {
         step: 3,
@@ -708,11 +714,13 @@ export const TOOLS_DATA: VPNTool[] = [
         content: [
           'BeePass 是一个极其受尊敬的民间反审查项目，在伊朗历次断网事件中为数百万民众提供了宝贵的通讯通道。',
           '其底层采用 Shadowsocks 及其衍生协议，易用性强，界面简洁，受到国际数字自由联盟的广泛关注。',
-          '团队持续维护更新节点与混淆技术，支持通过官方 Telegram 机器人实时获取可用节点并导入使用。'
+          '团队持续维护更新节点与混淆技术，支持通过官方 Telegram 机器人 (@beepassvpn_bot) 或邮件 (get@beepassvpn.com) 实时获取可用节点并导入使用，并可在官方 X (@beepassvpn) 获取第一手更新动态。'
         ]
       }
     ],
     contacts: [
+      { type: 'email', label: '获取节点邮箱', value: 'get@beepassvpn.com' },
+      { type: 'twitter', label: '官方 X (Twitter)', value: 'https://x.com/beepassvpn' },
       { type: 'telegram', label: 'Telegram 节点机器人', value: 'https://telegram.me/beepassvpn_bot' },
       { type: 'website', label: 'BeePass 官网', value: 'https://beepassvpn.com/en/' }
     ],
