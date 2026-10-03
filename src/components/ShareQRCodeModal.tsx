@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { X, Copy, Check } from 'lucide-react';
 import QRCode from 'qrcode';
 
@@ -19,6 +20,16 @@ export const ShareQRCodeModal: React.FC<ShareQRCodeModalProps> = ({
 }) => {
   const [qrDataUrl, setQrDataUrl] = useState<string | null>(null);
   const [isCopied, setIsCopied] = useState(false);
+
+  useEffect(() => {
+    if (isOpen) {
+      const originalOverflow = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+      return () => {
+        document.body.style.overflow = originalOverflow;
+      };
+    }
+  }, [isOpen]);
 
   useEffect(() => {
     if (!isOpen) {
@@ -68,7 +79,7 @@ export const ShareQRCodeModal: React.FC<ShareQRCodeModalProps> = ({
 
   if (!isOpen) return null;
 
-  return (
+  return createPortal(
     <div
       className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in fade-in duration-200"
       onClick={onClose}
@@ -129,6 +140,7 @@ export const ShareQRCodeModal: React.FC<ShareQRCodeModalProps> = ({
           </div>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 };

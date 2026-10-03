@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { X, ShieldAlert, Lock, HelpCircle } from 'lucide-react';
 
 interface BeginnerGuideModalProps {
@@ -23,7 +24,7 @@ export const BeginnerGuideModal: React.FC<BeginnerGuideModalProps> = ({ isOpen, 
 
   if (!isOpen) return null;
 
-  return (
+  return createPortal(
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/80 backdrop-blur-md animate-in fade-in duration-200">
       <div 
         className="relative w-full max-w-xl max-h-[90vh] overflow-y-auto rounded-2xl border border-obsidian-750 bg-obsidian-900 p-6 sm:p-7 shadow-2xl text-obsidian-400"
@@ -96,6 +97,7 @@ export const BeginnerGuideModal: React.FC<BeginnerGuideModalProps> = ({ isOpen, 
           </button>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 };

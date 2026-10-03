@@ -66,7 +66,6 @@ html.light .bg-grid-pattern {
 /* Premium, flicker-free, residue-free page transition */
 .page-transition-enter {
   animation: pageEnter 130ms cubic-bezier(0.16, 1, 0.3, 1) both;
-  will-change: opacity, transform;
 }
 
 @keyframes pageEnter {
@@ -76,7 +75,7 @@ html.light .bg-grid-pattern {
   }
   100% {
     opacity: 1;
-    transform: translateY(0);
+    transform: none;
   }
 }
 
