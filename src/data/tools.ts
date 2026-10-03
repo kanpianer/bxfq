@@ -369,126 +369,6 @@ export const TOOLS_DATA: VPNTool[] = [
     securityRating: '全球军工级匿名 / 3重节点中继'
   },
   {
-    id: 'vpn-configs-for-russia',
-    name: 'VPN-Configs-for-Russia',
-    aliases: ['俄罗斯抗封锁免费配置', '开源订阅黑名单', 'igareck'],
-    tagline: '全自动测速检测的抗封锁节点合集，非俄用户（中国/伊朗等）专享黑名单高速订阅',
-    entityType: 'self-organized',
-    entityLabel: '自组织开源项目',
-    entityDescription: '由开发者 igareck 维护的公共且免费的 VPN 配置自动化合集。系统每 2-4 小时在海外服务器上全自动测试节点的实际可达性、延迟与真实测速，自动过滤失效节点。代码与订阅全开源，包含 GitLab、Codeberg 等多重分布式镜像。',
-    status: 'available',
-    statusText: '自动更新',
-    pricingModel: '100% 永久免费 / 全自动开源订阅',
-    platforms: ['android', 'ios', 'windows', 'macos', 'linux'],
-    officialUrl: 'https://github.com/igareck/vpn-configs-for-russia/blob/main/README-ZH-CN.md',
-    downloadLinks: [
-      {
-        label: 'BLACK_SS+All_RUS 通用全套订阅',
-        url: 'https://raw.githack.com/igareck/vpn-configs-for-russia/main/BLACK_SS%2BAll_RUS.txt',
-        platform: 'windows',
-        isDirect: true,
-        note: '非俄/中国用户首选全套配置，白天抗封锁效果最佳，支持 v2rayN 等'
-      },
-      {
-        label: 'BLACK_VLESS_RUS 高速订阅',
-        url: 'https://raw.githack.com/igareck/vpn-configs-for-russia/main/BLACK_VLESS_RUS.txt',
-        platform: 'android',
-        isDirect: true,
-        note: '高速 VLESS 节点订阅，自动过滤失效节点，支持 v2rayNG / Karing 等'
-      },
-      {
-        label: 'BLACK_VLESS_RUS_mobile 移动轻量订阅',
-        url: 'https://raw.githack.com/igareck/vpn-configs-for-russia/main/BLACK_VLESS_RUS_mobile.txt',
-        platform: 'ios',
-        isDirect: true,
-        note: '专为手机移动网络优化的轻量 VLESS 订阅，适合 Streisand、Happ 等'
-      },
-      {
-        label: 'BLACK_SS+All_RUS Clash 规则订阅',
-        url: 'https://raw.githack.com/igareck/vpn-configs-for-russia/main/Export/Clash/GLOBAL/BLACK_SS%2BAll_RUS_clash_global.yaml',
-        platform: 'macos',
-        isDirect: true,
-        note: 'Clash Verge / Clash Mi 专用的完整规则配置订阅'
-      }
-    ],
-    mirrors: [
-      {
-        name: 'GitLab',
-        url: 'https://gitlab.com/igareck/vpn-configs-for-russia/',
-        description: 'Git 镜像 / 开放核心 SaaS（所有镜像中体验最佳，国内常年稳定直连）'
-      },
-      {
-        name: 'Codeberg',
-        url: 'https://codeberg.org/igareck/vpn-configs-for-russia',
-        description: 'Git 镜像 / FOSS 自由开源软件代码托管'
-      },
-      {
-        name: 'Gitea',
-        url: 'https://gitea.com/igareck/vpn-configs-for-russia',
-        description: 'Git 镜像 / 基于 FOSS 的独立 Git 代码托管平台'
-      },
-      {
-        name: 'SourceHut',
-        url: 'https://git.sr.ht/~igareck/vpn-configs-for-russia',
-        description: 'Git 镜像 / FOSS 极简纯粹开源平台'
-      },
-      {
-        name: 'Bitbucket',
-        url: 'https://bitbucket.org/igareck/vpn-configs-for-russia/',
-        description: 'Git 镜像 / 商业托管平台备用副本'
-      },
-      {
-        name: 'GitHack',
-        url: 'https://raw.githack.com/',
-        description: '实时 RAW 代理加速，防止 IP/区域访问受限'
-      },
-      {
-        name: 'Yandex+BB',
-        url: 'https://translate.yandex.ru/translate?url=https://bitbucket.org/igareck/vpn-configs-for-russia/raw/main/WHITE-CIDR-RU-all.txt&lang=de-de',
-        description: '白名单 RAW 代理 Yandex+Bitbucket，网络封锁最极端情况下的备用手段'
-      }
-    ],
-    quickStartSteps: [
-      {
-        step: 1,
-        title: '复制“黑名单”订阅链接',
-        desc: '中国大陆等非俄罗斯用户请务必使用“黑名单”！直接复制上方 BLACK_SS+All_RUS.txt 或 BLACK_VLESS_RUS.txt 链接。'
-      },
-      {
-        step: 2,
-        title: '导入通用代理客户端',
-        desc: '打开支持 VLESS/SS 的客户端（如 Clash Verge Rev、v2rayN、Sing-box、Streisand、Happ 等），添加此订阅链接并更新节点。'
-      },
-      {
-        step: 3,
-        title: '测速并开启代理',
-        desc: '在客户端中运行延迟测速，选中延迟最低的绿色可用节点，开启系统代理即可畅游网络。'
-      }
-    ],
-    detailedGuide: [
-      {
-        title: '🔴 非俄罗斯用户（中国/伊朗等）核心注意事项',
-        content: [
-          '❗ 关键使用限制：如果你不在俄罗斯（中国、伊朗或任何其他国家），请只使用“黑名单”（"BLACK_SS+All_RUS.txt"、"BLACK_VLESS_RUS.txt" 和 "BLACK_VLESS_RUS_mobile.txt"）中的配置！',
-          '为什么千万不要用“白名单”？“白名单”（WHITE）仅用于绕过俄罗斯境内特定且最严苛的封锁（如仅放行俄国内部域名）。对中国等其他国家用户而言，白名单几乎不可用、极慢且完全没有意义。',
-          '“黑名单”（BLACK LIST）是“国际通用的 VPN 方案”，包含互联网上可获得的最高速公共测试节点。',
-          '全自动健康检查：所有配置每 2–4 小时在海外服务器自动检测实际可达性、延迟和测速，低质与失效节点全自动剔除。'
-        ],
-        tips: [
-          '建议使用带有自动健康检查功能的客户端（如 Clash Verge Rev、v2rayN、Sing-box、Happ、Streisand）。',
-          '如果原始 GitHub 链接在本地打不开，可随时使用本页提供的 GitLab、Codeberg 镜像或 GitHack 代理链接下载配置。'
-        ]
-      }
-    ],
-    contacts: [
-      { type: 'telegram', label: 'Telegram 官方频道', value: 'https://t.me/igareq' },
-      { type: 'github', label: 'GitHub 源码主页', value: 'https://github.com/igareck/vpn-configs-for-russia' },
-      { type: 'email', label: '开发者联系邮箱', value: 'igareck@proton.me' }
-    ],
-    speedRating: 'high',
-    securityRating: '自动化开源测速 / 订阅聚合'
-  },
-  {
     id: 'proton',
     name: 'Proton VPN',
     aliases: ['质子VPN', '瑞士安全VPN'],
@@ -780,9 +660,8 @@ export const TOOLS_DATA: VPNTool[] = [
     entityType: 'self-organized',
     entityLabel: '自组织机构',
     entityDescription: '由民间自组织机构发起成立，主要为伊朗等遭受严重断网与网络审查地区的公民提供数字人权援助。',
-    status: 'unavailable',
-    statusText: '目前不可用',
-    statusNote: '⚠️ 目前不可用：主要帮助伊朗人民突破网络封锁，由于网络环境差异，中国大陆地区当前暂无法直接连接。开发团队正在研发加入更多混淆协议，中国地区后续有望恢复使用，当前仅作技术备用观察。',
+    status: 'available',
+    statusText: '稳定可用',
     pricingModel: '100% 永久免费 / 民间公益',
     platforms: ['android', 'ios'],
     officialUrl: 'https://beepassvpn.com/en/',
@@ -791,12 +670,13 @@ export const TOOLS_DATA: VPNTool[] = [
         label: 'Google Play 商店',
         url: 'https://play.google.com/store/apps/details?id=com.beepassvpn.free.vpn.secure',
         platform: 'android',
-        note: '当前暂不推荐中国大陆用户下载'
+        note: '支持 Android 手机与平板设备'
       },
       {
         label: 'Apple App Store',
         url: 'https://apps.apple.com/us/app/beepass-vpn/id1556325746',
-        platform: 'ios'
+        platform: 'ios',
+        note: '支持 iPhone 与 iPad 设备'
       },
       {
         label: 'BeePass 官方电报节点机器人',
@@ -808,18 +688,18 @@ export const TOOLS_DATA: VPNTool[] = [
     quickStartSteps: [
       {
         step: 1,
-        title: '状态警示：中国地区暂不可用',
-        desc: '该工具当前服务器主要位于伊朗周边及欧美，目前未针对中国大陆 GFW 进行混淆改造，因此无法直接连通。'
+        title: '下载并安装客户端',
+        desc: '从 Google Play 或海外 App Store 下载 BeePass VPN 客户端，或准备通用代理工具。'
       },
       {
         step: 2,
-        title: '关注协议升级动态',
-        desc: '关注官方 Telegram 频道或机器人，一旦新版加入 V2Ray / Reality 等防封锁协议，即可在中国大陆重新启用。'
+        title: '获取节点与密钥',
+        desc: '通过官方 Telegram 机器人 (@beepassvpn_bot) 获取实时可用抗封锁节点链接。'
       },
       {
         step: 3,
-        title: '优先使用本站其他可用工具',
-        desc: '请优先选择本站前 8 款已验证可用工具（如 OpenRung、NthLink、Tor、Proton VPN 或迷雾通）。'
+        title: '一键开启安全代理',
+        desc: '打开应用点击连接或导入节点密钥，即可通过分布式加密通道安全访问网络。'
       }
     ],
     detailedGuide: [
@@ -828,7 +708,7 @@ export const TOOLS_DATA: VPNTool[] = [
         content: [
           'BeePass 是一个极其受尊敬的民间反审查项目，在伊朗历次断网事件中为数百万民众提供了宝贵的通讯通道。',
           '其底层采用 Shadowsocks 及其衍生协议，易用性强，界面简洁，受到国际数字自由联盟的广泛关注。',
-          '中国大陆地区由于防火墙对原版 Shadowsocks 特征进行了深度识别，因此需等待团队发布带有深度混淆的更新版本。'
+          '团队持续维护更新节点与混淆技术，支持通过官方 Telegram 机器人实时获取可用节点并导入使用。'
         ]
       }
     ],

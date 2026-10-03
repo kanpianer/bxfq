@@ -298,45 +298,6 @@ export const BeePassLogo: React.FC<LogoProps> = ({ className = "w-6 h-6", size =
   </svg>
 );
 
-// 10. VPN-Configs-for-Russia: 纯矢量高精度网络节点与反审查盾牌徽标
-export const VPNConfigsForRussiaLogo: React.FC<LogoProps> = ({ className = "w-6 h-6", size = 24 }) => (
-  <svg
-    width={size}
-    height={size}
-    viewBox="0 0 256 256"
-    xmlns="http://www.w3.org/2000/svg"
-    role="img"
-    aria-label="VPN-Configs-for-Russia Logo"
-    className={className}
-  >
-    <rect width="256" height="256" rx="58" fill="#0f172a" stroke="#334155" strokeWidth="6" />
-    {/* Outer Shield Outline */}
-    <path
-      d="M128 38 L204 68 C204 150 168 196 128 222 C88 196 52 150 52 68 Z"
-      fill="#1e293b"
-      stroke="#38bdf8"
-      strokeWidth="6"
-      strokeLinejoin="round"
-    />
-    {/* Network Routing Nodes & Interconnect Lines */}
-    <path
-      d="M128 72 L88 116 L128 156 L168 116 Z"
-      fill="none"
-      stroke="#ffffff"
-      strokeWidth="5"
-      strokeLinejoin="round"
-    />
-    <line x1="128" y1="72" x2="128" y2="156" stroke="#38bdf8" strokeWidth="4" strokeDasharray="3 3" />
-    <line x1="88" y1="116" x2="168" y2="116" stroke="#38bdf8" strokeWidth="4" strokeDasharray="3 3" />
-    <circle cx="128" cy="72" r="7" fill="#38bdf8" />
-    <circle cx="88" cy="116" r="7" fill="#38bdf8" />
-    <circle cx="168" cy="116" r="7" fill="#38bdf8" />
-    <circle cx="128" cy="156" r="7" fill="#38bdf8" />
-    {/* Center bypass core */}
-    <circle cx="128" cy="116" r="5" fill="#f43f5e" />
-  </svg>
-);
-
 export const ToolLogoMap: Record<string, React.FC<LogoProps>> = {
   openrung: OpenRungLogo,
   freesocks: FreeSocksLogo,
@@ -347,5 +308,4 @@ export const ToolLogoMap: Record<string, React.FC<LogoProps>> = {
   warp: WarpLogo,
   'cloudflare-one': CloudflareOneLogo,
   beepass: BeePassLogo,
-  'vpn-configs-for-russia': VPNConfigsForRussiaLogo,
 };
