@@ -1,6 +1,6 @@
 import React from 'react';
 import { Platform, EntityType } from '../types';
-import { Smartphone, Apple, Monitor, Laptop, Terminal, Filter } from 'lucide-react';
+import { AndroidIcon, IosIcon, WindowsIcon, MacosIcon, LinuxIcon, AppleTvIcon } from './PlatformIcons';
 
 interface FilterBarProps {
   selectedPlatform: Platform | 'all';
@@ -18,11 +18,12 @@ export const FilterBar: React.FC<FilterBarProps> = ({
 }) => {
   const platforms: { id: Platform | 'all'; label: string; icon?: React.ReactNode }[] = [
     { id: 'all', label: '全部平台' },
-    { id: 'android', label: 'Android', icon: <Smartphone className="w-3.5 h-3.5" /> },
-    { id: 'ios', label: 'iOS', icon: <Apple className="w-3.5 h-3.5" /> },
-    { id: 'windows', label: 'Windows', icon: <Monitor className="w-3.5 h-3.5" /> },
-    { id: 'macos', label: 'macOS', icon: <Laptop className="w-3.5 h-3.5" /> },
-    { id: 'linux', label: 'Linux', icon: <Terminal className="w-3.5 h-3.5" /> },
+    { id: 'android', label: 'Android', icon: <AndroidIcon className="w-3.5 h-3.5" /> },
+    { id: 'ios', label: 'iOS', icon: <IosIcon className="w-3.5 h-3.5" /> },
+    { id: 'windows', label: 'Windows', icon: <WindowsIcon className="w-3.5 h-3.5" /> },
+    { id: 'macos', label: 'macOS', icon: <MacosIcon className="w-3.5 h-3.5" /> },
+    { id: 'linux', label: 'Linux', icon: <LinuxIcon className="w-3.5 h-3.5" /> },
+    { id: 'appletv', label: 'Apple TV', icon: <AppleTvIcon className="w-4 h-3.5" /> },
   ];
 
   const entities: { id: EntityType | 'all'; label: string }[] = [
@@ -64,8 +65,8 @@ export const FilterBar: React.FC<FilterBarProps> = ({
         {/* Secondary: Entity Category Filter */}
         <div className="flex items-center justify-between gap-2 text-xs font-mono text-obsidian-400">
           <div className="flex items-center gap-2 overflow-x-auto pb-1 sm:pb-0 no-scrollbar flex-1 min-w-0">
-            <span className="shrink-0 flex items-center gap-1 text-[11px] uppercase tracking-wider text-obsidian-400">
-              <Filter className="w-3 h-3 text-obsidian-400" /> 主体分类:
+            <span className="text-xs font-mono text-obsidian-400 shrink-0 hidden sm:inline mr-1">
+              主体分类:
             </span>
             <div className="flex items-center gap-1.5">
             {entities.map((e) => {

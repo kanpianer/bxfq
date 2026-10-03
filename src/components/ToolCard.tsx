@@ -2,12 +2,6 @@ import React from 'react';
 import { VPNTool, Platform } from '../types';
 import { ToolLogoMap } from '../assets/logos';
 import { 
-  Smartphone, 
-  Apple, 
-  Monitor, 
-  Laptop, 
-  Terminal, 
-  Globe, 
   ArrowRight, 
   AlertTriangle,
   Shield,
@@ -15,6 +9,7 @@ import {
   HeartHandshake,
   Users
 } from 'lucide-react';
+import { PlatformIcon } from './PlatformIcons';
 
 interface ToolCardProps {
   tool: VPNTool;
@@ -26,14 +21,7 @@ export const ToolCard: React.FC<ToolCardProps> = ({ tool, onSelect }) => {
   const isUnavailable = tool.status === 'unavailable';
 
   const getPlatformIcon = (platform: Platform) => {
-    switch (platform) {
-      case 'android': return <Smartphone className="w-3.5 h-3.5" />;
-      case 'ios': return <Apple className="w-3.5 h-3.5" />;
-      case 'windows': return <Monitor className="w-3.5 h-3.5" />;
-      case 'macos': return <Laptop className="w-3.5 h-3.5" />;
-      case 'linux': return <Terminal className="w-3.5 h-3.5" />;
-      case 'browser': return <Globe className="w-3.5 h-3.5" />;
-    }
+    return <PlatformIcon platform={platform} className="w-3.5 h-3.5" />;
   };
 
   const getPlatformLabel = (platform: Platform) => {
@@ -43,6 +31,7 @@ export const ToolCard: React.FC<ToolCardProps> = ({ tool, onSelect }) => {
       case 'windows': return 'Windows';
       case 'macos': return 'macOS';
       case 'linux': return 'Linux';
+      case 'appletv': return 'Apple TV';
       case 'browser': return '浏览器扩展';
     }
   };

@@ -1,4 +1,4 @@
-export type Platform = 'android' | 'ios' | 'windows' | 'macos' | 'linux' | 'browser';
+export type Platform = 'android' | 'ios' | 'windows' | 'macos' | 'linux' | 'appletv' | 'browser';
 
 export type EntityType = 
   | 'non-profit'             // 非盈利性机构 / 非营利机构发起
@@ -37,7 +37,7 @@ export interface QuickStartStep {
 }
 
 export interface ContactInfo {
-  type: 'telegram' | 'twitter' | 'email' | 'github' | 'website';
+  type: 'telegram' | 'twitter' | 'bluesky' | 'youtube' | 'email' | 'github' | 'website';
   label: string;
   value: string;
 }

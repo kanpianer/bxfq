@@ -19,14 +19,10 @@ import {
   Sparkles, 
   CheckCircle2, 
   Info, 
-  Send, 
-  Share2,
-  Apple,
-  Smartphone,
-  Monitor,
-  Laptop,
-  Terminal
+  Share2
 } from 'lucide-react';
+import { PlatformIcon } from './PlatformIcons';
+import { TelegramIcon, XIcon, BlueskyIcon, YoutubeIcon } from './SocialIcons';
 
 interface ToolDetailProps {
   tool: VPNTool;
@@ -66,23 +62,6 @@ export const ToolDetail: React.FC<ToolDetailProps> = ({ tool, onBack }) => {
     setCopiedLink(text);
     showToast(`已复制 ${label} 到剪贴板`);
     setTimeout(() => setCopiedLink(null), 2000);
-  };
-
-  const getPlatformIcon = (platform: string) => {
-    switch (platform.toLowerCase()) {
-      case 'ios':
-        return <Apple className="w-5 h-5 text-white" />;
-      case 'android':
-        return <Smartphone className="w-5 h-5 text-white" />;
-      case 'windows':
-        return <Monitor className="w-5 h-5 text-white" />;
-      case 'macos':
-        return <Laptop className="w-5 h-5 text-white" />;
-      case 'linux':
-        return <Terminal className="w-5 h-5 text-white" />;
-      default:
-        return <Download className="w-5 h-5 text-white" />;
-    }
   };
 
   return (
@@ -308,12 +287,12 @@ export const ToolDetail: React.FC<ToolDetailProps> = ({ tool, onBack }) => {
                 {/* Left: System icon and description */}
                 <div className="flex items-center gap-3.5 sm:gap-4 flex-1 min-w-0">
                   <div className="flex h-11 w-11 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-xl bg-obsidian-900 border border-obsidian-750 text-white shadow-inner">
-                    {getPlatformIcon(dl.platform)}
+                    <PlatformIcon platform={dl.platform} className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="flex flex-wrap items-center gap-2">
                       <span className="text-sm sm:text-base font-semibold text-white tracking-tight">
-                        {dl.label}
+                        {dl.label.replace(/\s*[\(（][^\)）]*[\)）]/g, '').trim()}
                       </span>
                       {dl.isDirect && (
                         <span className="rounded-md bg-white/10 px-2 py-0.5 text-[10px] font-mono text-white border border-white/20">
@@ -373,6 +352,75 @@ export const ToolDetail: React.FC<ToolDetailProps> = ({ tool, onBack }) => {
           </div>
         </section>
 
+        {/* Mirror Sources & Distributed Repositories Section */}
+        {tool.mirrors && tool.mirrors.length > 0 && (
+          <section className="rounded-xl border border-obsidian-800 bg-obsidian-900/50 p-6 space-y-4">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2 text-sm font-mono font-semibold text-white">
+                <Globe className="h-4 w-4 text-white" />
+                <span>获取配置的镜像与分布式仓库</span>
+              </div>
+              <span className="text-[11px] font-mono text-obsidian-400 hidden sm:inline">
+                共 {tool.mirrors.length} 个同步镜像源与加速代理
+              </span>
+            </div>
+
+            <p className="text-xs sm:text-sm text-obsidian-400 leading-relaxed font-sans">
+              由于主源或 GitHub 存在区域网络波动或阻断可能，推荐使用以下与主项目实时双向同步的分布式 FOSS / 商业托管镜像及 RAW 加速通道获取配置：
+            </p>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5">
+              {tool.mirrors.map((m, idx) => (
+                <div
+                  key={idx}
+                  className="rounded-xl border border-obsidian-800 bg-obsidian-950/85 p-4 flex flex-col justify-between hover:border-obsidian-700 transition-colors shadow-sm"
+                >
+                  <div>
+                    <div className="flex items-center justify-between gap-2 mb-1.5">
+                      <span className="text-sm font-semibold text-white font-mono">
+                        {m.name}
+                      </span>
+                      <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-white/10 text-white border border-white/20 shrink-0">
+                        镜像/代理
+                      </span>
+                    </div>
+                    <p className="text-xs text-obsidian-400 leading-relaxed mb-3">
+                      {m.description}
+                    </p>
+                  </div>
+
+                  <div className="pt-2.5 border-t border-obsidian-850/80 flex items-center justify-between gap-2">
+                    <span className="text-[11px] font-mono text-obsidian-400 truncate max-w-[130px]" title={m.url}>
+                      {m.url}
+                    </span>
+                    <div className="flex items-center gap-2 shrink-0">
+                      <LinkQRCodePopover url={m.url} label={m.name} />
+                      <button
+                        onClick={() => handleCopy(m.url, m.name)}
+                        className="flex items-center gap-1 text-[11px] font-mono text-white hover:underline"
+                        title="复制镜像地址"
+                      >
+                        <Copy className="h-3 w-3" />
+                        <span>复制</span>
+                      </button>
+                      <a
+                        href={m.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-1 text-[11px] font-mono text-white hover:underline"
+                        title="在新标签页中打开"
+                      >
+                        <ExternalLink className="h-3 w-3" />
+                        <span>打开</span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
         {/* Bridges & Circumvention Section (For Tor / Special Tools) */}
         {tool.bridges && (
           <section className="rounded-xl border border-obsidian-750 bg-obsidian-900/50 p-6 space-y-4">
@@ -385,7 +433,7 @@ export const ToolDetail: React.FC<ToolDetailProps> = ({ tool, onBack }) => {
               {tool.bridges.description}
             </p>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
               {tool.bridges.methods.map((method, i) => (
                 <div
                   key={i}
@@ -401,16 +449,31 @@ export const ToolDetail: React.FC<ToolDetailProps> = ({ tool, onBack }) => {
                   </div>
 
                   <div className="pt-2 border-t border-obsidian-850 flex items-center justify-between gap-2">
-                    <span className="text-[11px] font-mono text-obsidian-400 truncate max-w-[150px]">
+                    <span className="text-[11px] font-mono text-obsidian-400 truncate max-w-[110px]" title={method.target}>
                       {method.target}
                     </span>
-                    <button
-                      onClick={() => handleCopy(method.target, method.channel)}
-                      className="shrink-0 flex items-center gap-1 text-[11px] font-mono text-white hover:underline"
-                    >
-                      <Copy className="h-3 w-3" />
-                      <span>复制</span>
-                    </button>
+                    <div className="shrink-0 flex items-center gap-2">
+                      <button
+                        onClick={() => handleCopy(method.target, method.channel)}
+                        className="flex items-center gap-1 text-[11px] font-mono text-white hover:underline"
+                        title="复制"
+                      >
+                        <Copy className="h-3 w-3" />
+                        <span>复制</span>
+                      </button>
+                      {(method.type === 'link' || method.target.startsWith('http')) && (
+                        <a
+                          href={method.target}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-1 text-[11px] font-mono text-white hover:underline"
+                          title="打开链接"
+                        >
+                          <ExternalLink className="h-3 w-3" />
+                          <span>打开</span>
+                        </a>
+                      )}
+                    </div>
                   </div>
                 </div>
               ))}
@@ -486,7 +549,13 @@ export const ToolDetail: React.FC<ToolDetailProps> = ({ tool, onBack }) => {
                 >
                   <div className="flex h-8 w-8 items-center justify-center rounded bg-obsidian-900 text-obsidian-400 group-hover:text-white">
                     {c.type === 'telegram' ? (
-                      <Send className="h-4 w-4" />
+                      <TelegramIcon className="h-4 w-4" />
+                    ) : c.type === 'twitter' ? (
+                      <XIcon className="h-4 w-4" />
+                    ) : c.type === 'bluesky' ? (
+                      <BlueskyIcon className="h-4 w-4" />
+                    ) : c.type === 'youtube' ? (
+                      <YoutubeIcon className="h-4 w-4" />
                     ) : c.type === 'github' ? (
                       <Github className="h-4 w-4" />
                     ) : c.type === 'email' ? (

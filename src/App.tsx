@@ -104,7 +104,6 @@ export const App: React.FC = () => {
       {/* Top Navbar: only displayed on home page; tool detail page uses floating top buttons */}
       {!activeTool && (
         <Navbar
-          onOpenGuide={() => setIsGuideOpen(true)}
           onBackToHome={navigateBackToHome}
         />
       )}
