@@ -178,7 +178,7 @@ export const ToolDetail: React.FC<ToolDetailProps> = ({ tool, onBack }) => {
                 rel="noopener noreferrer"
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 rounded-lg bg-obsidian-800 hover:bg-obsidian-750 text-white border border-obsidian-700 px-4 py-2 text-xs font-semibold font-mono transition-colors shadow-sm"
               >
-                <span>访问官方网站</span>
+                <span>访问官网</span>
                 <ExternalLink className="h-3.5 w-3.5 text-white" />
               </a>
             </div>

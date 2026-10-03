@@ -70,16 +70,18 @@ export const LinkQRCodePopover: React.FC<LinkQRCodePopoverProps> = ({
 
   // Close on outside click
   useEffect(() => {
-    const handleOutsideClick = (e: MouseEvent) => {
+    const handleOutsideClick = (e: MouseEvent | TouchEvent) => {
       if (popoverRef.current && !popoverRef.current.contains(e.target as Node)) {
         setIsOpen(false);
       }
     };
     if (isOpen) {
       document.addEventListener('mousedown', handleOutsideClick);
+      document.addEventListener('touchstart', handleOutsideClick);
     }
     return () => {
       document.removeEventListener('mousedown', handleOutsideClick);
+      document.removeEventListener('touchstart', handleOutsideClick);
       if (closeTimerRef.current) {
         clearTimeout(closeTimerRef.current);
       }
@@ -109,7 +111,7 @@ export const LinkQRCodePopover: React.FC<LinkQRCodePopoverProps> = ({
 
       {isOpen && (
         <div
-          className="absolute right-full top-1/2 -translate-y-1/2 mr-2.5 z-50 rounded-xl border border-obsidian-750 bg-obsidian-900/95 backdrop-blur-xl p-3 shadow-2xl flex flex-col items-center select-none animate-in fade-in zoom-in-95 duration-150"
+          className="absolute bottom-full mb-2.5 left-1/2 -translate-x-1/2 translate-y-0 sm:bottom-auto sm:mb-0 sm:left-auto sm:right-full sm:top-1/2 sm:-translate-y-1/2 sm:translate-x-0 sm:mr-2.5 z-50 rounded-xl border border-obsidian-750 bg-obsidian-900/95 backdrop-blur-xl p-3 shadow-2xl flex flex-col items-center select-none animate-in fade-in zoom-in-95 duration-150"
           style={{ width: '160px' }}
           onClick={(e) => e.stopPropagation()}
         >
@@ -135,8 +137,11 @@ export const LinkQRCodePopover: React.FC<LinkQRCodePopoverProps> = ({
             </p>
           </div>
 
-          {/* Right subtle pointer arrow pointing towards the button on the right */}
-          <div className="absolute -right-1 top-1/2 -translate-y-1/2 w-2 h-2 rotate-45 border-t border-r border-obsidian-750 bg-obsidian-900" />
+          {/* Desktop pointer arrow pointing towards the button on the right */}
+          <div className="hidden sm:block absolute -right-1 top-1/2 -translate-y-1/2 w-2 h-2 rotate-45 border-t border-r border-obsidian-750 bg-obsidian-900" />
+
+          {/* Mobile pointer arrow pointing downwards towards the button underneath */}
+          <div className="block sm:hidden absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 rotate-45 border-b border-r border-obsidian-750 bg-obsidian-900" />
         </div>
       )}
     </div>

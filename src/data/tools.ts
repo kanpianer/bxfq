@@ -377,7 +377,7 @@ export const TOOLS_DATA: VPNTool[] = [
     entityLabel: '自组织开源项目',
     entityDescription: '由开发者 igareck 维护的公共且免费的 VPN 配置自动化合集。系统每 2-4 小时在海外服务器上全自动测试节点的实际可达性、延迟与真实测速，自动过滤失效节点。代码与订阅全开源，包含 GitLab、Codeberg 等多重分布式镜像。',
     status: 'available',
-    statusText: '自动测试更新',
+    statusText: '自动更新',
     pricingModel: '100% 永久免费 / 全自动开源订阅',
     platforms: ['android', 'ios', 'windows', 'macos', 'linux'],
     officialUrl: 'https://github.com/igareck/vpn-configs-for-russia/blob/main/README-ZH-CN.md',
