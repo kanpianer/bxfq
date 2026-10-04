@@ -239,210 +239,293 @@ export const TOOLS_DATA: VPNTool[] = [
     securityRating: '强混淆加密 / 严格无日志'
   },
   {
-    id: 'tor',
-    name: 'Tor Browser',
-    aliases: ['洋葱路由器', '暗网/隐私浏览器', 'Tor Project'],
-    tagline: '全球最高级别匿名与反审查利器，三层跳板加密链路',
+    id: 'lantern',
+    name: '蓝灯 (Lantern)',
+    aliases: ['Lantern', '蓝灯', 'Lantern VPN', 'GetLantern'],
+    tagline: '老牌非营利抗审查网络工具，智能分流与多协议抗阻断',
     entityType: 'non-profit',
     entityLabel: '非盈利性机构',
-    entityDescription: '由美国 501(c)(3) 非盈利机构 The Tor Project 开发维护。由全球志愿者与人权组织捐助算力，专为保护言论自由、抵御监控而生。',
-    status: 'needs-bridge',
-    statusText: '国内需配置网桥',
-    pricingModel: '100% 永久免费 / 全球志愿者资助',
+    entityDescription: '由美国 501(c)(3) 非营利机构 Brave New Software Project, Inc. 于 2013 年发起研发（早期曾获美国国际广播局 BBG 与开放技术基金会 OTF 资助）。致力于向全球互联网审查严苛地区的人群提供无障碍、安全且快速的互联网访问。',
+    status: 'available',
+    statusText: '免费版有限额',
+    badgeNote: '老牌抗封锁',
+    pricingModel: '基础版永久免费（每月提供免费高速流量，用尽后限速）/ 专业版 (Pro) 付费解锁无限高速流量与全球节点挑选',
     platforms: ['android', 'ios', 'windows', 'macos', 'linux'],
-    officialUrl: 'https://www.torproject.org/zh-CN',
+    officialUrl: 'https://lantern.io/zh',
     downloadLinks: [
       {
-        label: 'Windows 官方镜像',
-        url: 'https://mirror.math.princeton.edu/pub/tor/torbrowser/',
+        label: 'Windows 官方客户端下载',
+        url: 'https://github.com/getlantern/lantern/releases',
         platform: 'windows',
-        isMirror: true,
-        note: '普林斯顿大学镜像源，国内常年直连可用'
+        isDirect: true,
+        note: 'GitHub 官方最新发布页，获取 .exe 安装包'
       },
       {
-        label: 'macOS 官方镜像',
-        url: 'https://mirror.math.princeton.edu/pub/tor/torbrowser/',
+        label: 'macOS 官方客户端下载',
+        url: 'https://github.com/getlantern/lantern/releases',
         platform: 'macos',
-        isMirror: true,
-        note: '普林斯顿大学镜像源，免翻墙高速直连下载 DMG'
+        isDirect: true,
+        note: 'GitHub 官方最新发布页，获取 .dmg 安装包'
       },
       {
-        label: 'Linux 官方镜像',
-        url: 'https://mirror.math.princeton.edu/pub/tor/torbrowser/',
-        platform: 'linux',
-        isMirror: true,
-        note: '普林斯顿大学镜像源，解压即用独立包'
-      },
-      {
-        label: 'Android 官方 APK',
-        url: 'https://f-droid.org/packages/org.torproject.vpn/',
+        label: 'Android 官方 APK 下载',
+        url: 'https://github.com/getlantern/lantern/releases',
         platform: 'android',
         isDirect: true,
-        note: '开源应用商店直链'
+        note: 'GitHub 官方直链获取安卓 .apk 原生安装包'
       },
       {
-        label: 'iOS Orbot 官方客户端',
-        url: 'https://apps.apple.com/us/app/orbot/id1609461599',
+        label: 'Google Play 商店',
+        url: 'https://play.google.com/store/apps/details?id=org.getlantern.lantern',
+        platform: 'android',
+        note: '海外区/具备 Google Play 服务的安卓设备'
+      },
+      {
+        label: 'Apple App Store',
+        url: 'https://apps.apple.com/us/app/lantern-open-internet/id1457872372',
         platform: 'ios',
-        note: '苹果端请搭配 Orbot 使用 Tor 网络'
+        note: '支持 iPhone 与 iPad（需海外 Apple ID）'
       },
       {
-        label: 'Apple TV Orbot 电视方案',
-        url: 'https://orbot.app/en/',
-        platform: 'appletv',
-        note: '支持 Apple TV tvOS 与家庭影音网络代理'
+        label: 'Linux (Ubuntu/Debian) 客户端',
+        url: 'https://github.com/getlantern/lantern/releases',
+        platform: 'linux',
+        isDirect: true,
+        note: 'GitHub 官方最新发布页，获取 .deb 安装包'
+      },
+      {
+        label: '蓝灯官方下载中心',
+        url: 'https://lantern.io/zh#download',
+        platform: 'browser',
+        note: '官方网站多系统客户端直达下载指引'
+      }
+    ],
+    quickStartSteps: [
+      {
+        step: 1,
+        title: '下载并安装客户端',
+        desc: '根据操作系统从 GitHub Releases 官方发布页或应用商店下载对应的安装包并完成安装。'
+      },
+      {
+        step: 2,
+        title: '启动即连，无需注册',
+        desc: '打开蓝灯软件，点击中央主开关即可一键开启保护。无需注册账号或繁琐配置，基础免费版立即可用。'
+      },
+      {
+        step: 3,
+        title: '智能分流与按需使用',
+        desc: '蓝灯内置智能路由分流，访问国内网站直连不消耗流量，访问受阻网站自动走加密通道代理。'
+      }
+    ],
+    detailedGuide: [
+      {
+        title: '智能分流与多协议抗阻断架构',
+        content: [
+          '动态抗阻断协议：蓝灯集成了包括自研混淆传输、多重回退中继、域前置等一系列抗审查协议。当某种连接方式受到防火墙干扰时，客户端会自动切换备用路由通道。',
+          '智能分流省流量：软件默认只对被审查封锁的域名和 IP 启用代理隧道，国内主流网站与服务依然保持本地直连，既不减慢国内网络速度，又极大节省了代理流量。',
+          '去中心化与集中式混合中继：综合了集中式高性能服务器与分布式对等中继的弹性，确保即使在网络敏感期也能维持基本连通性。'
+        ],
+        tips: [
+          '电脑端启动后系统托盘会常驻小灯笼图标，若需全局代理或更改端口，可在右键托盘菜单【设置】中进行调整。'
+        ]
+      },
+      {
+        title: '免费版 (Free) 与专业版 (Pro) 差异',
+        content: [
+          '免费版额度：蓝灯每月免费提供 500MB 高速抗封锁流量。高速流量用完后，连接不会中断，但速率会被限制（可用于文字阅读和即时通讯），直到次月自动重置。',
+          '专业版权益：Pro 会员提供无上限的高速带宽、支持挑选指定国家/地区服务器节点，并支持在多台设备（电脑与手机）上同时登录使用。',
+          '安全防范提示：官方应用没有任何弹窗诈骗或强制绑定；请认准官方 GitHub (getlantern/lantern) 和官方主站 (lantern.io)，切勿从非官方第三方破解站下载改包版。'
+        ]
+      }
+    ],
+    contacts: [
+      { type: 'twitter', label: '官方 X (Twitter)', value: 'https://x.com/getlantern' },
+      { type: 'github', label: 'GitHub 官方仓库', value: 'https://github.com/getlantern/lantern' },
+      { type: 'email', label: '官方支持邮箱', value: 'support@lantern.io' },
+      { type: 'website', label: '蓝灯官方主站', value: 'https://lantern.io/zh' }
+    ],
+    speedRating: 'high',
+    securityRating: '多协议动态混淆 / 501(c)(3) 非营利机构背景'
+  },
+  {
+    id: 'beepass',
+    name: 'BeePass VPN',
+    aliases: ['蜜蜂VPN', '伊朗自由梯子'],
+    tagline: '基于 Shadowsocks 架构，专为受限地区人民研发的抗封锁工具',
+    entityType: 'self-organized',
+    entityLabel: '自组织机构',
+    entityDescription: '由民间自组织机构发起成立，主要为伊朗等遭受严重断网与网络审查地区的公民提供数字人权援助。',
+    status: 'available',
+    statusText: '主攻伊朗',
+    badgeNote: '主攻伊朗',
+    pricingModel: '100% 永久免费 / 民间公益',
+    platforms: ['android', 'ios'],
+    officialUrl: 'https://beepassvpn.com/en/',
+    downloadLinks: [
+      {
+        label: 'Google Play 商店',
+        url: 'https://play.google.com/store/apps/details?id=com.beepassvpn.free.vpn.secure',
+        platform: 'android',
+        note: '支持 Android 手机与平板设备'
+      },
+      {
+        label: 'Apple App Store',
+        url: 'https://apps.apple.com/us/app/beepass-vpn/id1556325746',
+        platform: 'ios',
+        note: '支持 iPhone 与 iPad 设备'
+      },
+      {
+        label: 'BeePass 官方电报节点机器人',
+        url: 'https://telegram.me/beepassvpn_bot',
+        platform: 'browser',
+        note: '官方 Telegram 节点获取机器人'
+      },
+      {
+        label: '邮件获取节点 (Email)',
+        url: 'mailto:get@beepassvpn.com',
+        platform: 'browser',
+        note: '发送任意邮件至 get@beepassvpn.com 自动获取最新可用节点'
+      }
+    ],
+    quickStartSteps: [
+      {
+        step: 1,
+        title: '下载并安装客户端',
+        desc: '从 Google Play 或海外 App Store 下载 BeePass VPN 客户端，或准备通用代理工具。'
+      },
+      {
+        step: 2,
+        title: '获取节点与密钥',
+        desc: '通过官方 Telegram 机器人 (@beepassvpn_bot) 或发送邮件至 get@beepassvpn.com 自动获取最新抗封锁节点链接。'
+      },
+      {
+        step: 3,
+        title: '一键开启安全代理',
+        desc: '打开应用点击连接或导入节点密钥，即可通过分布式加密通道安全访问网络。'
+      }
+    ],
+    detailedGuide: [
+      {
+        title: '背景介绍与技术演进',
+        content: [
+          'BeePass 是一个极其受尊敬的民间反审查项目，在伊朗历次断网事件中为数百万民众提供了宝贵的通讯通道。',
+          '其底层采用 Shadowsocks 及其衍生协议，易用性强，界面简洁，受到国际数字自由联盟的广泛关注。',
+          '团队持续维护更新节点与混淆技术，支持通过官方 Telegram 机器人 (@beepassvpn_bot) 或邮件 (get@beepassvpn.com) 实时获取可用节点并导入使用，并可在官方 X (@beepassvpn) 获取第一手更新动态。'
+        ]
+      }
+    ],
+    contacts: [
+      { type: 'email', label: '获取节点邮箱', value: 'get@beepassvpn.com' },
+      { type: 'twitter', label: '官方 X (Twitter)', value: 'https://x.com/beepassvpn' },
+      { type: 'telegram', label: 'Telegram 节点机器人', value: 'https://telegram.me/beepassvpn_bot' },
+      { type: 'website', label: 'BeePass 官网', value: 'https://beepassvpn.com/en/' }
+    ],
+    speedRating: 'moderate',
+    securityRating: 'Shadowsocks 加密 / 开源民间支持'
+  },
+  {
+    id: 'ceno',
+    name: 'Ceno',
+    aliases: ['Ceno Browser', 'Censorship.No', 'P2P分布式浏览器'],
+    tagline: '基于 P2P 点对点网络与分布式缓存的抗审查浏览器，断网亦能互助浏览',
+    entityType: 'non-profit',
+    entityLabel: '非盈利性机构',
+    entityDescription: '由加拿大非盈利人权组织 eQualitie 研发与资助。基于 BitTorrent 与 Ouinet 点对点协议，将网页缓存在全球分布式网络中，即使中心服务器遭阻断或面临断网，也能通过邻近节点拼装读取。',
+    status: 'available',
+    statusText: '很慢但能用',
+    badgeNote: '很慢但能用',
+    pricingModel: '100% 永久免费 / 开源公益 (MPL 2.0)',
+    platforms: ['android', 'ios', 'windows'],
+    officialUrl: 'https://ceno.app',
+    downloadLinks: [
+      {
+        label: 'Google Play 商店',
+        url: 'https://play.google.com/store/apps/details?id=ie.equalit.ceno',
+        platform: 'android',
+        note: '海外区/具备 Google Play 服务的安卓设备'
+      },
+      {
+        label: 'Apple App Store',
+        url: 'https://apps.apple.com/us/app/ceno-browser/id6673915387',
+        platform: 'ios',
+        note: '支持 iPhone 与 iPad（需海外 Apple ID）'
+      },
+      {
+        label: 'Windows 便携免安装版 (Portable)',
+        url: 'https://ceno-download.s3.amazonaws.com/ceno-desktop/latest/ceno-win64-portable.html',
+        platform: 'windows',
+        isDirect: true,
+        note: '官方 AWS S3 镜像下载页，解压即用'
+      },
+      {
+        label: 'Paskoocheh 备用下载 (Android)',
+        url: 'https://paskoocheh.com/tools/124/android.html',
+        platform: 'android',
+        isMirror: true,
+        note: '知名免翻开源工具市场镜像直达'
+      },
+      {
+        label: 'Censorship.No 官方镜像网站',
+        url: 'https://censorship.no/en/index.html',
+        platform: 'browser',
+        isMirror: true,
+        note: '项目官方备用直连镜像站点，包含文档与下载指引'
       }
     ],
     mirrors: [
       {
-        name: '普林斯顿大学数学系镜像',
-        url: 'https://mirror.math.princeton.edu/pub/tor/torbrowser/',
-        description: '国际知名学府镜像服务器，国内可高带宽直连下载各系统安装包'
+        name: 'Censorship.No 官方镜像站',
+        url: 'https://censorship.no/en/index.html',
+        description: 'Ceno Browser 原生官方直连镜像网站，提供全套抗审查原理、常见问题解答与多语言资料'
       }
     ],
-    bridges: {
-      title: '国内突破网络封锁必须：添加 Bridges (网桥)',
-      description: '在中国大陆直接连接 Tor 公共节点会被防火墙拦截，必须在 Tor 设置中填入私密网桥（推荐 Snowflake、WebTunnel 或 obfs4）。',
-      methods: [
-        {
-          channel: '网页快速申请',
-          instruction: '访问网桥分发官网（如果打不开请用其它备用梯子或邮件获取）',
-          target: 'https://bridges.torproject.org',
-          type: 'link'
-        },
-        {
-          channel: '开源社区网桥源',
-          instruction: '访问 vpn-configs-for-russia 开源仓库，获取自动化整理的 TOP100、WebTunnel 与 obfs4 实时可用网桥',
-          target: 'https://github.com/igareck/vpn-configs-for-russia/blob/main/README-ZH-CN.md#---tor-%E7%BD%91%E6%A1%A5--',
-          type: 'link'
-        },
-        {
-          channel: '邮件自动机器人',
-          instruction: '使用 Gmail 或 Riseup 邮箱发送正文为 "get bridges" 的邮件（不要用 QQ/163 邮箱）',
-          target: 'bridges@torproject.org',
-          type: 'email'
-        },
-        {
-          channel: '电报 Telegram 机器人',
-          instruction: '在 Telegram 中向官方网桥机器人发送 /bridges 获取最新节点',
-          target: 'https://t.me/GetBridgesBot',
-          type: 'telegram'
-        }
-      ],
-      tutorialUrl: 'https://support.torproject.org/zh-CN/tor-browser/circumvention/connecting-from-censored-regions/'
-    },
     quickStartSteps: [
       {
         step: 1,
-        title: '从普林斯顿镜像下载并安装',
-        desc: '点击本页普林斯顿大学镜像链接，下载适合你的操作系统（Windows/Mac/Linux）并解压安装。'
+        title: '下载并安装客户端',
+        desc: '安卓用户推荐通过 Google Play 或 Paskoocheh 镜像下载；苹果用户直达 App Store；Windows 用户直接下载解压便携版。'
       },
       {
         step: 2,
-        title: '在连接界面配置网桥',
-        desc: '打开软件，不要点直接连接。点击“配置连接” -> “网桥” -> 选择内置网桥（Snowflake/WebTunnel）或输入获取的私密网桥。'
+        title: '了解并选择运行模式',
+        desc: 'Ceno 提供“公共模式 (Public)”和“个人模式 (Personal)”。公共模式利用 P2P 分布式缓存连通率最高；个人模式专注私密浏览。'
       },
       {
         step: 3,
-        title: '启动洋葱安全浏览',
-        desc: '点击“连接”，Tor 浏览器会通过 3 个全球加密中继节点转发流量，安全接入自由互联网。'
+        title: '直接输入网址浏览',
+        desc: '输入目标网址后，应用会自动通过去中心化 Ouinet 协议寻址并从其他节点拼装拉取数据，初次握手加载较慢，请稍等数秒即可打开。'
       }
     ],
     detailedGuide: [
       {
-        title: '小白防坑重点提醒',
+        title: '为什么特点标签是“很慢但能用”？',
         content: [
-          '不要用 Tor 进行 BT 下载或大文件迅雷挂机，以免拖垮全球志愿节点带宽。',
-          '不要随意在洋葱浏览器内安装第三方 Chrome/Firefox 插件，这可能导致浏览器指纹泄露。',
-          'Tor 的主打优势是“绝对抗监控与高隐私”，因为流量经过 3 跳随机中继，网速会稍慢于商业专线，属于正常现象。'
+          '架构差异：普通 VPN 依赖中心化服务器转发流量，一旦服务器 IP 被封便彻底瘫痪；Ceno 底层是纯粹的 P2P（点对点）分布式网络与 BitTorrent 技术。',
+          '极限生存能力：即使遇到区域性大断网或国际出口阻断，只要局域网或邻近节点有人曾访问过该网页，就能从附近设备拼装缓存数据。',
+          '初次加载需检索：因为需要在分布式网络中寻址对等节点，初次载入页面通常需要 15~30 秒，因而速度慢，但在严苛审查环境下是无可取代的“终极兜底利器”。'
         ],
         tips: [
-          '大陆用户强烈推荐内置的 Snowflake（雪花网桥），利用 WebRTC 伪装成普通视频通话流量，抗封锁效果绝佳。'
+          '初次打开网页时切勿频繁刷新，频繁刷新会打断 P2P 节点的检索与握手流程。',
+          '公共模式下访问记录会参与分布式索引以帮助其他受限用户，切勿在此模式下登录涉及个人隐私的敏感账号。'
+        ]
+      },
+      {
+        title: '公共模式与个人模式的选用建议',
+        content: [
+          '公共模式 (Public Mode)：推荐用于阅读被封锁的新闻媒体、维基百科、学术资料与公开文章。你的设备也会充当桥梁，把已获取的网页缓存分享给其他受审查地区的网民。',
+          '个人模式 (Personal Mode)：请求不经过公开 BitTorrent 索引，适合需要保护身份隐私的访问，但连通成功率与速度会逊于公共模式。'
         ]
       }
     ],
     contacts: [
-      { type: 'website', label: 'Tor 官方中文网', value: 'https://www.torproject.org/zh-CN' },
-      { type: 'telegram', label: 'Telegram 网桥机器人', value: 'https://t.me/GetBridgesBot' }
+      { type: 'twitter', label: '官方 X (Twitter)', value: 'https://x.com/cenobrowser' },
+      { type: 'telegram', label: 'Telegram 官方频道', value: 'https://t.me/Ceno_Iran' },
+      { type: 'gitlab', label: 'GitLab 官方开源仓库', value: 'https://gitlab.com/ceno-app' },
+      { type: 'website', label: 'Ceno 官方主站', value: 'https://ceno.app' },
+      { type: 'website', label: 'Censorship.No 镜像网站', value: 'https://censorship.no/en/index.html' }
     ],
     speedRating: 'moderate',
-    securityRating: '全球军工级匿名 / 3重节点中继'
-  },
-  {
-    id: 'proton',
-    name: 'Proton VPN',
-    aliases: ['质子VPN', '瑞士安全VPN'],
-    tagline: '瑞士顶尖加密巨头出品，免费无限制流量，严守瑞士隐私法',
-    entityType: 'non-profit-supervised',
-    entityLabel: '非盈利性机构监督',
-    entityDescription: '源自欧洲核子研究中心（CERN）科学家的创想，由 Proton Foundation（瑞士非盈利基金会）监督治理。无商业资本裹挟，严格遵守中立瑞士联邦数据保护法。',
-    status: 'available',
-    statusText: '需切换 Stealth 协议',
-    pricingModel: '免费版提供无限流量（单设备，分配日/美/荷节点）',
-    platforms: ['android', 'ios', 'windows', 'macos', 'linux', 'browser'],
-    officialUrl: 'https://protonvpn.com/',
-    downloadLinks: [
-      {
-        label: 'Android GitHub 官方 Release',
-        url: 'https://github.com/ProtonVPN/android-app/releases',
-        platform: 'android',
-        isDirect: true,
-        note: '直接下载官方 APK 文件'
-      },
-      {
-        label: 'Android F-Droid 开源版本',
-        url: 'https://f-droid.org/en/packages/ch.protonvpn.android/',
-        platform: 'android'
-      },
-      {
-        label: 'Google Play 商店',
-        url: 'https://play.google.com/store/apps/details?id=ch.protonvpn.android',
-        platform: 'android'
-      },
-      {
-        label: 'Apple App Store',
-        url: 'https://apps.apple.com/us/app/proton-vpn-fast-secure/id1437005085',
-        platform: 'ios'
-      }
-    ],
-    quickStartSteps: [
-      {
-        step: 1,
-        title: '注册 Proton 免费账号',
-        desc: '前往 Proton 官网注册一个免费统一通行证（支持使用海外免费邮箱，亦支持 Proton 隐私邮箱）。'
-      },
-      {
-        step: 2,
-        title: '在设置中开启 Stealth 隐形协议',
-        desc: '大陆网络直连前，必须在客户端“Settings -> Protocol”中，将协议切换为【Stealth】（隐形协议）或 WireGuard TCP。'
-      },
-      {
-        step: 3,
-        title: '点击快速连接 (Quick Connect)',
-        desc: '点击一键连接，系统会自动分配负载最低的荷兰、日本或美国免费优质服务器。'
-      }
-    ],
-    detailedGuide: [
-      {
-        title: '中国大陆使用秘诀',
-        content: [
-          '默认的 Smart Protocol 可能会尝试常规 WireGuard UDP，在中国大陆大概率会被运营商 QoS 丢包。',
-          '一定要在客户端设置中将协议明确指定为【Stealth】。该协议专为绕过审查防火墙设计，会将 VPN 流量伪装成正常的 TLS 网页流量。',
-          '免费版提供【无限流量】，不限使用时长，是全球极少真正不限速不限流的合规 VPN。'
-        ],
-        tips: [
-          '如遇到连不上，可尝试断开后再次点击连接，Proton 会轮询换到另一个可用服务器。'
-        ]
-      }
-    ],
-    contacts: [
-      { type: 'twitter', label: '官方 X (Twitter)', value: 'https://x.com/intent/user?screen_name=ProtonVPN' },
-      { type: 'telegram', label: 'Telegram 官方频道', value: 'https://t.me/proton_privacy' },
-      { type: 'youtube', label: 'YouTube 官方频道', value: 'https://www.youtube.com/@ProtonPrivacy' },
-      { type: 'website', label: '官方网址', value: 'https://protonvpn.com/' }
-    ],
-    speedRating: 'high',
-    securityRating: '瑞士隐私法管辖 / 独立第三方安全审计'
+    securityRating: 'P2P 分布式缓存 / MPL 2.0 开源公益'
   },
   {
     id: 'geph',
@@ -653,293 +736,209 @@ export const TOOLS_DATA: VPNTool[] = [
     securityRating: '企业级零信任 SASE / 专属组织通道'
   },
   {
-    id: 'beepass',
-    name: 'BeePass VPN',
-    aliases: ['蜜蜂VPN', '伊朗自由梯子'],
-    tagline: '基于 Shadowsocks 架构，专为受限地区人民研发的抗封锁工具',
-    entityType: 'self-organized',
-    entityLabel: '自组织机构',
-    entityDescription: '由民间自组织机构发起成立，主要为伊朗等遭受严重断网与网络审查地区的公民提供数字人权援助。',
-    status: 'available',
-    statusText: '主攻伊朗',
-    badgeNote: '主攻伊朗',
-    pricingModel: '100% 永久免费 / 民间公益',
-    platforms: ['android', 'ios'],
-    officialUrl: 'https://beepassvpn.com/en/',
-    downloadLinks: [
-      {
-        label: 'Google Play 商店',
-        url: 'https://play.google.com/store/apps/details?id=com.beepassvpn.free.vpn.secure',
-        platform: 'android',
-        note: '支持 Android 手机与平板设备'
-      },
-      {
-        label: 'Apple App Store',
-        url: 'https://apps.apple.com/us/app/beepass-vpn/id1556325746',
-        platform: 'ios',
-        note: '支持 iPhone 与 iPad 设备'
-      },
-      {
-        label: 'BeePass 官方电报节点机器人',
-        url: 'https://telegram.me/beepassvpn_bot',
-        platform: 'browser',
-        note: '官方 Telegram 节点获取机器人'
-      },
-      {
-        label: '邮件获取节点 (Email)',
-        url: 'mailto:get@beepassvpn.com',
-        platform: 'browser',
-        note: '发送任意邮件至 get@beepassvpn.com 自动获取最新可用节点'
-      }
-    ],
-    quickStartSteps: [
-      {
-        step: 1,
-        title: '下载并安装客户端',
-        desc: '从 Google Play 或海外 App Store 下载 BeePass VPN 客户端，或准备通用代理工具。'
-      },
-      {
-        step: 2,
-        title: '获取节点与密钥',
-        desc: '通过官方 Telegram 机器人 (@beepassvpn_bot) 或发送邮件至 get@beepassvpn.com 自动获取最新抗封锁节点链接。'
-      },
-      {
-        step: 3,
-        title: '一键开启安全代理',
-        desc: '打开应用点击连接或导入节点密钥，即可通过分布式加密通道安全访问网络。'
-      }
-    ],
-    detailedGuide: [
-      {
-        title: '背景介绍与技术演进',
-        content: [
-          'BeePass 是一个极其受尊敬的民间反审查项目，在伊朗历次断网事件中为数百万民众提供了宝贵的通讯通道。',
-          '其底层采用 Shadowsocks 及其衍生协议，易用性强，界面简洁，受到国际数字自由联盟的广泛关注。',
-          '团队持续维护更新节点与混淆技术，支持通过官方 Telegram 机器人 (@beepassvpn_bot) 或邮件 (get@beepassvpn.com) 实时获取可用节点并导入使用，并可在官方 X (@beepassvpn) 获取第一手更新动态。'
-        ]
-      }
-    ],
-    contacts: [
-      { type: 'email', label: '获取节点邮箱', value: 'get@beepassvpn.com' },
-      { type: 'twitter', label: '官方 X (Twitter)', value: 'https://x.com/beepassvpn' },
-      { type: 'telegram', label: 'Telegram 节点机器人', value: 'https://telegram.me/beepassvpn_bot' },
-      { type: 'website', label: 'BeePass 官网', value: 'https://beepassvpn.com/en/' }
-    ],
-    speedRating: 'moderate',
-    securityRating: 'Shadowsocks 加密 / 开源民间支持'
-  },
-  {
-    id: 'ceno',
-    name: 'Ceno',
-    aliases: ['Ceno Browser', 'Censorship.No', 'P2P分布式浏览器'],
-    tagline: '基于 P2P 点对点网络与分布式缓存的抗审查浏览器，断网亦能互助浏览',
+    id: 'tor',
+    name: 'Tor Browser',
+    aliases: ['洋葱路由器', '暗网/隐私浏览器', 'Tor Project'],
+    tagline: '全球最高级别匿名与反审查利器，三层跳板加密链路',
     entityType: 'non-profit',
     entityLabel: '非盈利性机构',
-    entityDescription: '由加拿大非盈利人权组织 eQualitie 研发与资助。基于 BitTorrent 与 Ouinet 点对点协议，将网页缓存在全球分布式网络中，即使中心服务器遭阻断或面临断网，也能通过邻近节点拼装读取。',
-    status: 'available',
-    statusText: '很慢但能用',
-    badgeNote: '很慢但能用',
-    pricingModel: '100% 永久免费 / 开源公益 (MPL 2.0)',
-    platforms: ['android', 'ios', 'windows'],
-    officialUrl: 'https://ceno.app',
+    entityDescription: '由美国 501(c)(3) 非盈利机构 The Tor Project 开发维护。由全球志愿者与人权组织捐助算力，专为保护言论自由、抵御监控而生。',
+    status: 'needs-bridge',
+    statusText: '国内需配置网桥',
+    pricingModel: '100% 永久免费 / 全球志愿者资助',
+    platforms: ['android', 'ios', 'windows', 'macos', 'linux'],
+    officialUrl: 'https://www.torproject.org/zh-CN',
     downloadLinks: [
       {
-        label: 'Google Play 商店',
-        url: 'https://play.google.com/store/apps/details?id=ie.equalit.ceno',
-        platform: 'android',
-        note: '海外区/具备 Google Play 服务的安卓设备'
-      },
-      {
-        label: 'Apple App Store',
-        url: 'https://apps.apple.com/us/app/ceno-browser/id6673915387',
-        platform: 'ios',
-        note: '支持 iPhone 与 iPad（需海外 Apple ID）'
-      },
-      {
-        label: 'Windows 便携免安装版 (Portable)',
-        url: 'https://ceno-download.s3.amazonaws.com/ceno-desktop/latest/ceno-win64-portable.html',
+        label: 'Windows 官方镜像',
+        url: 'https://mirror.math.princeton.edu/pub/tor/torbrowser/',
         platform: 'windows',
-        isDirect: true,
-        note: '官方 AWS S3 镜像下载页，解压即用'
+        isMirror: true,
+        note: '普林斯顿大学镜像源，国内常年直连可用'
       },
       {
-        label: 'Paskoocheh 备用下载 (Android)',
-        url: 'https://paskoocheh.com/tools/124/android.html',
+        label: 'macOS 官方镜像',
+        url: 'https://mirror.math.princeton.edu/pub/tor/torbrowser/',
+        platform: 'macos',
+        isMirror: true,
+        note: '普林斯顿大学镜像源，免翻墙高速直连下载 DMG'
+      },
+      {
+        label: 'Linux 官方镜像',
+        url: 'https://mirror.math.princeton.edu/pub/tor/torbrowser/',
+        platform: 'linux',
+        isMirror: true,
+        note: '普林斯顿大学镜像源，解压即用独立包'
+      },
+      {
+        label: 'Android 官方 APK',
+        url: 'https://f-droid.org/packages/org.torproject.vpn/',
         platform: 'android',
-        isMirror: true,
-        note: '知名免翻开源工具市场镜像直达'
+        isDirect: true,
+        note: '开源应用商店直链'
       },
       {
-        label: 'Censorship.No 官方镜像网站',
-        url: 'https://censorship.no/en/index.html',
-        platform: 'browser',
-        isMirror: true,
-        note: '项目官方备用直连镜像站点，包含文档与下载指引'
+        label: 'iOS Orbot 官方客户端',
+        url: 'https://apps.apple.com/us/app/orbot/id1609461599',
+        platform: 'ios',
+        note: '苹果端请搭配 Orbot 使用 Tor 网络'
+      },
+      {
+        label: 'Apple TV Orbot 电视方案',
+        url: 'https://orbot.app/en/',
+        platform: 'appletv',
+        note: '支持 Apple TV tvOS 与家庭影音网络代理'
       }
     ],
     mirrors: [
       {
-        name: 'Censorship.No 官方镜像站',
-        url: 'https://censorship.no/en/index.html',
-        description: 'Ceno Browser 原生官方直连镜像网站，提供全套抗审查原理、常见问题解答与多语言资料'
+        name: '普林斯顿大学数学系镜像',
+        url: 'https://mirror.math.princeton.edu/pub/tor/torbrowser/',
+        description: '国际知名学府镜像服务器，国内可高带宽直连下载各系统安装包'
       }
     ],
+    bridges: {
+      title: '国内突破网络封锁必须：添加 Bridges (网桥)',
+      description: '在中国大陆直接连接 Tor 公共节点会被防火墙拦截，必须在 Tor 设置中填入私密网桥（推荐 Snowflake、WebTunnel 或 obfs4）。',
+      methods: [
+        {
+          channel: '网页快速申请',
+          instruction: '访问网桥分发官网（如果打不开请用其它备用梯子或邮件获取）',
+          target: 'https://bridges.torproject.org',
+          type: 'link'
+        },
+        {
+          channel: '开源社区网桥源',
+          instruction: '访问 vpn-configs-for-russia 开源仓库，获取自动化整理的 TOP100、WebTunnel 与 obfs4 实时可用网桥',
+          target: 'https://github.com/igareck/vpn-configs-for-russia/blob/main/README-ZH-CN.md#---tor-%E7%BD%91%E6%A1%A5--',
+          type: 'link'
+        },
+        {
+          channel: '邮件自动机器人',
+          instruction: '使用 Gmail 或 Riseup 邮箱发送正文为 "get bridges" 的邮件（不要用 QQ/163 邮箱）',
+          target: 'bridges@torproject.org',
+          type: 'email'
+        },
+        {
+          channel: '电报 Telegram 机器人',
+          instruction: '在 Telegram 中向官方网桥机器人发送 /bridges 获取最新节点',
+          target: 'https://t.me/GetBridgesBot',
+          type: 'telegram'
+        }
+      ],
+      tutorialUrl: 'https://support.torproject.org/zh-CN/tor-browser/circumvention/connecting-from-censored-regions/'
+    },
     quickStartSteps: [
       {
         step: 1,
-        title: '下载并安装客户端',
-        desc: '安卓用户推荐通过 Google Play 或 Paskoocheh 镜像下载；苹果用户直达 App Store；Windows 用户直接下载解压便携版。'
+        title: '从普林斯顿镜像下载并安装',
+        desc: '点击本页普林斯顿大学镜像链接，下载适合你的操作系统（Windows/Mac/Linux）并解压安装。'
       },
       {
         step: 2,
-        title: '了解并选择运行模式',
-        desc: 'Ceno 提供“公共模式 (Public)”和“个人模式 (Personal)”。公共模式利用 P2P 分布式缓存连通率最高；个人模式专注私密浏览。'
+        title: '在连接界面配置网桥',
+        desc: '打开软件，不要点直接连接。点击“配置连接” -> “网桥” -> 选择内置网桥（Snowflake/WebTunnel）或输入获取的私密网桥。'
       },
       {
         step: 3,
-        title: '直接输入网址浏览',
-        desc: '输入目标网址后，应用会自动通过去中心化 Ouinet 协议寻址并从其他节点拼装拉取数据，初次握手加载较慢，请稍等数秒即可打开。'
+        title: '启动洋葱安全浏览',
+        desc: '点击“连接”，Tor 浏览器会通过 3 个全球加密中继节点转发流量，安全接入自由互联网。'
       }
     ],
     detailedGuide: [
       {
-        title: '为什么特点标签是“很慢但能用”？',
+        title: '小白防坑重点提醒',
         content: [
-          '架构差异：普通 VPN 依赖中心化服务器转发流量，一旦服务器 IP 被封便彻底瘫痪；Ceno 底层是纯粹的 P2P（点对点）分布式网络与 BitTorrent 技术。',
-          '极限生存能力：即使遇到区域性大断网或国际出口阻断，只要局域网或邻近节点有人曾访问过该网页，就能从附近设备拼装缓存数据。',
-          '初次加载需检索：因为需要在分布式网络中寻址对等节点，初次载入页面通常需要 15~30 秒，因而速度慢，但在严苛审查环境下是无可取代的“终极兜底利器”。'
+          '不要用 Tor 进行 BT 下载或大文件迅雷挂机，以免拖垮全球志愿节点带宽。',
+          '不要随意在洋葱浏览器内安装第三方 Chrome/Firefox 插件，这可能导致浏览器指纹泄露。',
+          'Tor 的主打优势是“绝对抗监控与高隐私”，因为流量经过 3 跳随机中继，网速会稍慢于商业专线，属于正常现象。'
         ],
         tips: [
-          '初次打开网页时切勿频繁刷新，频繁刷新会打断 P2P 节点的检索与握手流程。',
-          '公共模式下访问记录会参与分布式索引以帮助其他受限用户，切勿在此模式下登录涉及个人隐私的敏感账号。'
-        ]
-      },
-      {
-        title: '公共模式与个人模式的选用建议',
-        content: [
-          '公共模式 (Public Mode)：推荐用于阅读被封锁的新闻媒体、维基百科、学术资料与公开文章。你的设备也会充当桥梁，把已获取的网页缓存分享给其他受审查地区的网民。',
-          '个人模式 (Personal Mode)：请求不经过公开 BitTorrent 索引，适合需要保护身份隐私的访问，但连通成功率与速度会逊于公共模式。'
+          '大陆用户强烈推荐内置的 Snowflake（雪花网桥），利用 WebRTC 伪装成普通视频通话流量，抗封锁效果绝佳。'
         ]
       }
     ],
     contacts: [
-      { type: 'twitter', label: '官方 X (Twitter)', value: 'https://x.com/cenobrowser' },
-      { type: 'telegram', label: 'Telegram 官方频道', value: 'https://t.me/Ceno_Iran' },
-      { type: 'gitlab', label: 'GitLab 官方开源仓库', value: 'https://gitlab.com/ceno-app' },
-      { type: 'website', label: 'Ceno 官方主站', value: 'https://ceno.app' },
-      { type: 'website', label: 'Censorship.No 镜像网站', value: 'https://censorship.no/en/index.html' }
+      { type: 'website', label: 'Tor 官方中文网', value: 'https://www.torproject.org/zh-CN' },
+      { type: 'telegram', label: 'Telegram 网桥机器人', value: 'https://t.me/GetBridgesBot' }
     ],
     speedRating: 'moderate',
-    securityRating: 'P2P 分布式缓存 / MPL 2.0 开源公益'
+    securityRating: '全球军工级匿名 / 3重节点中继'
   },
   {
-    id: 'lantern',
-    name: '蓝灯 (Lantern)',
-    aliases: ['Lantern', '蓝灯', 'Lantern VPN', 'GetLantern'],
-    tagline: '老牌非营利抗审查网络工具，智能分流与多协议抗阻断',
-    entityType: 'non-profit',
-    entityLabel: '非盈利性机构',
-    entityDescription: '由美国 501(c)(3) 非营利机构 Brave New Software Project, Inc. 于 2013 年发起研发（早期曾获美国国际广播局 BBG 与开放技术基金会 OTF 资助）。致力于向全球互联网审查严苛地区的人群提供无障碍、安全且快速的互联网访问。',
+    id: 'proton',
+    name: 'Proton VPN',
+    aliases: ['质子VPN', '瑞士安全VPN'],
+    tagline: '瑞士顶尖加密巨头出品，免费无限制流量，严守瑞士隐私法',
+    entityType: 'non-profit-supervised',
+    entityLabel: '非盈利性机构监督',
+    entityDescription: '源自欧洲核子研究中心（CERN）科学家的创想，由 Proton Foundation（瑞士非盈利基金会）监督治理。无商业资本裹挟，严格遵守中立瑞士联邦数据保护法。',
     status: 'available',
-    statusText: '免费版有限额',
-    badgeNote: '老牌抗封锁',
-    pricingModel: '基础版永久免费（每月提供免费高速流量，用尽后限速）/ 专业版 (Pro) 付费解锁无限高速流量与全球节点挑选',
-    platforms: ['android', 'ios', 'windows', 'macos', 'linux'],
-    officialUrl: 'https://lantern.io/zh',
+    statusText: '需切换 Stealth 协议',
+    pricingModel: '免费版提供无限流量（单设备，分配日/美/荷节点）',
+    platforms: ['android', 'ios', 'windows', 'macos', 'linux', 'browser'],
+    officialUrl: 'https://protonvpn.com/',
     downloadLinks: [
       {
-        label: 'Windows 官方客户端下载',
-        url: 'https://github.com/getlantern/lantern/releases',
-        platform: 'windows',
-        isDirect: true,
-        note: 'GitHub 官方最新发布页，获取 .exe 安装包'
-      },
-      {
-        label: 'macOS 官方客户端下载',
-        url: 'https://github.com/getlantern/lantern/releases',
-        platform: 'macos',
-        isDirect: true,
-        note: 'GitHub 官方最新发布页，获取 .dmg 安装包'
-      },
-      {
-        label: 'Android 官方 APK 下载',
-        url: 'https://github.com/getlantern/lantern/releases',
+        label: 'Android GitHub 官方 Release',
+        url: 'https://github.com/ProtonVPN/android-app/releases',
         platform: 'android',
         isDirect: true,
-        note: 'GitHub 官方直链获取安卓 .apk 原生安装包'
+        note: '直接下载官方 APK 文件'
+      },
+      {
+        label: 'Android F-Droid 开源版本',
+        url: 'https://f-droid.org/en/packages/ch.protonvpn.android/',
+        platform: 'android'
       },
       {
         label: 'Google Play 商店',
-        url: 'https://play.google.com/store/apps/details?id=org.getlantern.lantern',
-        platform: 'android',
-        note: '海外区/具备 Google Play 服务的安卓设备'
+        url: 'https://play.google.com/store/apps/details?id=ch.protonvpn.android',
+        platform: 'android'
       },
       {
         label: 'Apple App Store',
-        url: 'https://apps.apple.com/us/app/lantern-open-internet/id1457872372',
-        platform: 'ios',
-        note: '支持 iPhone 与 iPad（需海外 Apple ID）'
-      },
-      {
-        label: 'Linux (Ubuntu/Debian) 客户端',
-        url: 'https://github.com/getlantern/lantern/releases',
-        platform: 'linux',
-        isDirect: true,
-        note: 'GitHub 官方最新发布页，获取 .deb 安装包'
-      },
-      {
-        label: '蓝灯官方下载中心',
-        url: 'https://lantern.io/zh#download',
-        platform: 'browser',
-        note: '官方网站多系统客户端直达下载指引'
+        url: 'https://apps.apple.com/us/app/proton-vpn-fast-secure/id1437005085',
+        platform: 'ios'
       }
     ],
     quickStartSteps: [
       {
         step: 1,
-        title: '下载并安装客户端',
-        desc: '根据操作系统从 GitHub Releases 官方发布页或应用商店下载对应的安装包并完成安装。'
+        title: '注册 Proton 免费账号',
+        desc: '前往 Proton 官网注册一个免费统一通行证（支持使用海外免费邮箱，亦支持 Proton 隐私邮箱）。'
       },
       {
         step: 2,
-        title: '启动即连，无需注册',
-        desc: '打开蓝灯软件，点击中央主开关即可一键开启保护。无需注册账号或繁琐配置，基础免费版立即可用。'
+        title: '在设置中开启 Stealth 隐形协议',
+        desc: '大陆网络直连前，必须在客户端“Settings -> Protocol”中，将协议切换为【Stealth】（隐形协议）或 WireGuard TCP。'
       },
       {
         step: 3,
-        title: '智能分流与按需使用',
-        desc: '蓝灯内置智能路由分流，访问国内网站直连不消耗流量，访问受阻网站自动走加密通道代理。'
+        title: '点击快速连接 (Quick Connect)',
+        desc: '点击一键连接，系统会自动分配负载最低的荷兰、日本或美国免费优质服务器。'
       }
     ],
     detailedGuide: [
       {
-        title: '智能分流与多协议抗阻断架构',
+        title: '中国大陆使用秘诀',
         content: [
-          '动态抗阻断协议：蓝灯集成了包括自研混淆传输、多重回退中继、域前置等一系列抗审查协议。当某种连接方式受到防火墙干扰时，客户端会自动切换备用路由通道。',
-          '智能分流省流量：软件默认只对被审查封锁的域名和 IP 启用代理隧道，国内主流网站与服务依然保持本地直连，既不减慢国内网络速度，又极大节省了代理流量。',
-          '去中心化与集中式混合中继：综合了集中式高性能服务器与分布式对等中继的弹性，确保即使在网络敏感期也能维持基本连通性。'
+          '默认的 Smart Protocol 可能会尝试常规 WireGuard UDP，在中国大陆大概率会被运营商 QoS 丢包。',
+          '一定要在客户端设置中将协议明确指定为【Stealth】。该协议专为绕过审查防火墙设计，会将 VPN 流量伪装成正常的 TLS 网页流量。',
+          '免费版提供【无限流量】，不限使用时长，是全球极少真正不限速不限流的合规 VPN。'
         ],
         tips: [
-          '电脑端启动后系统托盘会常驻小灯笼图标，若需全局代理或更改端口，可在右键托盘菜单【设置】中进行调整。'
-        ]
-      },
-      {
-        title: '免费版 (Free) 与专业版 (Pro) 差异',
-        content: [
-          '免费版额度：蓝灯每月免费提供 500MB 高速抗封锁流量。高速流量用完后，连接不会中断，但速率会被限制（可用于文字阅读和即时通讯），直到次月自动重置。',
-          '专业版权益：Pro 会员提供无上限的高速带宽、支持挑选指定国家/地区服务器节点，并支持在多台设备（电脑与手机）上同时登录使用。',
-          '安全防范提示：官方应用没有任何弹窗诈骗或强制绑定；请认准官方 GitHub (getlantern/lantern) 和官方主站 (lantern.io)，切勿从非官方第三方破解站下载改包版。'
+          '如遇到连不上，可尝试断开后再次点击连接，Proton 会轮询换到另一个可用服务器。'
         ]
       }
     ],
     contacts: [
-      { type: 'twitter', label: '官方 X (Twitter)', value: 'https://x.com/getlantern' },
-      { type: 'github', label: 'GitHub 官方仓库', value: 'https://github.com/getlantern/lantern' },
-      { type: 'email', label: '官方支持邮箱', value: 'support@lantern.io' },
-      { type: 'website', label: '蓝灯官方主站', value: 'https://lantern.io/zh' }
+      { type: 'twitter', label: '官方 X (Twitter)', value: 'https://x.com/intent/user?screen_name=ProtonVPN' },
+      { type: 'telegram', label: 'Telegram 官方频道', value: 'https://t.me/proton_privacy' },
+      { type: 'youtube', label: 'YouTube 官方频道', value: 'https://www.youtube.com/@ProtonPrivacy' },
+      { type: 'website', label: '官方网址', value: 'https://protonvpn.com/' }
     ],
     speedRating: 'high',
-    securityRating: '多协议动态混淆 / 501(c)(3) 非营利机构背景'
+    securityRating: '瑞士隐私法管辖 / 独立第三方安全审计'
   }
 ];
-
