@@ -22,7 +22,7 @@ import {
   Share2
 } from 'lucide-react';
 import { PlatformIcon } from './PlatformIcons';
-import { TelegramIcon, XIcon, BlueskyIcon, YoutubeIcon } from './SocialIcons';
+import { TelegramIcon, XIcon, BlueskyIcon, YoutubeIcon, GitlabIcon } from './SocialIcons';
 
 interface ToolDetailProps {
   tool: VPNTool;
@@ -358,15 +358,15 @@ export const ToolDetail: React.FC<ToolDetailProps> = ({ tool, onBack }) => {
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2 text-sm font-mono font-semibold text-white">
                 <Globe className="h-4 w-4 text-white" />
-                <span>获取配置的镜像与分布式仓库</span>
+                <span>官方备用镜像与同步源站</span>
               </div>
               <span className="text-[11px] font-mono text-obsidian-400 hidden sm:inline">
-                共 {tool.mirrors.length} 个同步镜像源与加速代理
+                共 {tool.mirrors.length} 个备用镜像源与分发站点
               </span>
             </div>
 
             <p className="text-xs sm:text-sm text-obsidian-400 leading-relaxed font-sans">
-              由于主源或 GitHub 存在区域网络波动或阻断可能，推荐使用以下与主项目实时双向同步的分布式 FOSS / 商业托管镜像及 RAW 加速通道获取配置：
+              由于主站或海外应用商店在部分地区可能遭遇网络波动或访问受限，推荐使用以下官方或权威机构维护的同步镜像源与备用站点获取资源与文档：
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5">
@@ -558,6 +558,8 @@ export const ToolDetail: React.FC<ToolDetailProps> = ({ tool, onBack }) => {
                       <YoutubeIcon className="h-4 w-4" />
                     ) : c.type === 'github' ? (
                       <Github className="h-4 w-4" />
+                    ) : c.type === 'gitlab' ? (
+                      <GitlabIcon className="h-4 w-4" />
                     ) : c.type === 'email' ? (
                       <Mail className="h-4 w-4" />
                     ) : (

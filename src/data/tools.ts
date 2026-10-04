@@ -661,7 +661,8 @@ export const TOOLS_DATA: VPNTool[] = [
     entityLabel: '自组织机构',
     entityDescription: '由民间自组织机构发起成立，主要为伊朗等遭受严重断网与网络审查地区的公民提供数字人权援助。',
     status: 'available',
-    statusText: '稳定可用',
+    statusText: '主攻伊朗',
+    badgeNote: '主攻伊朗',
     pricingModel: '100% 永久免费 / 民间公益',
     platforms: ['android', 'ios'],
     officialUrl: 'https://beepassvpn.com/en/',
@@ -726,5 +727,219 @@ export const TOOLS_DATA: VPNTool[] = [
     ],
     speedRating: 'moderate',
     securityRating: 'Shadowsocks 加密 / 开源民间支持'
+  },
+  {
+    id: 'ceno',
+    name: 'Ceno',
+    aliases: ['Ceno Browser', 'Censorship.No', 'P2P分布式浏览器'],
+    tagline: '基于 P2P 点对点网络与分布式缓存的抗审查浏览器，断网亦能互助浏览',
+    entityType: 'non-profit',
+    entityLabel: '非盈利性机构',
+    entityDescription: '由加拿大非盈利人权组织 eQualitie 研发与资助。基于 BitTorrent 与 Ouinet 点对点协议，将网页缓存在全球分布式网络中，即使中心服务器遭阻断或面临断网，也能通过邻近节点拼装读取。',
+    status: 'available',
+    statusText: '很慢但能用',
+    badgeNote: '很慢但能用',
+    pricingModel: '100% 永久免费 / 开源公益 (MPL 2.0)',
+    platforms: ['android', 'ios', 'windows'],
+    officialUrl: 'https://ceno.app',
+    downloadLinks: [
+      {
+        label: 'Google Play 商店',
+        url: 'https://play.google.com/store/apps/details?id=ie.equalit.ceno',
+        platform: 'android',
+        note: '海外区/具备 Google Play 服务的安卓设备'
+      },
+      {
+        label: 'Apple App Store',
+        url: 'https://apps.apple.com/us/app/ceno-browser/id6673915387',
+        platform: 'ios',
+        note: '支持 iPhone 与 iPad（需海外 Apple ID）'
+      },
+      {
+        label: 'Windows 便携免安装版 (Portable)',
+        url: 'https://ceno-download.s3.amazonaws.com/ceno-desktop/latest/ceno-win64-portable.html',
+        platform: 'windows',
+        isDirect: true,
+        note: '官方 AWS S3 镜像下载页，解压即用'
+      },
+      {
+        label: 'Paskoocheh 备用下载 (Android)',
+        url: 'https://paskoocheh.com/tools/124/android.html',
+        platform: 'android',
+        isMirror: true,
+        note: '知名免翻开源工具市场镜像直达'
+      },
+      {
+        label: 'Censorship.No 官方镜像网站',
+        url: 'https://censorship.no/en/index.html',
+        platform: 'browser',
+        isMirror: true,
+        note: '项目官方备用直连镜像站点，包含文档与下载指引'
+      }
+    ],
+    mirrors: [
+      {
+        name: 'Censorship.No 官方镜像站',
+        url: 'https://censorship.no/en/index.html',
+        description: 'Ceno Browser 原生官方直连镜像网站，提供全套抗审查原理、常见问题解答与多语言资料'
+      }
+    ],
+    quickStartSteps: [
+      {
+        step: 1,
+        title: '下载并安装客户端',
+        desc: '安卓用户推荐通过 Google Play 或 Paskoocheh 镜像下载；苹果用户直达 App Store；Windows 用户直接下载解压便携版。'
+      },
+      {
+        step: 2,
+        title: '了解并选择运行模式',
+        desc: 'Ceno 提供“公共模式 (Public)”和“个人模式 (Personal)”。公共模式利用 P2P 分布式缓存连通率最高；个人模式专注私密浏览。'
+      },
+      {
+        step: 3,
+        title: '直接输入网址浏览',
+        desc: '输入目标网址后，应用会自动通过去中心化 Ouinet 协议寻址并从其他节点拼装拉取数据，初次握手加载较慢，请稍等数秒即可打开。'
+      }
+    ],
+    detailedGuide: [
+      {
+        title: '为什么特点标签是“很慢但能用”？',
+        content: [
+          '架构差异：普通 VPN 依赖中心化服务器转发流量，一旦服务器 IP 被封便彻底瘫痪；Ceno 底层是纯粹的 P2P（点对点）分布式网络与 BitTorrent 技术。',
+          '极限生存能力：即使遇到区域性大断网或国际出口阻断，只要局域网或邻近节点有人曾访问过该网页，就能从附近设备拼装缓存数据。',
+          '初次加载需检索：因为需要在分布式网络中寻址对等节点，初次载入页面通常需要 15~30 秒，因而速度慢，但在严苛审查环境下是无可取代的“终极兜底利器”。'
+        ],
+        tips: [
+          '初次打开网页时切勿频繁刷新，频繁刷新会打断 P2P 节点的检索与握手流程。',
+          '公共模式下访问记录会参与分布式索引以帮助其他受限用户，切勿在此模式下登录涉及个人隐私的敏感账号。'
+        ]
+      },
+      {
+        title: '公共模式与个人模式的选用建议',
+        content: [
+          '公共模式 (Public Mode)：推荐用于阅读被封锁的新闻媒体、维基百科、学术资料与公开文章。你的设备也会充当桥梁，把已获取的网页缓存分享给其他受审查地区的网民。',
+          '个人模式 (Personal Mode)：请求不经过公开 BitTorrent 索引，适合需要保护身份隐私的访问，但连通成功率与速度会逊于公共模式。'
+        ]
+      }
+    ],
+    contacts: [
+      { type: 'twitter', label: '官方 X (Twitter)', value: 'https://x.com/cenobrowser' },
+      { type: 'telegram', label: 'Telegram 官方频道', value: 'https://t.me/Ceno_Iran' },
+      { type: 'gitlab', label: 'GitLab 官方开源仓库', value: 'https://gitlab.com/ceno-app' },
+      { type: 'website', label: 'Ceno 官方主站', value: 'https://ceno.app' },
+      { type: 'website', label: 'Censorship.No 镜像网站', value: 'https://censorship.no/en/index.html' }
+    ],
+    speedRating: 'moderate',
+    securityRating: 'P2P 分布式缓存 / MPL 2.0 开源公益'
+  },
+  {
+    id: 'lantern',
+    name: '蓝灯 (Lantern)',
+    aliases: ['Lantern', '蓝灯', 'Lantern VPN', 'GetLantern'],
+    tagline: '老牌非营利抗审查网络工具，智能分流与多协议抗阻断',
+    entityType: 'non-profit',
+    entityLabel: '非盈利性机构',
+    entityDescription: '由美国 501(c)(3) 非营利机构 Brave New Software Project, Inc. 于 2013 年发起研发（早期曾获美国国际广播局 BBG 与开放技术基金会 OTF 资助）。致力于向全球互联网审查严苛地区的人群提供无障碍、安全且快速的互联网访问。',
+    status: 'available',
+    statusText: '免费版有限额',
+    badgeNote: '老牌抗封锁',
+    pricingModel: '基础版永久免费（每月提供免费高速流量，用尽后限速）/ 专业版 (Pro) 付费解锁无限高速流量与全球节点挑选',
+    platforms: ['android', 'ios', 'windows', 'macos', 'linux'],
+    officialUrl: 'https://lantern.io/zh',
+    downloadLinks: [
+      {
+        label: 'Windows 官方客户端下载',
+        url: 'https://github.com/getlantern/lantern/releases',
+        platform: 'windows',
+        isDirect: true,
+        note: 'GitHub 官方最新发布页，获取 .exe 安装包'
+      },
+      {
+        label: 'macOS 官方客户端下载',
+        url: 'https://github.com/getlantern/lantern/releases',
+        platform: 'macos',
+        isDirect: true,
+        note: 'GitHub 官方最新发布页，获取 .dmg 安装包'
+      },
+      {
+        label: 'Android 官方 APK 下载',
+        url: 'https://github.com/getlantern/lantern/releases',
+        platform: 'android',
+        isDirect: true,
+        note: 'GitHub 官方直链获取安卓 .apk 原生安装包'
+      },
+      {
+        label: 'Google Play 商店',
+        url: 'https://play.google.com/store/apps/details?id=org.getlantern.lantern',
+        platform: 'android',
+        note: '海外区/具备 Google Play 服务的安卓设备'
+      },
+      {
+        label: 'Apple App Store',
+        url: 'https://apps.apple.com/us/app/lantern-open-internet/id1457872372',
+        platform: 'ios',
+        note: '支持 iPhone 与 iPad（需海外 Apple ID）'
+      },
+      {
+        label: 'Linux (Ubuntu/Debian) 客户端',
+        url: 'https://github.com/getlantern/lantern/releases',
+        platform: 'linux',
+        isDirect: true,
+        note: 'GitHub 官方最新发布页，获取 .deb 安装包'
+      },
+      {
+        label: '蓝灯官方下载中心',
+        url: 'https://lantern.io/zh#download',
+        platform: 'browser',
+        note: '官方网站多系统客户端直达下载指引'
+      }
+    ],
+    quickStartSteps: [
+      {
+        step: 1,
+        title: '下载并安装客户端',
+        desc: '根据操作系统从 GitHub Releases 官方发布页或应用商店下载对应的安装包并完成安装。'
+      },
+      {
+        step: 2,
+        title: '启动即连，无需注册',
+        desc: '打开蓝灯软件，点击中央主开关即可一键开启保护。无需注册账号或繁琐配置，基础免费版立即可用。'
+      },
+      {
+        step: 3,
+        title: '智能分流与按需使用',
+        desc: '蓝灯内置智能路由分流，访问国内网站直连不消耗流量，访问受阻网站自动走加密通道代理。'
+      }
+    ],
+    detailedGuide: [
+      {
+        title: '智能分流与多协议抗阻断架构',
+        content: [
+          '动态抗阻断协议：蓝灯集成了包括自研混淆传输、多重回退中继、域前置等一系列抗审查协议。当某种连接方式受到防火墙干扰时，客户端会自动切换备用路由通道。',
+          '智能分流省流量：软件默认只对被审查封锁的域名和 IP 启用代理隧道，国内主流网站与服务依然保持本地直连，既不减慢国内网络速度，又极大节省了代理流量。',
+          '去中心化与集中式混合中继：综合了集中式高性能服务器与分布式对等中继的弹性，确保即使在网络敏感期也能维持基本连通性。'
+        ],
+        tips: [
+          '电脑端启动后系统托盘会常驻小灯笼图标，若需全局代理或更改端口，可在右键托盘菜单【设置】中进行调整。'
+        ]
+      },
+      {
+        title: '免费版 (Free) 与专业版 (Pro) 差异',
+        content: [
+          '免费版额度：蓝灯每月免费提供 500MB 高速抗封锁流量。高速流量用完后，连接不会中断，但速率会被限制（可用于文字阅读和即时通讯），直到次月自动重置。',
+          '专业版权益：Pro 会员提供无上限的高速带宽、支持挑选指定国家/地区服务器节点，并支持在多台设备（电脑与手机）上同时登录使用。',
+          '安全防范提示：官方应用没有任何弹窗诈骗或强制绑定；请认准官方 GitHub (getlantern/lantern) 和官方主站 (lantern.io)，切勿从非官方第三方破解站下载改包版。'
+        ]
+      }
+    ],
+    contacts: [
+      { type: 'twitter', label: '官方 X (Twitter)', value: 'https://x.com/getlantern' },
+      { type: 'github', label: 'GitHub 官方仓库', value: 'https://github.com/getlantern/lantern' },
+      { type: 'email', label: '官方支持邮箱', value: 'support@lantern.io' },
+      { type: 'website', label: '蓝灯官方主站', value: 'https://lantern.io/zh' }
+    ],
+    speedRating: 'high',
+    securityRating: '多协议动态混淆 / 501(c)(3) 非营利机构背景'
   }
 ];
+

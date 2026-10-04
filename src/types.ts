@@ -37,7 +37,7 @@ export interface QuickStartStep {
 }
 
 export interface ContactInfo {
-  type: 'telegram' | 'twitter' | 'bluesky' | 'youtube' | 'email' | 'github' | 'website';
+  type: 'telegram' | 'twitter' | 'bluesky' | 'youtube' | 'email' | 'github' | 'gitlab' | 'website';
   label: string;
   value: string;
 }
@@ -72,6 +72,6 @@ export interface VPNTool {
   }[];
   contacts?: ContactInfo[];
   badgeNote?: string;
-  speedRating?: 'high' | 'medium' | 'moderate';
+  speedRating?: 'high' | 'medium' | 'moderate' | 'slow';
   securityRating?: string;
 }
