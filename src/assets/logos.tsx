@@ -1,4 +1,6 @@
 import React from 'react';
+import mahsanetImg from './mahsanet.png';
+import openTunnelImg from './opentunnel.png';
 
 interface LogoProps {
   className?: string;
@@ -362,6 +364,47 @@ export const LanternLogo: React.FC<LogoProps> = ({ className = "w-6 h-6", size =
   </svg>
 );
 
+export const MahsaNetLogo: React.FC<LogoProps> = ({ className = "w-6 h-6", size = 24 }) => (
+  <img
+    src={mahsanetImg}
+    width={size}
+    height={size}
+    alt="MahsaNet Logo"
+    className={`rounded-xl object-contain ${className}`}
+  />
+);
+
+// 13. FreeBrowser (自由浏览): 官方纯矢量徽标 (来自 freebrowser.org 官方母版)
+export const FreeBrowserLogo: React.FC<LogoProps> = ({ className = "w-6 h-6", size = 24 }) => (
+  <svg 
+    width={size} 
+    height={size} 
+    viewBox="0 0 120 120" 
+    fill="none" 
+    xmlns="http://www.w3.org/2000/svg" 
+    role="img" 
+    aria-label="FreeBrowser Logo"
+    className={className}
+  >
+    <circle cx="60" cy="60" r="60" fill="#FD2D57" />
+    <path 
+      d="M33.794 42.2C41.192 32.436 54.992 29 60.49 29h29.492s1 0 1 .996.5 6.973-3.75 13.947c-2.88 4.726-8.7 8.716-12.7 9.214-3.198.399-10.792.25-14.541.25-1.5 0-4 .995-5 2.49-.999 1.494-1.249 3.486 0 3.486h18.246s1 0 1 .996c0 .997-.19 5.728-5.249 11.954-2.403 2.959-8.748 4.483-12.496 4.483h-6.499c-.583 0-1.85.299-2.25 1.494-.332 1.495-.649 5.38.75 8.966 1.4 3.586 2.333 5.396 2.75 5.977.357.498.75.747-.25.747-1.205 0-7.498-.747-12.746-3.985-5.43-3.35-10.166-10.503-11.45-17.93-1.25-7.223-2.25-17.683 6.997-29.886Z" 
+      fill="#fff"
+    />
+  </svg>
+);
+
+// 14. OpenTunnel: 官方火箭徽标
+export const OpenTunnelLogo: React.FC<LogoProps> = ({ className = "w-6 h-6", size = 24 }) => (
+  <img
+    src={openTunnelImg}
+    width={size}
+    height={size}
+    alt="OpenTunnel Logo"
+    className={`rounded-xl object-contain ${className}`}
+  />
+);
+
 export const ToolLogoMap: Record<string, React.FC<LogoProps>> = {
   openrung: OpenRungLogo,
   freesocks: FreeSocksLogo,
@@ -374,5 +417,8 @@ export const ToolLogoMap: Record<string, React.FC<LogoProps>> = {
   beepass: BeePassLogo,
   ceno: CenoLogo,
   lantern: LanternLogo,
+  mahsanet: MahsaNetLogo,
+  freebrowser: FreeBrowserLogo,
+  opentunnel: OpenTunnelLogo,
 };
 

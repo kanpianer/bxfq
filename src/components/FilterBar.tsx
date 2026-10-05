@@ -1,6 +1,6 @@
 import React from 'react';
 import { Platform } from '../types';
-import { AndroidIcon, IosIcon, WindowsIcon, MacosIcon, LinuxIcon } from './PlatformIcons';
+import { AndroidIcon, IosIcon, WindowsIcon, MacosIcon, LinuxIcon, BrowserIcon } from './PlatformIcons';
 
 interface FilterBarProps {
   selectedPlatform: Platform | 'all';
@@ -19,6 +19,7 @@ export const FilterBar: React.FC<FilterBarProps> = ({
     { id: 'windows', label: 'Windows', icon: <WindowsIcon className="w-3.5 h-3.5" /> },
     { id: 'macos', label: 'macOS', icon: <MacosIcon className="w-3.5 h-3.5" /> },
     { id: 'linux', label: 'Linux', icon: <LinuxIcon className="w-3.5 h-3.5" /> },
+    { id: 'browser', label: '浏览器扩展', icon: <BrowserIcon className="w-3.5 h-3.5" /> },
   ];
 
   return (

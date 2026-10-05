@@ -348,6 +348,204 @@ export const TOOLS_DATA: VPNTool[] = [
     securityRating: '多协议动态混淆 / 501(c)(3) 非营利机构背景'
   },
   {
+    id: 'mahsanet',
+    name: 'MahsaNet',
+    aliases: ['MahsaVPN', 'MahsaNG', '玛莎网络', 'Mahsa Server'],
+    tagline: '专为严苛网络审查地区研发的去中心化公益抗封锁工具，主打伊朗抗阻断',
+    entityType: 'self-organized',
+    entityLabel: '自组织机构',
+    entityDescription: '由为纪念阿米尼（Mahsa Amini）并捍卫自由互联网的海外伊朗技术社群发起成立的非营利公益组织。构建去中心化的 Mahsa Server 平台，汇聚全球志愿者捐赠的抗封锁节点与混淆配置，主打为遭受严重断网与深度审查地区的人民提供可靠、安全的人权网络访问通道。',
+    status: 'available',
+    statusText: '主打伊朗',
+    badgeNote: '主打伊朗',
+    pricingModel: '100% 永久免费 / 社区公益众包',
+    platforms: ['android', 'ios'],
+    officialUrl: 'https://mahsanet.com',
+    downloadLinks: [
+      {
+        label: 'MahsaVPN (Apple App Store)',
+        url: 'https://apps.apple.com/us/app/mahsa-vpn/id6751109099',
+        platform: 'ios',
+        note: '支持 iPhone 与 iPad（需海外 Apple ID 登录下载）'
+      },
+      {
+        label: 'MahsaNG VPN (Google Play 商店)',
+        url: 'https://play.google.com/store/apps/details?id=com.MahsaNet.MahsaNG',
+        platform: 'android',
+        note: 'Google Play 官方商店获取（基于 v2rayNG 深度定制）'
+      },
+      {
+        label: 'MahsaServer 官方下载中心',
+        url: 'https://www.mahsaserver.com/download',
+        platform: 'android',
+        isDirect: true,
+        note: '官方免翻墙镜像下载中心，直接获取安卓 APK 安装包'
+      },
+      {
+        label: 'GitHub Releases 源码与发布页',
+        url: 'https://github.com/mahsanet/MahsaNG/releases',
+        platform: 'android',
+        note: 'GitHub 官方开源代码仓库与原生编译安装包下载'
+      }
+    ],
+    mirrors: [
+      {
+        name: 'Mahsa Server 官方镜像站',
+        url: 'https://www.mahsaserver.com',
+        description: '官方备用镜像站点，提供最新节点配置与安卓客户端下载'
+      }
+    ],
+    quickStartSteps: [
+      {
+        step: 1,
+        title: '下载并安装客户端',
+        desc: '安卓设备推荐访问 MahsaServer 官方下载页或 Google Play 安装 MahsaNG；iOS 用户在海外区 App Store 安装 MahsaVPN。'
+      },
+      {
+        step: 2,
+        title: '自动拉取抗审查配置',
+        desc: '启动软件后，客户端将自动连接 Mahsa Server 众包节点池，拉取最新验证可用的抗封锁加密配置。'
+      },
+      {
+        step: 3,
+        title: '一键开启加密连接',
+        desc: '在节点列表中测速并选择延迟较低的配置，点击主界面底部或中央的连接开关，即可快速建立安全隧道。'
+      }
+    ],
+    detailedGuide: [
+      {
+        title: '众包节点池与抗审查技术架构',
+        content: [
+          '众包节点生命周期管理：Mahsa Server 平台拥有自动化的配置测试与分发机制。来自全球志愿者的捐助节点在经过连通性、速度与安全性全自动筛查后，被动态推送至客户端。',
+          '深度包检测对抗（DPI）：针对严苛审查地区的协议阻断，客户端集成了 TLS 分片（Fragment）、DoH（DNS over HTTPS）防劫持解析等先进混淆技术，破坏防火墙的指纹识别。',
+          '专为断网严酷环境优化：在遇到区域性大面积丢包或限流时，软件拥有强大的快速重连机制与备用配置轮询方案，确保维持基础信息通道。'
+        ],
+        tips: [
+          '若当前连接节点速度下降或失效，可下拉配置列表重新刷新从 Mahsa Server 获取最新的一批可用节点。',
+          'MahsaNG 允许用户导入自定义 V2Ray/Xray 订阅链接，兼具简便性与高级扩展能力。'
+        ]
+      },
+      {
+        title: '数字安全与隐私原则',
+        content: [
+          '完全免注册：使用 MahsaNet 系列软件无需提供手机号、邮箱或任何个人身份信息。',
+          '零日志收集：官方不记录任何用户访问日志与网络传输数据。',
+          '节点安全考量：由于节点由社区众包提供，强烈建议仅用于打破信息封锁与正常网页浏览；处理高价值敏感事务时，请确保全程使用 HTTPS 加密或配合端到端加密通信工具。'
+        ]
+      }
+    ],
+    contacts: [
+      { type: 'website', label: 'MahsaNet 官方主站', value: 'https://mahsanet.com' },
+      { type: 'website', label: 'Mahsa Server 镜像站', value: 'https://www.mahsaserver.com' },
+      { type: 'github', label: 'GitHub 官方开源组织', value: 'https://github.com/mahsanet' },
+      { type: 'twitter', label: '官方 X (Twitter)', value: 'https://x.com/mahsanet' },
+      { type: 'telegram', label: 'Telegram 官方频道', value: 'https://t.me/mahsa_net' }
+    ],
+    speedRating: 'moderate',
+    securityRating: '去中心化众包节点 / TLS 分片混淆抗封锁'
+  },
+  {
+    id: 'freebrowser',
+    name: '自由浏览',
+    aliases: ['FreeBrowser', 'GreatFire 自由浏览', '免翻墙浏览器'],
+    tagline: 'GreatFire 打造的抗封锁浏览器，内置自动翻墙，打开即达开放互联网',
+    entityType: 'non-profit',
+    entityLabel: '非盈利性机构',
+    entityDescription: '由长期致力于倡导网络言论自由与打破信息审查的非营利组织 GreatFire.org 研发与维护。基于开源 Chromium 深度定制，内置自动抗封锁代理中继，零配置无需额外 VPN，Google Play 下载量超 100 万。',
+    status: 'available',
+    statusText: '免配直连',
+    badgeNote: '免配直连',
+    pricingModel: '100% 永久免费 / 零配置无需注册',
+    platforms: ['android', 'windows', 'macos', 'linux'],
+    officialUrl: 'https://freebrowser.org/zh',
+    downloadLinks: [
+      {
+        label: 'Android APK 官方直接下载',
+        url: 'https://freebrowser.org/zh#downloadSection',
+        platform: 'android',
+        isDirect: true,
+        note: '官方网站直链免翻墙下载原生 APK 安装包'
+      },
+      {
+        label: 'Google Play 商店',
+        url: 'https://play.google.com/store/apps/details?id=org.greatfire.freebrowser',
+        platform: 'android',
+        note: 'Google Play 官方商店（需海外账号或 Google 服务框架）'
+      },
+      {
+        label: 'Windows 桌面端下载',
+        url: 'https://freebrowser.org/zh#downloadSection',
+        platform: 'windows',
+        note: '支持 Windows 10/11，开箱即用免安装配置'
+      },
+      {
+        label: 'macOS 苹果电脑版',
+        url: 'https://freebrowser.org/zh#downloadSection',
+        platform: 'macos',
+        note: '适配 Intel 与 Apple Silicon 芯片的 Mac 设备'
+      },
+      {
+        label: 'Linux 客户端下载',
+        url: 'https://freebrowser.org/zh#downloadSection',
+        platform: 'linux',
+        note: '适用于主流 Linux 发行版的安装包'
+      },
+      {
+        label: 'GitHub 官方开源仓库',
+        url: 'https://github.com/greatfire/freebrowser',
+        platform: 'android',
+        note: 'GitHub 官方源码仓库与 fbproxy 核心组件'
+      }
+    ],
+    quickStartSteps: [
+      {
+        step: 1,
+        title: '下载对应平台的浏览器',
+        desc: '访问自由浏览官网下载适用于 Android、Windows、macOS 或 Linux 的安装包，安装到您的设备中。'
+      },
+      {
+        step: 2,
+        title: '启动浏览器，自动绕过封锁',
+        desc: '打开「自由浏览」，后台内置的代理服务将自动建立抗封锁加密隧道，无需手动切换开关或配置节点。'
+      },
+      {
+        step: 3,
+        title: '直接访问开放互联网',
+        desc: '直接在地址栏输入 Google、YouTube、X (推特)、维基百科等网址即可顺畅浏览，体验与 Chrome 高度一致。'
+      }
+    ],
+    detailedGuide: [
+      {
+        title: '内置 fbproxy 代理与抗审查机制',
+        content: [
+          '无需独立 VPN 软件：自由浏览内部集成了轻量级抗封锁代理守护进程（fbproxy），只针对受审查封锁的域名和资源执行动态分流与重定向，访问国内普通网站保持本地直连。',
+          '原生 Chromium 体验：基于与 Google Chrome 相同的开源 Chromium 项目构建，界面熟悉、内核强劲、网页渲染标准完整。',
+          '动态对抗审查阻断：GreatFire 团队拥有十余年反网络审查技术积累，运用分布式前置节点与混淆技术，即使在常见商用 VPN 协议受到严重压制的敏感时期，仍能保持高连通性。'
+        ],
+        tips: [
+          '电脑端使用时建议将其作为专用的安全浏览窗口，免去系统全局代理对其他软件的网络干扰。'
+        ]
+      },
+      {
+        title: '视频播放与隐私保护说明',
+        content: [
+          '在线视频播放提示：由于开源 Chromium 默认未内置某些收费商业解码器（如 H.264），部分极早期或刚上传的 YouTube 视频可能需要等待几小时待平台转码 VP8/VP9 后方可流畅播放。',
+          '完全匿名与隐私保护：自由浏览无需注册账号、无需绑定手机号或邮箱，不会收集用户的网络浏览历史与个人敏感数据。',
+          '非营利背景保障：由知名网络人权组织 GreatFire.org 打造，无商业牟利意图，代码接受社区审查。'
+        ]
+      }
+    ],
+    contacts: [
+      { type: 'email', label: '官方支持邮箱', value: 'support@greatfire.org' },
+      { type: 'twitter', label: '官方 X (Twitter)', value: 'https://x.com/greatfirechina' },
+      { type: 'github', label: 'GitHub 官方仓库', value: 'https://github.com/greatfire/freebrowser' },
+      { type: 'website', label: '自由浏览官方主页', value: 'https://freebrowser.org/zh' },
+      { type: 'website', label: 'GreatFire.org 官方网站', value: 'https://zh.greatfire.org' }
+    ],
+    speedRating: 'high',
+    securityRating: 'Chromium 安全沙箱 / GreatFire 非营利组织保障'
+  },
+  {
     id: 'beepass',
     name: 'BeePass VPN',
     aliases: ['蜜蜂VPN', '伊朗自由梯子'],
@@ -940,5 +1138,85 @@ export const TOOLS_DATA: VPNTool[] = [
     ],
     speedRating: 'high',
     securityRating: '瑞士隐私法管辖 / 独立第三方安全审计'
+  },
+  {
+    id: 'opentunnel',
+    name: 'OpenTunnel',
+    aliases: ['OpenTunnel Proxy', 'OpenTunnel 扩展', '开源隧道'],
+    tagline: '轻量浏览器代理扩展，支持一键连接、内置广告拦截与每日 5GB 免费额度',
+    entityType: 'commercial',
+    entityLabel: '商业机构',
+    entityDescription: '提供轻量高效的浏览器代理扩展服务，支持 Chrome 及 Firefox 内核浏览器。提供每日 5GB 免费高速代理流量，同时提供每月仅需 7~8 元人民币的无限流量高品质付费 VIP 节点选项。',
+    status: 'available',
+    statusText: '每日5GB免费',
+    badgeNote: '每日5GB免费',
+    pricingModel: '每日 5GB 免费额度 / 付费 VIP 约 7~8 元人民币/月（无限流量）',
+    platforms: ['browser'],
+    officialUrl: 'https://client.opentunnel.net',
+    downloadLinks: [
+      {
+        label: 'Chrome Web Store 官方扩展',
+        url: 'https://chromewebstore.google.com/detail/opentunnel/polgppfbhllbdlbgcieoencmpdbnbjbd',
+        platform: 'browser',
+        note: '支持 Chrome、Edge、Brave 等 Chromium 内核浏览器'
+      },
+      {
+        label: 'Firefox Add-ons 官方附加组件',
+        url: 'https://addons.mozilla.org/en-US/firefox/addon/opentunnel/',
+        platform: 'browser',
+        note: '支持 Mozilla Firefox 浏览器'
+      },
+      {
+        label: 'OpenTunnel 客户中心控制台',
+        url: 'https://client.opentunnel.net',
+        platform: 'browser',
+        note: '注册登录以获取个人扩展认证令牌与管理节点套餐'
+      }
+    ],
+    quickStartSteps: [
+      {
+        step: 1,
+        title: '安装扩展程序',
+        desc: '从 Chrome 网上应用店或 Firefox 附加组件商店安装 OpenTunnel 扩展程序。'
+      },
+      {
+        step: 2,
+        title: '粘贴认证令牌',
+        desc: '点击浏览器工具栏中的 OpenTunnel 图标，粘贴您的扩展认证令牌，然后点击连接。'
+      },
+      {
+        step: 3,
+        title: '选择并浏览',
+        desc: '选择任意高级 VIP 位置或免费公共节点，点击大电源按钮开启安全隧道。'
+      }
+    ],
+    detailedGuide: [
+      {
+        title: '浏览器代理模式与每日 5GB 免费额度',
+        content: [
+          '无需安装系统底层驱动：OpenTunnel 以纯浏览器扩展形式运行，仅对浏览器内部发起的 HTTP/HTTPS/WebSocket 请求进行加密中继，不影响其他桌面软件与游戏的本地直连。',
+          '每日免费 5GB 额度：用户绑定扩展认证令牌后，每日可免费使用 5GB 高速公用代理流量，完全满足学术文献查阅、技术文档搜索及社交媒体浏览需求。',
+          '超低门槛付费 VIP 选项：针对有大流量视频串流或固定专用节点需求的用户，项目提供极具性价比的付费 VIP 升级选项，每月折合仅需 7~8 元人民币，不限流量。'
+        ],
+        tips: [
+          '初次使用请先前往 client.opentunnel.net 获取您的专属认证令牌，将其复制并粘贴到扩展弹窗中即可激活。'
+        ]
+      },
+      {
+        title: '内置防护与实时监控功能',
+        content: [
+          '内置 AdBlock Shield 护盾：扩展集成了广告过滤与恶意追踪屏蔽模块，在加速浏览的同时减少网页无用资源的加载。',
+          '实时带宽追踪：在扩展弹出面板中可实时查看当前连接节点的延迟与本日流量消耗情况。',
+          '全球多节点切换：支持在免费公共节点与高品质 VIP 节点之间随意切换，遇到单点拥堵时可轻松切换至其他可用位置。'
+        ]
+      }
+    ],
+    contacts: [
+      { type: 'website', label: 'OpenTunnel 客户控制台', value: 'https://client.opentunnel.net' },
+      { type: 'website', label: '隐私政策声明', value: 'https://client.opentunnel.net/page/privacy-policy' },
+      { type: 'website', label: '官方支持工单', value: 'https://client.opentunnel.net/support/create' }
+    ],
+    speedRating: 'high',
+    securityRating: '浏览器沙箱隔离代理 / 实时流量加密'
   }
 ];
