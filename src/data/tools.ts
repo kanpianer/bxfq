@@ -1083,7 +1083,7 @@ export const TOOLS_DATA: VPNTool[] = [
     entityType: 'non-profit-supervised',
     entityLabel: '非盈利性机构监督',
     entityDescription: '源自欧洲核子研究中心（CERN）科学家的创想，由 Proton Foundation（瑞士非盈利基金会）监督治理。无商业资本裹挟，严格遵守中立瑞士联邦数据保护法。',
-    available: true,
+    available: false,
     status: 'available',
     statusText: '需切换 Stealth 协议',
     pricingModel: '免费版提供无限流量（单设备，分配日/美/荷节点）',
