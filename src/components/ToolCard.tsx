@@ -36,11 +36,12 @@ export const ToolCard: React.FC<ToolCardProps> = ({ tool, onSelect }) => {
   };
 
   const getEntityIcon = () => {
+    const iconClass = `w-3.5 h-3.5 ${isUnavailable ? 'text-neutral-400' : 'text-white'}`;
     switch (tool.entityType) {
-      case 'non-profit': return <HeartHandshake className="w-3.5 h-3.5 text-white" />;
-      case 'non-profit-supervised': return <Shield className="w-3.5 h-3.5 text-white" />;
-      case 'commercial': return <Building2 className="w-3.5 h-3.5 text-white" />;
-      case 'self-organized': return <Users className="w-3.5 h-3.5 text-white" />;
+      case 'non-profit': return <HeartHandshake className={iconClass} />;
+      case 'non-profit-supervised': return <Shield className={iconClass} />;
+      case 'commercial': return <Building2 className={iconClass} />;
+      case 'self-organized': return <Users className={iconClass} />;
     }
   };
 
@@ -112,17 +113,15 @@ export const ToolCard: React.FC<ToolCardProps> = ({ tool, onSelect }) => {
         </div>
 
         {/* Essential Section: 资助和开发主体 */}
-        <div className={`rounded-lg border p-3 my-3.5 ${
-          isUnavailable ? 'bg-neutral-950/50 border-neutral-850' : 'bg-obsidian-950/70 border-obsidian-850'
-        }`}>
-          <div className="flex items-center gap-2 mb-1.5">
+        <div className="my-3 space-y-1.5">
+          <div className="flex items-center gap-2">
             <span className={`text-[11px] font-mono uppercase tracking-wider ${
               isUnavailable ? 'text-neutral-500' : 'text-obsidian-400'
             }`}>
               资助与开发主体:
             </span>
-            <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-mono font-medium border ${
-              isUnavailable ? 'bg-neutral-850 text-neutral-300 border-neutral-750' : 'bg-obsidian-850 text-white border-obsidian-750'
+            <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-mono font-medium ${
+              isUnavailable ? 'bg-neutral-900 text-neutral-400' : 'bg-obsidian-850 text-obsidian-300'
             }`}>
               {getEntityIcon()}
               <span>{tool.entityLabel}</span>
@@ -136,7 +135,7 @@ export const ToolCard: React.FC<ToolCardProps> = ({ tool, onSelect }) => {
         </div>
 
         {/* Pricing / Quota Summary */}
-        <div className={`text-[11px] font-mono flex items-center gap-2 mb-4 ${
+        <div className={`text-[11px] font-mono flex items-center gap-2 mb-2 ${
           isUnavailable ? 'text-neutral-500' : 'text-obsidian-400'
         }`}>
           <span className={isUnavailable ? 'text-neutral-500' : 'text-obsidian-400'}>费用模式:</span>
@@ -145,9 +144,7 @@ export const ToolCard: React.FC<ToolCardProps> = ({ tool, onSelect }) => {
       </div>
 
       {/* Card Footer: Platforms & Action */}
-      <div className={`pt-3 border-t flex items-center justify-between gap-3 mt-2 ${
-        isUnavailable ? 'border-neutral-850' : 'border-obsidian-850'
-      }`}>
+      <div className="pt-3 flex items-center justify-between gap-3 mt-auto">
         {/* Platform Icons */}
         <div className={`flex items-center gap-1.5 ${
           isUnavailable ? 'text-neutral-500' : 'text-obsidian-400'
@@ -157,8 +154,8 @@ export const ToolCard: React.FC<ToolCardProps> = ({ tool, onSelect }) => {
             <span
               key={p}
               title={getPlatformLabel(p)}
-              className={`flex items-center justify-center h-6 w-6 rounded border ${
-                isUnavailable ? 'bg-neutral-900 border-neutral-800 text-neutral-500' : 'bg-obsidian-900 border-obsidian-800 text-obsidian-400'
+              className={`flex items-center justify-center h-6 w-6 rounded ${
+                isUnavailable ? 'bg-neutral-900/60 text-neutral-500' : 'bg-obsidian-900/80 text-obsidian-400'
               }`}
             >
               {getPlatformIcon(p)}
