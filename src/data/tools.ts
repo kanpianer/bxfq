@@ -1009,7 +1009,7 @@ export const TOOLS_DATA: VPNTool[] = [
     ],
     bridges: {
       title: '国内突破网络封锁必须：添加 Bridges (网桥)',
-      description: '在中国大陆直接连接 Tor 公共节点会被防火墙拦截，必须在 Tor 设置中填入私密网桥（推荐 Snowflake、WebTunnel 或 obfs4）。',
+      description: '在中国大陆直接连接 Tor 公共节点会被防火墙拦截，必须在 Tor 设置中填入私密网桥（使用 webtunnel bridges，如果连接不上，可重新获取新的重试）。',
       methods: [
         {
           channel: '网页快速申请',
