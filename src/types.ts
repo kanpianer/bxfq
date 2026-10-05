@@ -50,6 +50,8 @@ export interface VPNTool {
   entityType: EntityType;
   entityLabel: string;
   entityDescription: string;
+  available?: boolean; // 是否可用，默认为 true (truth)
+  isAvailable?: boolean; // 兼容别名
   status: ToolStatus;
   statusText: string;
   statusNote?: string;
@@ -75,3 +77,7 @@ export interface VPNTool {
   speedRating?: 'high' | 'medium' | 'moderate' | 'slow';
   securityRating?: string;
 }
+
+export const isToolAvailable = (tool: VPNTool): boolean => {
+  return tool.available !== false && tool.isAvailable !== false && tool.status !== 'unavailable';
+};

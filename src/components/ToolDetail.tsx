@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { VPNTool } from '../types';
+import { VPNTool, isToolAvailable } from '../types';
 import { ToolLogoMap } from '../assets/logos';
 import { LinkQRCodePopover } from './LinkQRCodePopover';
 import { ShareQRCodeModal } from './ShareQRCodeModal';
@@ -37,7 +37,7 @@ export const ToolDetail: React.FC<ToolDetailProps> = ({ tool, onBack }) => {
   });
 
   const LogoComponent = ToolLogoMap[tool.id] || ShieldCheck;
-  const isUnavailable = tool.status === 'unavailable';
+  const isUnavailable = !isToolAvailable(tool);
 
   // ESC shortcut to go back
   useEffect(() => {
@@ -122,9 +122,9 @@ export const ToolDetail: React.FC<ToolDetailProps> = ({ tool, onBack }) => {
 
                   {/* Status Badge */}
                   {isUnavailable ? (
-                    <span className="inline-flex items-center gap-1 rounded-full bg-neutral-800 px-3 py-1 text-xs font-mono font-medium text-obsidian-400 border border-neutral-700">
-                      <AlertTriangle className="w-3.5 h-3.5 text-obsidian-400" />
-                      <span>目前不可用</span>
+                    <span className="inline-flex items-center gap-1 rounded-full bg-neutral-800 px-3 py-1 text-xs font-mono font-medium text-neutral-300 border border-neutral-700">
+                      <AlertTriangle className="w-3.5 h-3.5 text-neutral-400" />
+                      <span>暂不可用</span>
                     </span>
                   ) : tool.status === 'needs-bridge' ? (
                     <span className="inline-flex items-center gap-1 rounded-full bg-white/10 px-3 py-1 text-xs font-mono font-medium text-white border border-white/25">
@@ -185,17 +185,17 @@ export const ToolDetail: React.FC<ToolDetailProps> = ({ tool, onBack }) => {
           </div>
         </div>
 
-        {/* Unavailable Alert Banner (Special for BeePass VPN) */}
-        {isUnavailable && tool.statusNote && (
-          <div className="rounded-xl border border-obsidian-750 bg-obsidian-900/90 p-5 backdrop-blur-md">
+        {/* Unavailable Alert Banner */}
+        {isUnavailable && (
+          <div className="rounded-xl border border-neutral-800 bg-neutral-900/90 p-5 backdrop-blur-md">
             <div className="flex items-start gap-3.5">
-              <AlertTriangle className="h-5 w-5 text-white shrink-0 mt-0.5" />
+              <AlertTriangle className="h-5 w-5 text-neutral-400 shrink-0 mt-0.5" />
               <div>
                 <h4 className="text-sm font-semibold text-white">
-                  当前中国大陆地区不可用状态说明
+                  当前状态：暂不可用
                 </h4>
-                <p className="mt-1 text-xs sm:text-sm text-obsidian-400 leading-relaxed">
-                  {tool.statusNote}
+                <p className="mt-1 text-xs sm:text-sm text-neutral-400 leading-relaxed">
+                  {tool.statusNote || '该项目当前在中国大陆网络环境下暂不可用或连接受阻，建议选用其他已验证可用的工具。'}
                 </p>
                 <div className="mt-3 flex items-center gap-2">
                   <button
