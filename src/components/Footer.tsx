@@ -31,6 +31,15 @@ export const Footer: React.FC<FooterProps> = ({ onOpenGuide }) => {
             </a>
             <span className="text-obsidian-400 opacity-40">/</span>
             <a
+              href="https://bxkp.org"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-obsidian-400 hover:text-white transition-colors"
+            >
+              不想看片
+            </a>
+            <span className="text-obsidian-400 opacity-40">/</span>
+            <a
               href="https://bxfq404.pages.dev/"
               target="_blank"
               rel="noopener noreferrer"
