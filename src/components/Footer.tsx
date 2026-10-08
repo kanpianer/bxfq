@@ -39,14 +39,26 @@ export const Footer: React.FC<FooterProps> = ({ onOpenGuide }) => {
               不想看片
             </a>
             <span className="text-obsidian-400 opacity-40">/</span>
-            <a
-              href="https://bxfq404.pages.dev/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-obsidian-400 hover:text-white transition-colors"
-            >
-              备份网址: <span className="underline underline-offset-2">bxfq404.pages.dev</span>
-            </a>
+            <span className="text-obsidian-400">
+              备份网址:{' '}
+              <a
+                href="https://bxfq.sld.tw"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-obsidian-400 hover:text-white transition-colors underline underline-offset-2"
+              >
+                bxfq.sld.tw
+              </a>
+              、
+              <a
+                href="https://bxfq404.pages.dev/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-obsidian-400 hover:text-white transition-colors underline underline-offset-2"
+              >
+                bxfq404.pages.dev
+              </a>
+            </span>
           </div>
         </div>
 
