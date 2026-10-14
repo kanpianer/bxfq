@@ -39,7 +39,9 @@ export const App: React.FC = () => {
         }
       }
       setSelectedToolId(null);
-      scrollToPos(scrollPosRef.current);
+      requestAnimationFrame(() => {
+        scrollToPos(scrollPosRef.current);
+      });
     };
 
     handleLocationChange();
@@ -65,7 +67,9 @@ export const App: React.FC = () => {
     if (window.location.hash) {
       history.pushState(null, '', window.location.pathname + window.location.search);
     }
-    scrollToPos(scrollPosRef.current);
+    requestAnimationFrame(() => {
+      scrollToPos(scrollPosRef.current);
+    });
   };
 
   // Selected tool object
@@ -87,11 +91,18 @@ export const App: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-obsidian-950 text-obsidian-400 font-sans selection:bg-white/20 selection:text-white bg-grid-pattern transition-colors">
-      {/* Top Navbar: only displayed on home page; tool detail page uses floating top buttons */}
+      {/* Top Floating Header: Navbar + Platform FilterBar both sticky on home page */}
       {!activeTool && (
-        <Navbar
-          onBackToHome={navigateBackToHome}
-        />
+        <div className="sticky top-0 z-40 w-full">
+          <Navbar
+            onBackToHome={() => scrollToPos(0)}
+          />
+          <FilterBar
+            selectedPlatform={selectedPlatform}
+            onSelectPlatform={setSelectedPlatform}
+            totalFiltered={filteredTools.length}
+          />
+        </div>
       )}
 
       {/* Main Content Area */}
@@ -105,13 +116,6 @@ export const App: React.FC = () => {
         ) : (
           /* Directory List View */
           <div className="pb-24 page-transition-enter">
-            {/* Platform Filter Bar */}
-            <FilterBar
-              selectedPlatform={selectedPlatform}
-              onSelectPlatform={setSelectedPlatform}
-              totalFiltered={filteredTools.length}
-            />
-
             {/* Grid of Tool Cards */}
             <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-8 min-h-[580px]">
               {filteredTools.length > 0 ? (

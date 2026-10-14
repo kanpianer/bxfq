@@ -8,7 +8,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   onBackToHome,
 }) => {
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-obsidian-800/80 bg-obsidian-950/85 backdrop-blur-xl transition-colors">
+    <header className="w-full border-b border-obsidian-800/80 bg-obsidian-950/85 backdrop-blur-xl transition-colors">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-3 sm:px-6 lg:px-8">
         {/* Brand / Logo */}
         <div className="flex items-center gap-3 shrink-0">

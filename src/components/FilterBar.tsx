@@ -23,7 +23,7 @@ export const FilterBar: React.FC<FilterBarProps> = ({
   ];
 
   return (
-    <div className="py-3.5 sm:py-4 border-b border-obsidian-800/60 bg-obsidian-950/40">
+    <div className="py-3 sm:py-3.5 border-b border-obsidian-800/60 bg-obsidian-950/90 backdrop-blur-xl transition-colors">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Platforms Filter Line */}
         <div className="flex items-center justify-between gap-2.5 sm:gap-4">
