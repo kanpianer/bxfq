@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { TOOLS_DATA } from './data/tools';
-import { Platform } from './types';
+import { SITE_CONTENT } from './content';
+import { Platform, isToolVisible } from './types';
 import { Navbar } from './components/Navbar';
 import { FilterBar } from './components/FilterBar';
 import { ToolCard } from './components/ToolCard';
@@ -31,7 +31,7 @@ export const App: React.FC = () => {
       const hash = window.location.hash.replace('#', '');
       if (hash.startsWith('tool-')) {
         const toolId = hash.replace('tool-', '');
-        const exists = TOOLS_DATA.some(t => t.id === toolId);
+        const exists = SITE_CONTENT.tools.some(t => t.id === toolId && isToolVisible(t));
         if (exists) {
           setSelectedToolId(toolId);
           scrollToPos(0);
@@ -75,12 +75,13 @@ export const App: React.FC = () => {
   // Selected tool object
   const activeTool = useMemo(() => {
     if (!selectedToolId) return null;
-    return TOOLS_DATA.find(t => t.id === selectedToolId) || null;
+    return SITE_CONTENT.tools.find(t => t.id === selectedToolId && isToolVisible(t)) || null;
   }, [selectedToolId]);
 
   // Filtering tools
   const filteredTools = useMemo(() => {
-    return TOOLS_DATA.filter((tool) => {
+    return SITE_CONTENT.tools.filter((tool) => {
+      if (!isToolVisible(tool)) return false;
       // Platform filter
       if (selectedPlatform !== 'all' && !tool.platforms.includes(selectedPlatform)) {
         return false;

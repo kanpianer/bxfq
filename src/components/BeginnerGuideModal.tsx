@@ -1,13 +1,24 @@
 import React, { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { X, ShieldAlert, Lock, HelpCircle } from 'lucide-react';
+import { SITE_CONTENT } from '../content';
+import type { GuideRuleIcon } from '../types';
+import { RichText } from './RichText';
 
 interface BeginnerGuideModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
+const GUIDE_ICONS: Record<GuideRuleIcon, React.FC<{ className?: string }>> = {
+  'shield-alert': ShieldAlert,
+  lock: Lock,
+  help: HelpCircle,
+};
+
 export const BeginnerGuideModal: React.FC<BeginnerGuideModalProps> = ({ isOpen, onClose }) => {
+  const { guide } = SITE_CONTENT;
+
   useEffect(() => {
     if (!isOpen) return;
 
@@ -38,10 +49,10 @@ export const BeginnerGuideModal: React.FC<BeginnerGuideModalProps> = ({ isOpen, 
         <div className="flex items-center justify-between border-b border-obsidian-800 pb-4 mb-5">
           <div>
             <h3 className="text-base sm:text-lg font-bold text-white font-sans">
-              翻墙小白避坑必修课
+              {guide.title}
             </h3>
             <p className="text-xs text-obsidian-400 mt-0.5">
-              辨别真实隐私工具，远离钓鱼与隐私陷阱
+              {guide.subtitle}
             </p>
           </div>
 
@@ -54,40 +65,25 @@ export const BeginnerGuideModal: React.FC<BeginnerGuideModalProps> = ({ isOpen, 
           </button>
         </div>
 
-        {/* Streamlined Content: 3 crisp, essential rules */}
+        {/* Streamlined Content: crisp, essential rules */}
         <div className="space-y-4 text-xs sm:text-sm leading-relaxed">
-          {/* Rule 1 */}
-          <div className="rounded-xl border border-obsidian-800 bg-obsidian-950 p-4 space-y-1.5">
-            <div className="flex items-center gap-2 font-semibold text-white font-sans">
-              <ShieldAlert className="h-4 w-4 text-white shrink-0" />
-              <span>1. 拒绝国内搜索“免费加速器”</span>
-            </div>
-            <p className="text-obsidian-400">
-              国内搜索引流的免费翻墙软件多为<strong>蜜罐钓鱼或流氓黑产</strong>，强制绑定实名手机号并索取通讯录和相册权限，流量在明文监管下传输，存在严重安全风险。
-            </p>
-          </div>
-
-          {/* Rule 2 */}
-          <div className="rounded-xl border border-obsidian-800 bg-obsidian-950 p-4 space-y-1.5">
-            <div className="flex items-center gap-2 font-semibold text-white font-sans">
-              <Lock className="h-4 w-4 text-white shrink-0" />
-              <span>2. 认准资助与开发主体</span>
-            </div>
-            <p className="text-obsidian-400">
-              VPN 会转发你的全部网络请求。优先选用由<strong>公开非盈利基金会</strong>（如 Tor、OpenRung）、学术科研机构或欧美独立审计大厂（如 Proton、Cloudflare）运营的工具，才能真正保障零日志与不被转卖数据。
-            </p>
-          </div>
-
-          {/* Rule 3 */}
-          <div className="rounded-xl border border-obsidian-800 bg-obsidian-950 p-4 space-y-1.5">
-            <div className="flex items-center gap-2 font-semibold text-white font-sans">
-              <HelpCircle className="h-4 w-4 text-white shrink-0" />
-              <span>3. 免费梯子的合理定位</span>
-            </div>
-            <p className="text-obsidian-400">
-              本站收录的免费工具旨在保障<strong>基础知情权与日常查阅、应急通讯</strong>。如果需要长期流媒体追剧可到<a href="https://jiakuan.link" target="_blank" rel="noopener noreferrer" className="text-white hover:underline font-semibold mx-1">家宽导航</a>获取专业机场或VPS，请理解公共带宽有限。
-            </p>
-          </div>
+          {guide.rules.map((rule, index) => {
+            const Icon = GUIDE_ICONS[rule.icon] || HelpCircle;
+            return (
+              <div
+                key={`${rule.title}-${index}`}
+                className="rounded-xl border border-obsidian-800 bg-obsidian-950 p-4 space-y-1.5"
+              >
+                <div className="flex items-center gap-2 font-semibold text-white font-sans">
+                  <Icon className="h-4 w-4 text-white shrink-0" />
+                  <span>{rule.title}</span>
+                </div>
+                <p className="text-obsidian-400">
+                  <RichText text={rule.body} />
+                </p>
+              </div>
+            );
+          })}
         </div>
 
         {/* Footer */}
@@ -96,7 +92,7 @@ export const BeginnerGuideModal: React.FC<BeginnerGuideModalProps> = ({ isOpen, 
             onClick={onClose}
             className="rounded-lg bg-white hover:bg-neutral-200 px-4 py-2 text-xs font-semibold text-black transition-colors"
           >
-            我已知晓
+            {guide.closeLabel}
           </button>
         </div>
       </div>
