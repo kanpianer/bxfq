@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { VPNTool, isToolAvailable } from '../types';
-import { ToolLogoMap } from '../assets/logos';
+import { ToolLogo } from './ToolLogo';
 import { LinkQRCodePopover } from './LinkQRCodePopover';
 import { ShareQRCodeModal } from './ShareQRCodeModal';
 import { 
@@ -36,7 +36,6 @@ export const ToolDetail: React.FC<ToolDetailProps> = ({ tool, onBack }) => {
     return typeof window !== 'undefined' && window.location.search.includes('test=share-modal');
   });
 
-  const LogoComponent = ToolLogoMap[tool.id] || ShieldCheck;
   const isUnavailable = !isToolAvailable(tool);
 
   // ESC shortcut to go back
@@ -111,7 +110,7 @@ export const ToolDetail: React.FC<ToolDetailProps> = ({ tool, onBack }) => {
           <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-6">
             <div className="flex items-start gap-4 sm:gap-5">
               <div className="flex h-16 w-16 sm:h-20 sm:w-20 shrink-0 items-center justify-center rounded-2xl border border-obsidian-750 bg-obsidian-950 shadow-inner">
-                <LogoComponent className="h-10 w-10 sm:h-12 sm:w-12" />
+                <ToolLogo tool={tool} Fallback={ShieldCheck} className="h-10 w-10 sm:h-12 sm:w-12" />
               </div>
 
               <div>

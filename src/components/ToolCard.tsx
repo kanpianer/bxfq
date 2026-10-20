@@ -1,5 +1,5 @@
 import { VPNTool, Platform, isToolAvailable } from '../types';
-import { ToolLogoMap } from '../assets/logos';
+import { ToolLogo } from './ToolLogo';
 import { 
   ArrowRight, 
   AlertTriangle,
@@ -16,7 +16,6 @@ interface ToolCardProps {
 }
 
 export const ToolCard: React.FC<ToolCardProps> = ({ tool, onSelect }) => {
-  const LogoComponent = ToolLogoMap[tool.id] || Shield;
   const isUnavailable = !isToolAvailable(tool);
 
   const getPlatformIcon = (platform: Platform) => {
@@ -72,7 +71,7 @@ export const ToolCard: React.FC<ToolCardProps> = ({ tool, onSelect }) => {
                 ? 'border-neutral-800 bg-neutral-900' 
                 : 'border-obsidian-750 bg-obsidian-950 group-hover:scale-105 group-hover:border-white/30'
             }`}>
-              <LogoComponent className="h-7 w-7" />
+              <ToolLogo tool={tool} className="h-7 w-7" />
             </div>
 
             <div>
