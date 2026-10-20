@@ -1,2 +1,5 @@
-/dtms /index.html 200
+# /dtms CMS SPA 回退（Cloudflare Pages / Netlify 通用）
+# 说明：Cloudflare Pages 会把 200 重写到 /index.html 的裸路径再规范化 308 到 /，
+# 因此裸路径先 308 到带斜杠的 /dtms/，再由 splat 规则重写到 /index.html。
+/dtms /dtms/ 308
 /dtms/* /index.html 200
