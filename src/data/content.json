@@ -373,9 +373,9 @@
       "id": "rostamvpn",
       "name": "RostamVPN",
       "aliases": [],
-      "tagline": "由一群美国安全网络专家开发和管理",
-      "entityType": "commercial",
-      "entityLabel": "商业机构 / 盈利性机构",
+      "tagline": "由 Open Technology Fund 资助，一群美国安全网络专家开发和管理",
+      "entityType": "non-profit",
+      "entityLabel": "非盈利性机构 / 非营利机构发起",
       "entityDescription": "团队致力于维护信息自由流通，专注于抗审查和加密隧道。公司主体为 Internet Mastering & Company, Inc.，以 Red Team Ltd. 名义开展业务。RedVPN 和 RostamVPN 都是他们的产品。",
       "visibility": "visible",
       "status": "available",
@@ -425,6 +425,11 @@
           "type": "twitter",
           "label": "X(Twitter)",
           "value": "https://x.com/rostamvpn"
+        },
+        {
+          "type": "github",
+          "label": "Github",
+          "value": "https://github.com/RostamVPN"
         }
       ],
       "badgeNote": "主打伊朗",
