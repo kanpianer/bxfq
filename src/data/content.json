@@ -420,6 +420,11 @@
           "type": "email",
           "label": "邮箱",
           "value": "nazar@rostam.com"
+        },
+        {
+          "type": "twitter",
+          "label": "X(Twitter)",
+          "value": "https://x.com/rostamvpn"
         }
       ],
       "badgeNote": "主打伊朗",
