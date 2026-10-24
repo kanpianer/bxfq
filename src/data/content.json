@@ -20,7 +20,7 @@
         "url": ""
       },
       {
-        "label": "开源代码",
+        "label": "Github",
         "kind": "link",
         "url": "https://github.com/kanpianer/bxfq"
       },
@@ -28,6 +28,11 @@
         "label": "不想看片",
         "kind": "link",
         "url": "https://bxkp.org"
+      },
+      {
+        "label": "不想看书",
+        "kind": "link",
+        "url": "https://bxks.pages.dev/"
       }
     ],
     "backupLabel": "备份网址:",
