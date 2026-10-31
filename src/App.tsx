@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useRef, useCallback } from 'react';
 import { SITE_CONTENT } from './content';
 import { Platform, isToolVisible } from './types';
 import { Navbar } from './components/Navbar';
@@ -10,20 +10,107 @@ import { BackToTop } from './components/BackToTop';
 import { Footer } from './components/Footer';
 import { SearchX } from 'lucide-react';
 
-export const App: React.FC = () => {
+interface AppProps {
+  onOpenCms?: () => void;
+}
+
+export const App: React.FC<AppProps> = ({ onOpenCms }) => {
   const [selectedToolId, setSelectedToolId] = useState<string | null>(null);
   const [selectedPlatform, setSelectedPlatform] = useState<Platform | 'all'>('all');
   const [isGuideOpen, setIsGuideOpen] = useState(() => {
     return typeof window !== 'undefined' && window.location.search.includes('test=guide');
   });
 
-  const scrollPosRef = React.useRef(0);
+  const scrollPosRef = useRef(0);
+  const clickTimestampsRef = useRef<number[]>([]);
 
   const scrollToPos = (y: number) => {
     window.scrollTo(0, y);
     if (document.documentElement) document.documentElement.scrollTop = y;
     if (document.body) document.body.scrollTop = y;
   };
+
+  const handleOpenCms = useCallback(() => {
+    if (onOpenCms) {
+      onOpenCms();
+      return;
+    }
+    try {
+      if (window.location.pathname !== '/dtms') {
+        history.pushState(null, '', '/dtms');
+      }
+    } catch {
+      // Fallback
+    }
+    window.dispatchEvent(new Event('bxfq-navigate'));
+  }, [onOpenCms]);
+
+  // 连续在 1.5 秒内点击主页空白区域 5 次打开 CMS 管理界面
+  useEffect(() => {
+    // 仅在主页（未查看特定工具详情且未打开指南弹窗）时生效
+    if (selectedToolId !== null || isGuideOpen) {
+      clickTimestampsRef.current = [];
+      return;
+    }
+
+    const handleClick = (e: MouseEvent) => {
+      if (e.button !== 0) return;
+
+      const target = e.target as HTMLElement | null;
+      const el = target instanceof Element ? target : (target as Node | null)?.parentElement;
+      if (!el) return;
+
+      // 如果点击的是交互元素（按钮、链接、工具卡片、输入框、弹窗等），不算作空白区域，并重置计数
+      const interactive = el.closest(
+        'button, a, input, textarea, select, [role="button"], [role="dialog"], [role="menuitem"], [role="tab"], label'
+      );
+      if (interactive) {
+        clickTimestampsRef.current = [];
+        return;
+      }
+
+      const now = Date.now();
+      // 保留 1.5 秒（1500 毫秒）内的点击记录
+      const recent = clickTimestampsRef.current.filter((t) => now - t <= 1500);
+      recent.push(now);
+      clickTimestampsRef.current = recent;
+
+      // 达成 1.5 秒内点击 5 次
+      if (recent.length >= 5) {
+        clickTimestampsRef.current = [];
+        window.getSelection()?.removeAllRanges();
+        handleOpenCms();
+      }
+    };
+
+    const handleMouseDown = (e: MouseEvent) => {
+      if (e.button !== 0) return;
+      const target = e.target as HTMLElement | null;
+      const el = target instanceof Element ? target : (target as Node | null)?.parentElement;
+      if (!el) return;
+      const interactive = el.closest(
+        'button, a, input, textarea, select, [role="button"], [role="dialog"], [role="menuitem"], [role="tab"], label'
+      );
+      // 连续多次点击空白区域时，避免浏览器默认触发文字高亮选中
+      if (!interactive && e.detail > 1) {
+        e.preventDefault();
+      }
+    };
+
+    const handleBlur = () => {
+      clickTimestampsRef.current = [];
+    };
+
+    document.addEventListener('click', handleClick);
+    document.addEventListener('mousedown', handleMouseDown);
+    window.addEventListener('blur', handleBlur);
+
+    return () => {
+      document.removeEventListener('click', handleClick);
+      document.removeEventListener('mousedown', handleMouseDown);
+      window.removeEventListener('blur', handleBlur);
+    };
+  }, [selectedToolId, isGuideOpen, handleOpenCms]);
 
   // Sync with URL Hash for deep linking (#tool-tor, etc.) and browser history
   useEffect(() => {
