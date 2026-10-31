@@ -685,6 +685,89 @@
       "visibility": "visible"
     },
     {
+      "id": "qz",
+      "name": "轻舟VPN",
+      "aliases": [
+        "轻舟"
+      ],
+      "tagline": "自研协议，抗封锁。每日可免费使用1小时。",
+      "entityType": "commercial",
+      "entityLabel": "商业机构 / 盈利性机构",
+      "entityDescription": "付费用户有屏蔽恶软件、广告、追踪和成人内容功能。默认有分流规则，可自定义分流规则。",
+      "visibility": "visible",
+      "status": "available",
+      "statusText": "稳定可用",
+      "pricingModel": "每日可免费使用1小时。",
+      "platforms": [
+        "android",
+        "ios",
+        "windows",
+        "macos"
+      ],
+      "officialUrl": "https://qz.run/zh-CN",
+      "downloadLinks": [
+        {
+          "label": "App Store",
+          "url": "https://apps.apple.com/app/%E8%BD%BB%E8%88%9Fvpn/id6745591588",
+          "platform": "ios",
+          "note": ""
+        },
+        {
+          "label": "Google Play",
+          "url": "https://play.google.com/store/apps/details?id=run.qz.qz_app",
+          "platform": "android",
+          "note": ""
+        },
+        {
+          "label": "APK 文件下载",
+          "url": "https://dl.qz.run/android.html?lang=zh-CN",
+          "platform": "android",
+          "note": "",
+          "isDirect": true
+        },
+        {
+          "label": "App Store",
+          "url": "https://apps.apple.com/app/%E8%BD%BB%E8%88%9Fvpn/id6745591588",
+          "platform": "macos",
+          "note": ""
+        },
+        {
+          "label": "Windows exe 文件",
+          "url": "https://dl.qz.run/windows.html?lang=zh-CN",
+          "platform": "windows",
+          "note": ""
+        }
+      ],
+      "quickStartSteps": [
+        {
+          "step": 1,
+          "title": "外区应用商店或官网下载app",
+          "desc": "根据自己的系统下载对应的app，苹果系统需要外区ID。"
+        },
+        {
+          "step": 2,
+          "title": "傻瓜式操作",
+          "desc": "按提示注册使用即可。"
+        }
+      ],
+      "detailedGuide": [],
+      "contacts": [
+        {
+          "type": "telegram",
+          "label": "官方电报频道",
+          "value": "https://t.me/driftvpn_official"
+        },
+        {
+          "type": "email",
+          "label": "邮件",
+          "value": "support@qz.run"
+        }
+      ],
+      "logo": "data:image/webp;base64,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",
+      "badgeNote": "每日免费1小时",
+      "speedRating": "high"
+    },
+    {
       "id": "mahsanet",
       "name": "MahsaNet",
       "aliases": [
