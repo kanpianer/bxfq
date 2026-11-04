@@ -1704,7 +1704,7 @@
       "visibility": "visible",
       "status": "available",
       "statusText": "主打伊朗",
-      "pricingModel": "每月 2 GB 免费高速流量，之后限速 2 Mbps 不限流量。",
+      "pricingModel": "由之前的免费持续慢速流量改为：3天高速试用，后需要付费；在伊朗、俄罗斯、古巴和叙利亚，没有付费墙，中国目前不在免费国家内。",
       "platforms": [
         "android",
         "ios"
@@ -1764,7 +1764,7 @@
       ],
       "badgeNote": "中国需付费",
       "speedRating": "medium",
-      "statusNote": "由之前的免费持续慢速流量改为：3天高速试用，后需要付费；在伊朗、俄罗斯、古巴和叙利亚，没有 2 GB 上限，没有付费墙，就算你想付也无法付款，中国目前不在免费国家内。",
+      "statusNote": "",
       "mirrors": [
         {
           "name": "RedVPN",
