@@ -2,6 +2,7 @@ import React, { Suspense, lazy, useState, useEffect, useCallback } from 'react';
 import ReactDOM from 'react-dom/client';
 import { Loader2 } from 'lucide-react';
 import { App } from './App';
+import { setRobotsIndexable } from './utils/seo';
 import './styles/index.css';
 
 const CmsApp = lazy(async () => {
@@ -30,13 +31,17 @@ export const Root: React.FC = () => {
       setIsCms(cms);
       if (cms) {
         document.title = '内容管理 · 不想翻墙';
+        setRobotsIndexable(false);
       } else {
-        document.title = '不想翻墙 — 备用梯子首选';
+        setRobotsIndexable(true);
       }
     };
 
     if (isCms) {
       document.title = '内容管理 · 不想翻墙';
+      setRobotsIndexable(false);
+    } else {
+      setRobotsIndexable(true);
     }
 
     window.addEventListener('popstate', handleRouteChange);

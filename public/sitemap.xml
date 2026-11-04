@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+  <!-- Homepage -->
+  <url>
+    <loc>https://bxfq.sld.tw/</loc>
+    <lastmod>2026-11-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <!-- Tool: FreeSocks -->
+  <url>
+    <loc>https://bxfq.sld.tw/?tool=freesocks</loc>
+    <lastmod>2026-11-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Tool: OpenRung -->
+  <url>
+    <loc>https://bxfq.sld.tw/?tool=openrung</loc>
+    <lastmod>2026-11-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Tool: NthLink -->
+  <url>
+    <loc>https://bxfq.sld.tw/?tool=nthlink</loc>
+    <lastmod>2026-11-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Tool: 蓝灯 (Lantern) -->
+  <url>
+    <loc>https://bxfq.sld.tw/?tool=lantern</loc>
+    <lastmod>2026-11-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Tool: 迷雾通 Geph -->
+  <url>
+    <loc>https://bxfq.sld.tw/?tool=geph</loc>
+    <lastmod>2026-11-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Tool: MahsaNet -->
+  <url>
+    <loc>https://bxfq.sld.tw/?tool=mahsanet</loc>
+    <lastmod>2026-11-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Tool: 自由浏览 -->
+  <url>
+    <loc>https://bxfq.sld.tw/?tool=freebrowser</loc>
+    <lastmod>2026-11-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Tool: BeePass VPN -->
+  <url>
+    <loc>https://bxfq.sld.tw/?tool=beepass</loc>
+    <lastmod>2026-11-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Tool: 1.1.1.1 -->
+  <url>
+    <loc>https://bxfq.sld.tw/?tool=warp</loc>
+    <lastmod>2026-11-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Tool: Cloudflare One -->
+  <url>
+    <loc>https://bxfq.sld.tw/?tool=cloudflare-one</loc>
+    <lastmod>2026-11-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Tool: Tor Browser -->
+  <url>
+    <loc>https://bxfq.sld.tw/?tool=tor</loc>
+    <lastmod>2026-11-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Tool: Ceno -->
+  <url>
+    <loc>https://bxfq.sld.tw/?tool=ceno</loc>
+    <lastmod>2026-11-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Tool: 轻舟VPN -->
+  <url>
+    <loc>https://bxfq.sld.tw/?tool=qz</loc>
+    <lastmod>2026-11-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Tool: OpenTunnel -->
+  <url>
+    <loc>https://bxfq.sld.tw/?tool=opentunnel</loc>
+    <lastmod>2026-11-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Tool: RostamVPN -->
+  <url>
+    <loc>https://bxfq.sld.tw/?tool=rostamvpn</loc>
+    <lastmod>2026-11-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+</urlset>

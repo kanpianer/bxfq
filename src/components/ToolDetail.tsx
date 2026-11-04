@@ -190,9 +190,9 @@ export const ToolDetail: React.FC<ToolDetailProps> = ({ tool, onBack }) => {
             <div className="flex items-start gap-3.5">
               <AlertTriangle className="h-5 w-5 text-neutral-400 shrink-0 mt-0.5" />
               <div>
-                <h4 className="text-sm font-semibold text-white">
+                <h2 className="text-sm font-semibold text-white">
                   当前状态：暂不可用
-                </h4>
+                </h2>
                 <p className="mt-1 text-xs sm:text-sm text-neutral-400 leading-relaxed">
                   {tool.statusNote || '该项目当前在中国大陆网络环境下暂不可用或连接受阻，建议选用其他已验证可用的工具。'}
                 </p>
@@ -211,10 +211,10 @@ export const ToolDetail: React.FC<ToolDetailProps> = ({ tool, onBack }) => {
 
         {/* Funding & Development Entity Deep Dive (资助和开发主体剖析) */}
         <section className="rounded-xl border border-obsidian-800 bg-obsidian-900/50 p-6 space-y-3">
-          <div className="flex items-center gap-2 text-sm font-mono font-semibold text-white">
+          <h2 className="flex items-center gap-2 text-sm font-mono font-semibold text-white">
             <ShieldCheck className="h-4 w-4 text-white" />
             <span>资助与开发主体深度背景</span>
-          </div>
+          </h2>
           <div className="rounded-lg bg-obsidian-950/80 border border-obsidian-850 p-4">
             <div className="flex items-center gap-2 mb-2">
               <span className="text-xs font-mono text-obsidian-400">主体属性：</span>
@@ -233,10 +233,10 @@ export const ToolDetail: React.FC<ToolDetailProps> = ({ tool, onBack }) => {
 
         {/* 3-Step Beginner Quick Start (小白上手三步走) */}
         <section className="rounded-xl border border-obsidian-800 bg-obsidian-900/50 p-6 space-y-4">
-          <div className="flex items-center gap-2 text-sm font-mono font-semibold text-white">
+          <h2 className="flex items-center gap-2 text-sm font-mono font-semibold text-white">
             <Sparkles className="h-4 w-4 text-white" />
             <span>小白上手使用指南（三步快速通关）</span>
-          </div>
+          </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {tool.quickStartSteps.map((step) => (
@@ -253,9 +253,9 @@ export const ToolDetail: React.FC<ToolDetailProps> = ({ tool, onBack }) => {
                       STEP {step.step}
                     </span>
                   </div>
-                  <h4 className="text-sm font-semibold text-white mb-1.5 font-sans">
+                  <h3 className="text-sm font-semibold text-white mb-1.5 font-sans">
                     {step.title}
-                  </h4>
+                  </h3>
                   <p className="text-xs text-obsidian-400 leading-relaxed font-sans">
                     {step.desc}
                   </p>
@@ -268,10 +268,10 @@ export const ToolDetail: React.FC<ToolDetailProps> = ({ tool, onBack }) => {
         {/* Download & Mirror Matrix (全平台下载与国内镜像矩阵) */}
         <section className="rounded-xl border border-obsidian-800 bg-obsidian-900/50 p-6 space-y-4">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2 text-sm font-mono font-semibold text-white">
+            <h2 className="flex items-center gap-2 text-sm font-mono font-semibold text-white">
               <Download className="h-4 w-4 text-white" />
               <span>官方下载通道与备用镜像</span>
-            </div>
+            </h2>
             <span className="text-[11px] font-mono text-obsidian-400 hidden sm:inline">
               提供直链与一键复制
             </span>
@@ -355,10 +355,10 @@ export const ToolDetail: React.FC<ToolDetailProps> = ({ tool, onBack }) => {
         {tool.mirrors && tool.mirrors.length > 0 && (
           <section className="rounded-xl border border-obsidian-800 bg-obsidian-900/50 p-6 space-y-4">
             <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2 text-sm font-mono font-semibold text-white">
+              <h2 className="flex items-center gap-2 text-sm font-mono font-semibold text-white">
                 <Globe className="h-4 w-4 text-white" />
                 <span>官方备用镜像与同步源站</span>
-              </div>
+              </h2>
               <span className="text-[11px] font-mono text-obsidian-400 hidden sm:inline">
                 共 {tool.mirrors.length} 个备用镜像源与分发站点
               </span>
@@ -423,10 +423,10 @@ export const ToolDetail: React.FC<ToolDetailProps> = ({ tool, onBack }) => {
         {/* Bridges & Circumvention Section (For Tor / Special Tools) */}
         {tool.bridges && (
           <section className="rounded-xl border border-obsidian-750 bg-obsidian-900/50 p-6 space-y-4">
-            <div className="flex items-center gap-2 text-sm font-mono font-semibold text-white">
+            <h2 className="flex items-center gap-2 text-sm font-mono font-semibold text-white">
               <Layers className="h-4 w-4 text-white" />
               <span>{tool.bridges.title}</span>
-            </div>
+            </h2>
 
             <p className="text-xs sm:text-sm text-obsidian-400 leading-relaxed font-sans">
               {tool.bridges.description}
@@ -497,17 +497,17 @@ export const ToolDetail: React.FC<ToolDetailProps> = ({ tool, onBack }) => {
         {/* Detailed Guide & Tips */}
         {tool.detailedGuide && tool.detailedGuide.length > 0 && (
           <section className="rounded-xl border border-obsidian-800 bg-obsidian-900/50 p-6 space-y-4">
-            <div className="flex items-center gap-2 text-sm font-mono font-semibold text-white">
+            <h2 className="flex items-center gap-2 text-sm font-mono font-semibold text-white">
               <Info className="h-4 w-4 text-white" />
               <span>使用秘籍与小白防踩坑技巧</span>
-            </div>
+            </h2>
 
             <div className="space-y-4">
               {tool.detailedGuide.map((item, idx) => (
                 <div key={idx} className="rounded-lg bg-obsidian-950/70 border border-obsidian-850 p-4">
-                  <h4 className="text-sm font-semibold text-white mb-2 font-sans">
+                  <h3 className="text-sm font-semibold text-white mb-2 font-sans">
                     {item.title}
-                  </h4>
+                  </h3>
                   <ul className="space-y-1.5 text-xs text-obsidian-400 leading-relaxed list-disc list-inside">
                     {item.content.map((point, pIdx) => (
                       <li key={pIdx}>{point}</li>
@@ -532,10 +532,10 @@ export const ToolDetail: React.FC<ToolDetailProps> = ({ tool, onBack }) => {
         {/* Contacts & Community Channels */}
         {tool.contacts && tool.contacts.length > 0 && (
           <section className="rounded-xl border border-obsidian-800 bg-obsidian-900/50 p-6 space-y-3">
-            <div className="flex items-center gap-2 text-sm font-mono font-semibold text-white">
+            <h2 className="flex items-center gap-2 text-sm font-mono font-semibold text-white">
               <MessageSquare className="h-4 w-4 text-white" />
               <span>官方与社区联系渠道</span>
-            </div>
+            </h2>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
               {tool.contacts.map((c, i) => (

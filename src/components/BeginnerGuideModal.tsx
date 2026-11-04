@@ -44,11 +44,12 @@ export const BeginnerGuideModal: React.FC<BeginnerGuideModalProps> = ({ isOpen, 
         className="relative w-full max-w-xl max-h-[90vh] overflow-y-auto rounded-2xl border border-obsidian-750 bg-obsidian-900 p-6 sm:p-7 shadow-2xl text-obsidian-400"
         role="dialog"
         aria-modal="true"
+        aria-labelledby="beginner-guide-title"
       >
         {/* Header */}
         <div className="flex items-center justify-between border-b border-obsidian-800 pb-4 mb-5">
           <div>
-            <h3 className="text-base sm:text-lg font-bold text-white font-sans">
+            <h3 id="beginner-guide-title" className="text-base sm:text-lg font-bold text-white font-sans">
               {guide.title}
             </h3>
             <p className="text-xs text-obsidian-400 mt-0.5">

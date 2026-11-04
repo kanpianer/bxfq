@@ -1,27 +1,51 @@
 <!DOCTYPE html>
-<html lang="zh-CN" class="dark">
+<html lang="zh-CN" class="dark" dir="ltr">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#090a0f" />
-    <meta name="description" content="专为翻墙小白打造的免费 VPN 与科学上网工具精选导航。极简、开源、非盈利、透明安全。" />
-    <title>不想翻墙 — 备用梯子首选</title>
-    <!-- Modern web fonts: Google Fonts LXGW WenKai & jsDelivr fallback -->
+    <title>不想翻墙 — 备用梯子首选 | 免费科学上网与安全应急工具精选导航</title>
+    <meta name="description" content="专为翻墙小白打造的免费备用梯子与科学上网工具精选导航。精选非盈利、开源、去中心化及独立审计的安全翻墙工具，防失联备用，杜绝流氓钓鱼与隐私泄漏。" />
+    <meta name="keywords" content="不想翻墙,备用梯子,免费梯子,科学上网,免费VPN,开源梯子,翻墙工具导航,迷雾通,Tor浏览器,蓝灯,Lantern,Cloudflare WARP,去中心化网络,防失联" />
+    <meta name="author" content="不想翻墙" />
+    <meta name="publisher" content="不想翻墙 (bxfq.sld.tw)" />
+    <meta name="application-name" content="不想翻墙" />
+    <meta name="apple-mobile-web-app-title" content="不想翻墙" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://bxfq.sld.tw/" />
+
+    <!-- Preconnect & DNS-Prefetch for Performance & Core Web Vitals -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Modern web fonts: Google Fonts LXGW WenKai & jsDelivr fallback -->
     <link href="https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC:wght@400;700&display=swap" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+    <!-- Favicons -->
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="shortcut icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
     <!-- Open Graph (Facebook, Discord, Telegram, LinkedIn, WhatsApp) -->
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="不想翻墙" />
+    <meta property="og:locale" content="zh_CN" />
+    <meta property="og:url" content="https://bxfq.sld.tw/" />
     <meta property="og:title" content="不想翻墙 — 备用梯子首选" />
     <meta property="og:description" content="免费备用梯子首选。专为翻墙小白打造，精选非盈利、开源与独立审计的安全免费翻墙工具，杜绝流氓软件与实名钓鱼。" />
-    <meta property="og:image" content="/og-image.png" />
-    <meta property="og:image:secure_url" content="/og-image.png" />
+    <meta property="og:image" content="https://bxfq.sld.tw/og-image.png" />
+    <meta property="og:image:secure_url" content="https://bxfq.sld.tw/og-image.png" />
     <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
@@ -29,11 +53,222 @@
 
     <!-- Twitter / X Card -->
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@kanpianer" />
+    <meta name="twitter:url" content="https://bxfq.sld.tw/" />
     <meta name="twitter:title" content="不想翻墙 — 备用梯子首选" />
     <meta name="twitter:description" content="免费备用梯子首选。专为翻墙小白打造，精选非盈利、开源与独立审计的安全免费翻墙工具，杜绝流氓软件与实名钓鱼。" />
-    <meta name="twitter:image" content="/og-image.png" />
+    <meta name="twitter:image" content="https://bxfq.sld.tw/og-image.png" />
+
+    <!-- Structured Data (JSON-LD): WebSite -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "不想翻墙",
+      "alternateName": ["bxfq", "不想翻墙 - 备用梯子首选"],
+      "url": "https://bxfq.sld.tw/",
+      "description": "专为翻墙小白打造的免费备用梯子与科学上网工具精选导航。极简、开源、非盈利、透明安全。",
+      "inLanguage": "zh-CN"
+    }
+    </script>
+
+    <!-- Structured Data (JSON-LD): Curated Tools ItemList -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "安全免费科学上网与备用梯子精选列表",
+      "description": "非盈利机构资助、开源、独立审计的免费梯子与应急网络工具汇总",
+      "numberOfItems": 16,
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "FreeSocks",
+          "description": "非盈利模式的公共代理订阅，提供类似商业机场的节点",
+          "url": "https://bxfq.sld.tw/?tool=freesocks"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "OpenRung",
+          "description": "开源、免注册、一键握手连接，非盈利公益网络通道",
+          "url": "https://bxfq.sld.tw/?tool=openrung"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "NthLink",
+          "description": "极简一键连接，获非营利机构资助研发的高穿透抗封锁代理",
+          "url": "https://bxfq.sld.tw/?tool=nthlink"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "蓝灯 (Lantern)",
+          "description": "老牌资助项目，智能分流混淆协议与多路径动态路由",
+          "url": "https://bxfq.sld.tw/?tool=lantern"
+        },
+        {
+          "@type": "ListItem",
+          "position": 5,
+          "name": "迷雾通 Geph",
+          "description": "自研Sosistab混淆抗审查，免费无流量限制的自由网络工具",
+          "url": "https://bxfq.sld.tw/?tool=geph"
+        },
+        {
+          "@type": "ListItem",
+          "position": 6,
+          "name": "MahsaNet",
+          "description": "开源无日志抗审查通道，分布式代理网络与多协议支持",
+          "url": "https://bxfq.sld.tw/?tool=mahsanet"
+        },
+        {
+          "@type": "ListItem",
+          "position": 7,
+          "name": "自由浏览",
+          "description": "内置防封锁翻墙通道的安卓浏览器，免配置直连海外自由网络",
+          "url": "https://bxfq.sld.tw/?tool=freebrowser"
+        },
+        {
+          "@type": "ListItem",
+          "position": 8,
+          "name": "BeePass VPN",
+          "description": "基于Shadowsocks架构，支持Telegram与邮件自动索取节点",
+          "url": "https://bxfq.sld.tw/?tool=beepass"
+        },
+        {
+          "@type": "ListItem",
+          "position": 9,
+          "name": "1.1.1.1",
+          "description": "Cloudflare全球骨干网络支持，搭配大陆优选IP直连通道",
+          "url": "https://bxfq.sld.tw/?tool=warp"
+        },
+        {
+          "@type": "ListItem",
+          "position": 10,
+          "name": "Cloudflare One",
+          "description": "企业级零信任高速网络通道，个人用户享受50个免费接入席位",
+          "url": "https://bxfq.sld.tw/?tool=cloudflare-one"
+        },
+        {
+          "@type": "ListItem",
+          "position": 11,
+          "name": "Tor Browser",
+          "description": "全球顶尖匿名隐私网络，三重加密洋葱路由，搭配网桥直连",
+          "url": "https://bxfq.sld.tw/?tool=tor"
+        },
+        {
+          "@type": "ListItem",
+          "position": 12,
+          "name": "Ceno",
+          "description": "全球首款去中心化抗封锁移动浏览器，基于P2P分布式点对点网络",
+          "url": "https://bxfq.sld.tw/?tool=ceno"
+        },
+        {
+          "@type": "ListItem",
+          "position": 13,
+          "name": "轻舟VPN",
+          "description": "非盈利社区驱动的轻量抗阻断工具，一键快速连接自由网络",
+          "url": "https://bxfq.sld.tw/?tool=qz"
+        },
+        {
+          "@type": "ListItem",
+          "position": 14,
+          "name": "OpenTunnel",
+          "description": "开源透明的网络隧道协议，支持自定义中继节点与混淆传输",
+          "url": "https://bxfq.sld.tw/?tool=opentunnel"
+        },
+        {
+          "@type": "ListItem",
+          "position": 15,
+          "name": "Proton VPN",
+          "description": "瑞士法律管辖与非盈利机构监督，免费版提供无限流量通道",
+          "url": "https://bxfq.sld.tw/?tool=proton"
+        },
+        {
+          "@type": "ListItem",
+          "position": 16,
+          "name": "RostamVPN",
+          "description": "专为高压网络环境打造的开源加密隧道，注重防嗅探与隐私保护",
+          "url": "https://bxfq.sld.tw/?tool=rostamvpn"
+        }
+      ]
+    }
+    </script>
+
+    <!-- Structured Data (JSON-LD): FAQPage (小白避坑必修课) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "1. 为什么必须拒绝国内搜索“免费加速器”？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "国内搜索引流的免费翻墙软件多为蜜罐钓鱼或流氓黑产，强制绑定实名手机号并索取通讯录和相册权限，流量在明文监管下传输，存在严重安全风险。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "2. 如何认准梯子的资助与开发主体？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "VPN会转发你的全部网络请求。优先选用由公开非盈利基金会（如 Tor、OpenRung）、学术科研机构或欧美独立审计大厂（如 Proton、Cloudflare）运营的工具，才能真正保障零日志与不被转卖数据。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "3. 免费梯子的合理定位是什么？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "本站收录的免费工具旨在保障基础知情权与日常查阅、应急通讯。如果需要长期流媒体追剧可购买免费工具的付费版本，或到家宽导航获取专业机场或VPS，请理解公共带宽有限。"
+          }
+        }
+      ]
+    }
+    </script>
   </head>
   <body class="bg-obsidian-950 text-obsidian-400 antialiased selection:bg-white/20 selection:text-white min-h-screen">
+    <!-- Non-JavaScript Search Crawler Fallback (Zero visual impact when JS is enabled) -->
+    <noscript>
+      <div style="max-width: 900px; margin: 40px auto; padding: 24px; font-family: system-ui, -apple-system, sans-serif; line-height: 1.6; color: #f4f4f5; background-color: #090a0f;">
+        <h1>不想翻墙 — 备用梯子首选</h1>
+        <p><strong>免费科学上网与安全应急工具精选导航</strong>：专为翻墙小白打造，精选非盈利、开源与独立审计的安全免费翻墙工具，杜绝流氓软件与实名钓鱼。</p>
+        
+        <h2>核心收录工具与开发主体</h2>
+        <ul>
+          <li><strong>FreeSocks</strong> - 非盈利模式的公共代理订阅，提供类似商业机场的节点（Android, iOS, Windows, macOS, Linux）</li>
+          <li><strong>OpenRung</strong> - 开源、免注册、一键握手连接，非盈利公益网络通道（Android, iOS, Win, Mac, Linux）</li>
+          <li><strong>NthLink</strong> - 极简一键连接，获非营利机构资助研发的高穿透抗封锁代理（Android, iOS, Win, Mac）</li>
+          <li><strong>蓝灯 (Lantern)</strong> - 老牌资助项目，智能分流混淆协议与多路径动态路由（Android, iOS, Win, Mac, Linux）</li>
+          <li><strong>迷雾通 Geph</strong> - 自研 Sosistab 混淆抗审查，免费无流量限制的自由网络工具（Android, iOS, Win, Mac, Linux）</li>
+          <li><strong>MahsaNet</strong> - 开源无日志抗审查通道，分布式代理网络与多协议支持（Android, iOS, Win, Mac）</li>
+          <li><strong>自由浏览</strong> - 内置防封锁翻墙通道的安卓浏览器，免配置直连海外自由网络（Android）</li>
+          <li><strong>BeePass VPN</strong> - 基于 Shadowsocks 架构，支持 Telegram 与邮件自动索取节点（Android, iOS）</li>
+          <li><strong>1.1.1.1 (WARP)</strong> - Cloudflare 全球骨干网络支持，搭配大陆优选 IP 直连通道（Android, iOS, Win, Mac, Linux）</li>
+          <li><strong>Cloudflare One</strong> - 企业级零信任高速网络通道，个人用户享受 50 个免费接入席位（全平台）</li>
+          <li><strong>Tor Browser</strong> - 全球顶尖匿名隐私网络，三重加密洋葱路由，搭配网桥直连（全平台）</li>
+          <li><strong>Ceno</strong> - 全球首款去中心化抗封锁移动浏览器，基于 P2P 分布式点对点网络（Android, Windows）</li>
+          <li><strong>轻舟VPN</strong> - 非盈利社区驱动的轻量抗阻断工具，一键快速连接自由网络（Android, iOS, Windows）</li>
+          <li><strong>OpenTunnel</strong> - 开源透明的网络隧道协议，支持自定义中继节点与混淆传输（Android, iOS, Win, Mac, Linux）</li>
+          <li><strong>Proton VPN</strong> - 瑞士法律管辖与非盈利机构监督，免费版提供无限流量通道（Android, iOS, Win, Mac, Linux）</li>
+          <li><strong>RostamVPN</strong> - 专为高压网络环境打造的开源加密隧道，注重防嗅探与隐私保护（Android）</li>
+        </ul>
+
+        <h2>翻墙小白避坑必修课</h2>
+        <ol>
+          <li><strong>拒绝国内搜索“免费加速器”</strong>：国内搜索引流的免费翻墙软件多为蜜罐钓鱼或流氓黑产，强制绑定实名手机号并索取通讯录和相册权限，流量在明文监管下传输，存在严重安全风险。</li>
+          <li><strong>认准资助与开发主体</strong>：VPN会转发你的全部网络请求。优先选用由公开非盈利基金会（如 Tor、OpenRung）、学术科研机构或欧美独立审计大厂（如 Proton、Cloudflare）运营的工具，才能真正保障零日志与不被转卖数据。</li>
+          <li><strong>免费梯子的合理定位</strong>：本站收录的免费工具旨在保障基础知情权与日常查阅、应急通讯。如果需要长期流媒体追剧可购买免费工具的付费版本，或到家宽导航获取专业机场或VPS，请理解公共带宽有限。</li>
+        </ol>
+
+        <p>官方站点: <a href="https://bxfq.sld.tw" style="color: #60a5fa;">https://bxfq.sld.tw</a> | 备用网址: <a href="https://bxfq404.pages.dev/" style="color: #60a5fa;">https://bxfq404.pages.dev/</a> | 源码: <a href="https://github.com/kanpianer/bxfq" style="color: #60a5fa;">GitHub kanpianer/bxfq</a></p>
+      </div>
+    </noscript>
+
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

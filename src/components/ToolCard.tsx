@@ -45,7 +45,7 @@ export const ToolCard: React.FC<ToolCardProps> = ({ tool, onSelect }) => {
   };
 
   return (
-    <div
+    <article
       onClick={() => onSelect(tool.id)}
       onKeyDown={(e) => {
         if (e.key === 'Enter' || e.key === ' ') {
@@ -56,6 +56,7 @@ export const ToolCard: React.FC<ToolCardProps> = ({ tool, onSelect }) => {
       tabIndex={0}
       role="button"
       aria-label={`查看 ${tool.name} 详细介绍与使用说明`}
+      aria-labelledby={`tool-heading-${tool.id}`}
       className={`group relative flex flex-col justify-between rounded-xl border p-5 sm:p-6 transition-all duration-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-white/30 ${
         isUnavailable
           ? 'bg-neutral-950/60 border-neutral-800 grayscale opacity-65 hover:opacity-85 hover:border-neutral-700'
@@ -76,7 +77,7 @@ export const ToolCard: React.FC<ToolCardProps> = ({ tool, onSelect }) => {
 
             <div>
               <div className="flex items-center gap-2">
-                <h3 className={`font-sans text-lg font-bold tracking-tight transition-colors ${
+                <h3 id={`tool-heading-${tool.id}`} className={`font-sans text-lg font-bold tracking-tight transition-colors ${
                   isUnavailable ? 'text-neutral-400' : 'text-white'
                 }`}>
                   {tool.name}
@@ -170,6 +171,6 @@ export const ToolCard: React.FC<ToolCardProps> = ({ tool, onSelect }) => {
           <ArrowRight className="w-3.5 h-3.5" />
         </div>
       </div>
-    </div>
+    </article>
   );
 };

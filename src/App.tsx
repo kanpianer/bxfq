@@ -9,17 +9,45 @@ import { BeginnerGuideModal } from './components/BeginnerGuideModal';
 import { BackToTop } from './components/BackToTop';
 import { Footer } from './components/Footer';
 import { SearchX } from 'lucide-react';
+import { applyToolSeo, resetHomeSeo } from './utils/seo';
 
 interface AppProps {
   onOpenCms?: () => void;
 }
 
+const GUIDE_STORAGE_KEY = 'bxfq_beginner_guide_viewed';
+
 export const App: React.FC<AppProps> = ({ onOpenCms }) => {
   const [selectedToolId, setSelectedToolId] = useState<string | null>(null);
   const [selectedPlatform, setSelectedPlatform] = useState<Platform | 'all'>('all');
   const [isGuideOpen, setIsGuideOpen] = useState(() => {
-    return typeof window !== 'undefined' && window.location.search.includes('test=guide');
+    if (typeof window === 'undefined') return false;
+    if (window.location.search.includes('test=guide')) return true;
+    try {
+      return !localStorage.getItem(GUIDE_STORAGE_KEY);
+    } catch {
+      return false;
+    }
   });
+
+  const handleCloseGuide = useCallback(() => {
+    setIsGuideOpen(false);
+    try {
+      localStorage.setItem(GUIDE_STORAGE_KEY, 'true');
+    } catch {
+      // Ignore storage errors
+    }
+  }, []);
+
+  useEffect(() => {
+    if (isGuideOpen) {
+      try {
+        localStorage.setItem(GUIDE_STORAGE_KEY, 'true');
+      } catch {
+        // Ignore storage errors
+      }
+    }
+  }, [isGuideOpen]);
 
   const scrollPosRef = useRef(0);
   const clickTimestampsRef = useRef<number[]>([]);
@@ -112,9 +140,10 @@ export const App: React.FC<AppProps> = ({ onOpenCms }) => {
     };
   }, [selectedToolId, isGuideOpen, handleOpenCms]);
 
-  // Sync with URL Hash for deep linking (#tool-tor, etc.) and browser history
+  // Sync with URL Hash (#tool-tor, etc.) and query param (?tool=tor) for browser history and SEO deep-linking
   useEffect(() => {
     const handleLocationChange = () => {
+      // 1. Check hash (#tool-xxx)
       const hash = window.location.hash.replace('#', '');
       if (hash.startsWith('tool-')) {
         const toolId = hash.replace('tool-', '');
@@ -125,6 +154,19 @@ export const App: React.FC<AppProps> = ({ onOpenCms }) => {
           return;
         }
       }
+
+      // 2. Check query param (?tool=xxx) for direct search engine crawler access
+      const searchParams = new URLSearchParams(window.location.search);
+      const queryToolId = searchParams.get('tool');
+      if (queryToolId) {
+        const exists = SITE_CONTENT.tools.some(t => t.id === queryToolId && isToolVisible(t));
+        if (exists) {
+          setSelectedToolId(queryToolId);
+          scrollToPos(0);
+          return;
+        }
+      }
+
       setSelectedToolId(null);
       requestAnimationFrame(() => {
         scrollToPos(scrollPosRef.current);
@@ -151,8 +193,15 @@ export const App: React.FC<AppProps> = ({ onOpenCms }) => {
 
   const navigateBackToHome = () => {
     setSelectedToolId(null);
-    if (window.location.hash) {
-      history.pushState(null, '', window.location.pathname + window.location.search);
+    const searchParams = new URLSearchParams(window.location.search);
+    const hadToolQuery = searchParams.has('tool');
+    if (hadToolQuery) {
+      searchParams.delete('tool');
+    }
+    const newSearch = searchParams.toString();
+    const newUrl = window.location.pathname + (newSearch ? `?${newSearch}` : '');
+    if (window.location.hash || hadToolQuery) {
+      history.pushState(null, '', newUrl);
     }
     requestAnimationFrame(() => {
       scrollToPos(scrollPosRef.current);
@@ -164,6 +213,15 @@ export const App: React.FC<AppProps> = ({ onOpenCms }) => {
     if (!selectedToolId) return null;
     return SITE_CONTENT.tools.find(t => t.id === selectedToolId && isToolVisible(t)) || null;
   }, [selectedToolId]);
+
+  // Synchronize Google SEO metadata, titles, canonical and JSON-LD structured data dynamically
+  useEffect(() => {
+    if (activeTool) {
+      applyToolSeo(activeTool);
+    } else {
+      resetHomeSeo();
+    }
+  }, [activeTool]);
 
   // Filtering tools
   const filteredTools = useMemo(() => {
@@ -244,7 +302,7 @@ export const App: React.FC<AppProps> = ({ onOpenCms }) => {
       {/* Beginner Safety Guide Modal */}
       <BeginnerGuideModal
         isOpen={isGuideOpen}
-        onClose={() => setIsGuideOpen(false)}
+        onClose={handleCloseGuide}
       />
 
       {/* Minimalist Footer */}

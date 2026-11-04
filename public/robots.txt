@@ -1,0 +1,12 @@
+# https://www.robotstxt.org/robotstxt.html
+# Robots exclusion rules for 不想翻墙 (https://bxfq.sld.tw)
+
+User-agent: *
+Allow: /
+
+# Disallow Content Management System admin panel to protect privacy and save crawl budget
+Disallow: /dtms
+Disallow: /dtms/
+
+# Sitemap location
+Sitemap: https://bxfq.sld.tw/sitemap.xml

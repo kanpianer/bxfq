@@ -29,9 +29,9 @@ export const Navbar: React.FC<NavbarProps> = ({
               />
             </div>
             <div className="flex items-center gap-2">
-              <span className="text-base sm:text-xl font-bold tracking-tight text-white transition-colors">
+              <h1 className="text-base sm:text-xl font-bold tracking-tight text-white transition-colors m-0 p-0 inline font-sans">
                 {site.brand}
-              </span>
+              </h1>
             </div>
           </button>
         </div>
