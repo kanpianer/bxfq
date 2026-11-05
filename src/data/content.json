@@ -610,132 +610,6 @@
       "visibility": "visible"
     },
     {
-      "id": "mahsanet",
-      "name": "MahsaNet",
-      "aliases": [
-        "MahsaVPN",
-        "MahsaNG",
-        "玛莎网络",
-        "Mahsa Server"
-      ],
-      "tagline": "专为严苛网络审查地区研发的去中心化公益抗封锁工具，主打伊朗抗阻断",
-      "entityType": "self-organized",
-      "entityLabel": "自组织机构",
-      "entityDescription": "由为纪念阿米尼（Mahsa Amini）并捍卫自由互联网的海外伊朗技术社群发起成立的非营利公益组织。构建去中心化的 Mahsa Server 平台，汇聚全球志愿者捐赠的抗封锁节点与混淆配置，主打为遭受严重断网与深度审查地区的人民提供可靠、安全的人权网络访问通道。",
-      "status": "available",
-      "statusText": "主打伊朗",
-      "badgeNote": "主打伊朗",
-      "pricingModel": "100% 永久免费 / 社区公益众包",
-      "platforms": [
-        "android",
-        "ios"
-      ],
-      "officialUrl": "https://mahsanet.com",
-      "downloadLinks": [
-        {
-          "label": "MahsaVPN (Apple App Store)",
-          "url": "https://apps.apple.com/us/app/mahsa-vpn/id6751109099",
-          "platform": "ios",
-          "note": "支持 iPhone 与 iPad（需海外 Apple ID 登录下载）"
-        },
-        {
-          "label": "MahsaNG VPN (Google Play 商店)",
-          "url": "https://play.google.com/store/apps/details?id=com.MahsaNet.MahsaNG",
-          "platform": "android",
-          "note": "Google Play 官方商店获取（基于 v2rayNG 深度定制）"
-        },
-        {
-          "label": "MahsaServer 官方下载中心",
-          "url": "https://www.mahsaserver.com/download",
-          "platform": "android",
-          "isDirect": true,
-          "note": "官方免翻墙镜像下载中心，直接获取安卓 APK 安装包"
-        },
-        {
-          "label": "GitHub Releases 源码与发布页",
-          "url": "https://github.com/mahsanet/MahsaNG/releases",
-          "platform": "android",
-          "note": "GitHub 官方开源代码仓库与原生编译安装包下载"
-        }
-      ],
-      "mirrors": [
-        {
-          "name": "Mahsa Server 官方镜像站",
-          "url": "https://www.mahsaserver.com",
-          "description": "官方备用镜像站点，提供最新节点配置与安卓客户端下载"
-        }
-      ],
-      "quickStartSteps": [
-        {
-          "step": 1,
-          "title": "下载并安装客户端",
-          "desc": "安卓设备推荐访问 MahsaServer 官方下载页或 Google Play 安装 MahsaNG；iOS 用户在海外区 App Store 安装 MahsaVPN。"
-        },
-        {
-          "step": 2,
-          "title": "自动拉取抗审查配置",
-          "desc": "启动软件后，客户端将自动连接 Mahsa Server 众包节点池，拉取最新验证可用的抗封锁加密配置。"
-        },
-        {
-          "step": 3,
-          "title": "一键开启加密连接",
-          "desc": "在节点列表中测速并选择延迟较低的配置，点击主界面底部或中央的连接开关，即可快速建立安全隧道。"
-        }
-      ],
-      "detailedGuide": [
-        {
-          "title": "众包节点池与抗审查技术架构",
-          "content": [
-            "众包节点生命周期管理：Mahsa Server 平台拥有自动化的配置测试与分发机制。来自全球志愿者的捐助节点在经过连通性、速度与安全性全自动筛查后，被动态推送至客户端。",
-            "深度包检测对抗（DPI）：针对严苛审查地区的协议阻断，客户端集成了 TLS 分片（Fragment）、DoH（DNS over HTTPS）防劫持解析等先进混淆技术，破坏防火墙的指纹识别。",
-            "专为断网严酷环境优化：在遇到区域性大面积丢包或限流时，软件拥有强大的快速重连机制与备用配置轮询方案，确保维持基础信息通道。"
-          ],
-          "tips": [
-            "若当前连接节点速度下降或失效，可下拉配置列表重新刷新从 Mahsa Server 获取最新的一批可用节点。",
-            "MahsaNG 允许用户导入自定义 V2Ray/Xray 订阅链接，兼具简便性与高级扩展能力。"
-          ]
-        },
-        {
-          "title": "数字安全与隐私原则",
-          "content": [
-            "完全免注册：使用 MahsaNet 系列软件无需提供手机号、邮箱或任何个人身份信息。",
-            "零日志收集：官方不记录任何用户访问日志与网络传输数据。",
-            "节点安全考量：由于节点由社区众包提供，强烈建议仅用于打破信息封锁与正常网页浏览；处理高价值敏感事务时，请确保全程使用 HTTPS 加密或配合端到端加密通信工具。"
-          ]
-        }
-      ],
-      "contacts": [
-        {
-          "type": "website",
-          "label": "MahsaNet 官方主站",
-          "value": "https://mahsanet.com"
-        },
-        {
-          "type": "website",
-          "label": "Mahsa Server 镜像站",
-          "value": "https://www.mahsaserver.com"
-        },
-        {
-          "type": "github",
-          "label": "GitHub 官方开源组织",
-          "value": "https://github.com/mahsanet"
-        },
-        {
-          "type": "twitter",
-          "label": "官方 X (Twitter)",
-          "value": "https://x.com/mahsanet"
-        },
-        {
-          "type": "telegram",
-          "label": "Telegram 官方频道",
-          "value": "https://t.me/mahsa_net"
-        }
-      ],
-      "speedRating": "moderate",
-      "securityRating": "去中心化众包节点 / TLS 分片混淆抗封锁",
-      "visibility": "visible"
-    },
-    {
       "id": "freebrowser",
       "name": "自由浏览",
       "aliases": [
@@ -966,6 +840,132 @@
       "visibility": "visible"
     },
     {
+      "id": "mahsanet",
+      "name": "MahsaNet",
+      "aliases": [
+        "MahsaVPN",
+        "MahsaNG",
+        "玛莎网络",
+        "Mahsa Server"
+      ],
+      "tagline": "专为严苛网络审查地区研发的去中心化公益抗封锁工具，主打伊朗抗阻断",
+      "entityType": "self-organized",
+      "entityLabel": "自组织机构",
+      "entityDescription": "由为纪念阿米尼（Mahsa Amini）并捍卫自由互联网的海外伊朗技术社群发起成立的非营利公益组织。构建去中心化的 Mahsa Server 平台，汇聚全球志愿者捐赠的抗封锁节点与混淆配置，主打为遭受严重断网与深度审查地区的人民提供可靠、安全的人权网络访问通道。",
+      "status": "available",
+      "statusText": "主打伊朗",
+      "badgeNote": "主打伊朗",
+      "pricingModel": "100% 永久免费 / 社区公益众包",
+      "platforms": [
+        "android",
+        "ios"
+      ],
+      "officialUrl": "https://mahsanet.com",
+      "downloadLinks": [
+        {
+          "label": "MahsaVPN (Apple App Store)",
+          "url": "https://apps.apple.com/us/app/mahsa-vpn/id6751109099",
+          "platform": "ios",
+          "note": "支持 iPhone 与 iPad（需海外 Apple ID 登录下载）"
+        },
+        {
+          "label": "MahsaNG VPN (Google Play 商店)",
+          "url": "https://play.google.com/store/apps/details?id=com.MahsaNet.MahsaNG",
+          "platform": "android",
+          "note": "Google Play 官方商店获取（基于 v2rayNG 深度定制）"
+        },
+        {
+          "label": "MahsaServer 官方下载中心",
+          "url": "https://www.mahsaserver.com/download",
+          "platform": "android",
+          "isDirect": true,
+          "note": "官方免翻墙镜像下载中心，直接获取安卓 APK 安装包"
+        },
+        {
+          "label": "GitHub Releases 源码与发布页",
+          "url": "https://github.com/mahsanet/MahsaNG/releases",
+          "platform": "android",
+          "note": "GitHub 官方开源代码仓库与原生编译安装包下载"
+        }
+      ],
+      "mirrors": [
+        {
+          "name": "Mahsa Server 官方镜像站",
+          "url": "https://www.mahsaserver.com",
+          "description": "官方备用镜像站点，提供最新节点配置与安卓客户端下载"
+        }
+      ],
+      "quickStartSteps": [
+        {
+          "step": 1,
+          "title": "下载并安装客户端",
+          "desc": "安卓设备推荐访问 MahsaServer 官方下载页或 Google Play 安装 MahsaNG；iOS 用户在海外区 App Store 安装 MahsaVPN。"
+        },
+        {
+          "step": 2,
+          "title": "自动拉取抗审查配置",
+          "desc": "启动软件后，客户端将自动连接 Mahsa Server 众包节点池，拉取最新验证可用的抗封锁加密配置。"
+        },
+        {
+          "step": 3,
+          "title": "一键开启加密连接",
+          "desc": "在节点列表中测速并选择延迟较低的配置，点击主界面底部或中央的连接开关，即可快速建立安全隧道。"
+        }
+      ],
+      "detailedGuide": [
+        {
+          "title": "众包节点池与抗审查技术架构",
+          "content": [
+            "众包节点生命周期管理：Mahsa Server 平台拥有自动化的配置测试与分发机制。来自全球志愿者的捐助节点在经过连通性、速度与安全性全自动筛查后，被动态推送至客户端。",
+            "深度包检测对抗（DPI）：针对严苛审查地区的协议阻断，客户端集成了 TLS 分片（Fragment）、DoH（DNS over HTTPS）防劫持解析等先进混淆技术，破坏防火墙的指纹识别。",
+            "专为断网严酷环境优化：在遇到区域性大面积丢包或限流时，软件拥有强大的快速重连机制与备用配置轮询方案，确保维持基础信息通道。"
+          ],
+          "tips": [
+            "若当前连接节点速度下降或失效，可下拉配置列表重新刷新从 Mahsa Server 获取最新的一批可用节点。",
+            "MahsaNG 允许用户导入自定义 V2Ray/Xray 订阅链接，兼具简便性与高级扩展能力。"
+          ]
+        },
+        {
+          "title": "数字安全与隐私原则",
+          "content": [
+            "完全免注册：使用 MahsaNet 系列软件无需提供手机号、邮箱或任何个人身份信息。",
+            "零日志收集：官方不记录任何用户访问日志与网络传输数据。",
+            "节点安全考量：由于节点由社区众包提供，强烈建议仅用于打破信息封锁与正常网页浏览；处理高价值敏感事务时，请确保全程使用 HTTPS 加密或配合端到端加密通信工具。"
+          ]
+        }
+      ],
+      "contacts": [
+        {
+          "type": "website",
+          "label": "MahsaNet 官方主站",
+          "value": "https://mahsanet.com"
+        },
+        {
+          "type": "website",
+          "label": "Mahsa Server 镜像站",
+          "value": "https://www.mahsaserver.com"
+        },
+        {
+          "type": "github",
+          "label": "GitHub 官方开源组织",
+          "value": "https://github.com/mahsanet"
+        },
+        {
+          "type": "twitter",
+          "label": "官方 X (Twitter)",
+          "value": "https://x.com/mahsanet"
+        },
+        {
+          "type": "telegram",
+          "label": "Telegram 官方频道",
+          "value": "https://t.me/mahsa_net"
+        }
+      ],
+      "speedRating": "moderate",
+      "securityRating": "去中心化众包节点 / TLS 分片混淆抗封锁",
+      "visibility": "visible"
+    },
+    {
       "id": "warp",
       "name": "1.1.1.1",
       "aliases": [
@@ -978,7 +978,7 @@
       "entityLabel": "商业机构",
       "entityDescription": "由纳斯达克上市全球云网络巨头 Cloudflare (NET) 运营。依托全球数千个数据中心的 Anycast 网络，免费向公众提供安全的现代加密通道。",
       "status": "available",
-      "statusText": "大陆需搭配优选 IP",
+      "statusText": "Cloudflare美国IP",
       "pricingModel": "永久免费 / 可通过邀请或 Key 获取 WARP+ 流量",
       "platforms": [
         "android",
@@ -1045,7 +1045,8 @@
       ],
       "speedRating": "high",
       "securityRating": "WireGuard 协议 / 全球 Anycast 加密",
-      "visibility": "visible"
+      "visibility": "visible",
+      "badgeNote": "美国IP"
     },
     {
       "id": "cloudflare-one",
@@ -1059,7 +1060,7 @@
       "entityLabel": "商业机构",
       "entityDescription": "Cloudflare 为企业团队打造的 Zero Trust（零信任）全球安全访问客户端。个人用户可注册拥有最多 50 个免费席位的团队，享受企业级抗干扰通道。",
       "status": "available",
-      "statusText": "企业级通道",
+      "statusText": "Cloudflare中国IP",
       "pricingModel": "免费计划（支持多达 50 个席位免费使用）",
       "platforms": [
         "android",
@@ -1125,6 +1126,89 @@
       "speedRating": "high",
       "securityRating": "企业级零信任 SASE / 专属组织通道",
       "visibility": "visible"
+    },
+    {
+      "id": "qz",
+      "name": "轻舟VPN",
+      "aliases": [
+        "轻舟"
+      ],
+      "tagline": "自研协议，抗封锁。每日可免费使用1小时。",
+      "entityType": "commercial",
+      "entityLabel": "商业机构 / 盈利性机构",
+      "entityDescription": "付费用户有屏蔽恶软件、广告、追踪和成人内容功能。默认有分流规则，可自定义分流规则。",
+      "visibility": "visible",
+      "status": "available",
+      "statusText": "稳定可用",
+      "pricingModel": "每日可免费使用1小时。",
+      "platforms": [
+        "android",
+        "ios",
+        "windows",
+        "macos"
+      ],
+      "officialUrl": "https://qz.run/zh-CN",
+      "downloadLinks": [
+        {
+          "label": "App Store",
+          "url": "https://apps.apple.com/app/%E8%BD%BB%E8%88%9Fvpn/id6745591588",
+          "platform": "ios",
+          "note": ""
+        },
+        {
+          "label": "Google Play",
+          "url": "https://play.google.com/store/apps/details?id=run.qz.qz_app",
+          "platform": "android",
+          "note": ""
+        },
+        {
+          "label": "APK 文件下载",
+          "url": "https://dl.qz.run/android.html?lang=zh-CN",
+          "platform": "android",
+          "note": "",
+          "isDirect": true
+        },
+        {
+          "label": "App Store",
+          "url": "https://apps.apple.com/app/%E8%BD%BB%E8%88%9Fvpn/id6745591588",
+          "platform": "macos",
+          "note": ""
+        },
+        {
+          "label": "Windows exe 文件",
+          "url": "https://dl.qz.run/windows.html?lang=zh-CN",
+          "platform": "windows",
+          "note": ""
+        }
+      ],
+      "quickStartSteps": [
+        {
+          "step": 1,
+          "title": "外区应用商店或官网下载app",
+          "desc": "根据自己的系统下载对应的app，苹果系统需要外区ID。"
+        },
+        {
+          "step": 2,
+          "title": "傻瓜式操作",
+          "desc": "按提示注册使用即可。"
+        }
+      ],
+      "detailedGuide": [],
+      "contacts": [
+        {
+          "type": "telegram",
+          "label": "官方电报频道",
+          "value": "https://t.me/driftvpn_official"
+        },
+        {
+          "type": "email",
+          "label": "邮件",
+          "value": "support@qz.run"
+        }
+      ],
+      "logo": "data:image/webp;base64,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",
+      "badgeNote": "每日免费1小时",
+      "speedRating": "high"
     },
     {
       "id": "tor",
@@ -1274,222 +1358,6 @@
       "speedRating": "moderate",
       "securityRating": "全球军工级匿名 / 3重节点中继",
       "visibility": "visible"
-    },
-    {
-      "id": "ceno",
-      "name": "Ceno",
-      "aliases": [
-        "Ceno Browser",
-        "Censorship.No",
-        "P2P分布式浏览器"
-      ],
-      "tagline": "基于 P2P 点对点网络与分布式缓存的抗审查浏览器，断网亦能互助浏览",
-      "entityType": "non-profit",
-      "entityLabel": "非盈利性机构",
-      "entityDescription": "由加拿大非盈利人权组织 eQualitie 研发与资助。基于 BitTorrent 与 Ouinet 点对点协议，将网页缓存在全球分布式网络中，即使中心服务器遭阻断或面临断网，也能通过邻近节点拼装读取。",
-      "status": "available",
-      "statusText": "很慢但能用",
-      "badgeNote": "很慢但能用",
-      "pricingModel": "100% 永久免费 / 开源公益 (MPL 2.0)",
-      "platforms": [
-        "android",
-        "ios",
-        "windows"
-      ],
-      "officialUrl": "https://ceno.app",
-      "downloadLinks": [
-        {
-          "label": "Google Play 商店",
-          "url": "https://play.google.com/store/apps/details?id=ie.equalit.ceno",
-          "platform": "android",
-          "note": "海外区/具备 Google Play 服务的安卓设备"
-        },
-        {
-          "label": "Apple App Store",
-          "url": "https://apps.apple.com/us/app/ceno-browser/id6673915387",
-          "platform": "ios",
-          "note": "支持 iPhone 与 iPad（需海外 Apple ID）"
-        },
-        {
-          "label": "Windows 便携免安装版 (Portable)",
-          "url": "https://ceno-download.s3.amazonaws.com/ceno-desktop/latest/ceno-win64-portable.html",
-          "platform": "windows",
-          "isDirect": true,
-          "note": "官方 AWS S3 镜像下载页，解压即用"
-        },
-        {
-          "label": "Paskoocheh 备用下载 (Android)",
-          "url": "https://paskoocheh.com/tools/124/android.html",
-          "platform": "android",
-          "isMirror": true,
-          "note": "知名免翻开源工具市场镜像直达"
-        },
-        {
-          "label": "Censorship.No 官方镜像网站",
-          "url": "https://censorship.no/en/index.html",
-          "platform": "browser",
-          "isMirror": true,
-          "note": "项目官方备用直连镜像站点，包含文档与下载指引"
-        }
-      ],
-      "mirrors": [
-        {
-          "name": "Censorship.No 官方镜像站",
-          "url": "https://censorship.no/en/index.html",
-          "description": "Ceno Browser 原生官方直连镜像网站，提供全套抗审查原理、常见问题解答与多语言资料"
-        }
-      ],
-      "quickStartSteps": [
-        {
-          "step": 1,
-          "title": "下载并安装客户端",
-          "desc": "安卓用户推荐通过 Google Play 或 Paskoocheh 镜像下载；苹果用户直达 App Store；Windows 用户直接下载解压便携版。"
-        },
-        {
-          "step": 2,
-          "title": "了解并选择运行模式",
-          "desc": "Ceno 提供“公共模式 (Public)”和“个人模式 (Personal)”。公共模式利用 P2P 分布式缓存连通率最高；个人模式专注私密浏览。"
-        },
-        {
-          "step": 3,
-          "title": "直接输入网址浏览",
-          "desc": "输入目标网址后，应用会自动通过去中心化 Ouinet 协议寻址并从其他节点拼装拉取数据，初次握手加载较慢，请稍等数秒即可打开。"
-        }
-      ],
-      "detailedGuide": [
-        {
-          "title": "为什么特点标签是“很慢但能用”？",
-          "content": [
-            "架构差异：普通 VPN 依赖中心化服务器转发流量，一旦服务器 IP 被封便彻底瘫痪；Ceno 底层是纯粹的 P2P（点对点）分布式网络与 BitTorrent 技术。",
-            "极限生存能力：即使遇到区域性大断网或国际出口阻断，只要局域网或邻近节点有人曾访问过该网页，就能从附近设备拼装缓存数据。",
-            "初次加载需检索：因为需要在分布式网络中寻址对等节点，初次载入页面通常需要 15~30 秒，因而速度慢，但在严苛审查环境下是无可取代的“终极兜底利器”。"
-          ],
-          "tips": [
-            "初次打开网页时切勿频繁刷新，频繁刷新会打断 P2P 节点的检索与握手流程。",
-            "公共模式下访问记录会参与分布式索引以帮助其他受限用户，切勿在此模式下登录涉及个人隐私的敏感账号。"
-          ]
-        },
-        {
-          "title": "公共模式与个人模式的选用建议",
-          "content": [
-            "公共模式 (Public Mode)：推荐用于阅读被封锁的新闻媒体、维基百科、学术资料与公开文章。你的设备也会充当桥梁，把已获取的网页缓存分享给其他受审查地区的网民。",
-            "个人模式 (Personal Mode)：请求不经过公开 BitTorrent 索引，适合需要保护身份隐私的访问，但连通成功率与速度会逊于公共模式。"
-          ]
-        }
-      ],
-      "contacts": [
-        {
-          "type": "twitter",
-          "label": "官方 X (Twitter)",
-          "value": "https://x.com/cenobrowser"
-        },
-        {
-          "type": "telegram",
-          "label": "Telegram 官方频道",
-          "value": "https://t.me/Ceno_Iran"
-        },
-        {
-          "type": "gitlab",
-          "label": "GitLab 官方开源仓库",
-          "value": "https://gitlab.com/ceno-app"
-        },
-        {
-          "type": "website",
-          "label": "Ceno 官方主站",
-          "value": "https://ceno.app"
-        },
-        {
-          "type": "website",
-          "label": "Censorship.No 镜像网站",
-          "value": "https://censorship.no/en/index.html"
-        }
-      ],
-      "speedRating": "moderate",
-      "securityRating": "P2P 分布式缓存 / MPL 2.0 开源公益",
-      "visibility": "visible"
-    },
-    {
-      "id": "qz",
-      "name": "轻舟VPN",
-      "aliases": [
-        "轻舟"
-      ],
-      "tagline": "自研协议，抗封锁。每日可免费使用1小时。",
-      "entityType": "commercial",
-      "entityLabel": "商业机构 / 盈利性机构",
-      "entityDescription": "付费用户有屏蔽恶软件、广告、追踪和成人内容功能。默认有分流规则，可自定义分流规则。",
-      "visibility": "visible",
-      "status": "available",
-      "statusText": "稳定可用",
-      "pricingModel": "每日可免费使用1小时。",
-      "platforms": [
-        "android",
-        "ios",
-        "windows",
-        "macos"
-      ],
-      "officialUrl": "https://qz.run/zh-CN",
-      "downloadLinks": [
-        {
-          "label": "App Store",
-          "url": "https://apps.apple.com/app/%E8%BD%BB%E8%88%9Fvpn/id6745591588",
-          "platform": "ios",
-          "note": ""
-        },
-        {
-          "label": "Google Play",
-          "url": "https://play.google.com/store/apps/details?id=run.qz.qz_app",
-          "platform": "android",
-          "note": ""
-        },
-        {
-          "label": "APK 文件下载",
-          "url": "https://dl.qz.run/android.html?lang=zh-CN",
-          "platform": "android",
-          "note": "",
-          "isDirect": true
-        },
-        {
-          "label": "App Store",
-          "url": "https://apps.apple.com/app/%E8%BD%BB%E8%88%9Fvpn/id6745591588",
-          "platform": "macos",
-          "note": ""
-        },
-        {
-          "label": "Windows exe 文件",
-          "url": "https://dl.qz.run/windows.html?lang=zh-CN",
-          "platform": "windows",
-          "note": ""
-        }
-      ],
-      "quickStartSteps": [
-        {
-          "step": 1,
-          "title": "外区应用商店或官网下载app",
-          "desc": "根据自己的系统下载对应的app，苹果系统需要外区ID。"
-        },
-        {
-          "step": 2,
-          "title": "傻瓜式操作",
-          "desc": "按提示注册使用即可。"
-        }
-      ],
-      "detailedGuide": [],
-      "contacts": [
-        {
-          "type": "telegram",
-          "label": "官方电报频道",
-          "value": "https://t.me/driftvpn_official"
-        },
-        {
-          "type": "email",
-          "label": "邮件",
-          "value": "support@qz.run"
-        }
-      ],
-      "logo": "data:image/webp;base64,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",
-      "badgeNote": "每日免费1小时",
-      "speedRating": "high"
     },
     {
       "id": "opentunnel",
@@ -1692,6 +1560,139 @@
       "speedRating": "high",
       "securityRating": "瑞士隐私法管辖 / 独立第三方安全审计",
       "visibility": "hidden"
+    },
+    {
+      "id": "ceno",
+      "name": "Ceno",
+      "aliases": [
+        "Ceno Browser",
+        "Censorship.No",
+        "P2P分布式浏览器"
+      ],
+      "tagline": "基于 P2P 点对点网络与分布式缓存的抗审查浏览器，断网亦能互助浏览",
+      "entityType": "non-profit",
+      "entityLabel": "非盈利性机构",
+      "entityDescription": "由加拿大非盈利人权组织 eQualitie 研发与资助。基于 BitTorrent 与 Ouinet 点对点协议，将网页缓存在全球分布式网络中，即使中心服务器遭阻断或面临断网，也能通过邻近节点拼装读取。",
+      "status": "available",
+      "statusText": "很慢但能用",
+      "badgeNote": "很慢但能用",
+      "pricingModel": "100% 永久免费 / 开源公益 (MPL 2.0)",
+      "platforms": [
+        "android",
+        "ios",
+        "windows"
+      ],
+      "officialUrl": "https://ceno.app",
+      "downloadLinks": [
+        {
+          "label": "Google Play 商店",
+          "url": "https://play.google.com/store/apps/details?id=ie.equalit.ceno",
+          "platform": "android",
+          "note": "海外区/具备 Google Play 服务的安卓设备"
+        },
+        {
+          "label": "Apple App Store",
+          "url": "https://apps.apple.com/us/app/ceno-browser/id6673915387",
+          "platform": "ios",
+          "note": "支持 iPhone 与 iPad（需海外 Apple ID）"
+        },
+        {
+          "label": "Windows 便携免安装版 (Portable)",
+          "url": "https://ceno-download.s3.amazonaws.com/ceno-desktop/latest/ceno-win64-portable.html",
+          "platform": "windows",
+          "isDirect": true,
+          "note": "官方 AWS S3 镜像下载页，解压即用"
+        },
+        {
+          "label": "Paskoocheh 备用下载 (Android)",
+          "url": "https://paskoocheh.com/tools/124/android.html",
+          "platform": "android",
+          "isMirror": true,
+          "note": "知名免翻开源工具市场镜像直达"
+        },
+        {
+          "label": "Censorship.No 官方镜像网站",
+          "url": "https://censorship.no/en/index.html",
+          "platform": "browser",
+          "isMirror": true,
+          "note": "项目官方备用直连镜像站点，包含文档与下载指引"
+        }
+      ],
+      "mirrors": [
+        {
+          "name": "Censorship.No 官方镜像站",
+          "url": "https://censorship.no/en/index.html",
+          "description": "Ceno Browser 原生官方直连镜像网站，提供全套抗审查原理、常见问题解答与多语言资料"
+        }
+      ],
+      "quickStartSteps": [
+        {
+          "step": 1,
+          "title": "下载并安装客户端",
+          "desc": "安卓用户推荐通过 Google Play 或 Paskoocheh 镜像下载；苹果用户直达 App Store；Windows 用户直接下载解压便携版。"
+        },
+        {
+          "step": 2,
+          "title": "了解并选择运行模式",
+          "desc": "Ceno 提供“公共模式 (Public)”和“个人模式 (Personal)”。公共模式利用 P2P 分布式缓存连通率最高；个人模式专注私密浏览。"
+        },
+        {
+          "step": 3,
+          "title": "直接输入网址浏览",
+          "desc": "输入目标网址后，应用会自动通过去中心化 Ouinet 协议寻址并从其他节点拼装拉取数据，初次握手加载较慢，请稍等数秒即可打开。"
+        }
+      ],
+      "detailedGuide": [
+        {
+          "title": "为什么特点标签是“很慢但能用”？",
+          "content": [
+            "架构差异：普通 VPN 依赖中心化服务器转发流量，一旦服务器 IP 被封便彻底瘫痪；Ceno 底层是纯粹的 P2P（点对点）分布式网络与 BitTorrent 技术。",
+            "极限生存能力：即使遇到区域性大断网或国际出口阻断，只要局域网或邻近节点有人曾访问过该网页，就能从附近设备拼装缓存数据。",
+            "初次加载需检索：因为需要在分布式网络中寻址对等节点，初次载入页面通常需要 15~30 秒，因而速度慢，但在严苛审查环境下是无可取代的“终极兜底利器”。"
+          ],
+          "tips": [
+            "初次打开网页时切勿频繁刷新，频繁刷新会打断 P2P 节点的检索与握手流程。",
+            "公共模式下访问记录会参与分布式索引以帮助其他受限用户，切勿在此模式下登录涉及个人隐私的敏感账号。"
+          ]
+        },
+        {
+          "title": "公共模式与个人模式的选用建议",
+          "content": [
+            "公共模式 (Public Mode)：推荐用于阅读被封锁的新闻媒体、维基百科、学术资料与公开文章。你的设备也会充当桥梁，把已获取的网页缓存分享给其他受审查地区的网民。",
+            "个人模式 (Personal Mode)：请求不经过公开 BitTorrent 索引，适合需要保护身份隐私的访问，但连通成功率与速度会逊于公共模式。"
+          ]
+        }
+      ],
+      "contacts": [
+        {
+          "type": "twitter",
+          "label": "官方 X (Twitter)",
+          "value": "https://x.com/cenobrowser"
+        },
+        {
+          "type": "telegram",
+          "label": "Telegram 官方频道",
+          "value": "https://t.me/Ceno_Iran"
+        },
+        {
+          "type": "gitlab",
+          "label": "GitLab 官方开源仓库",
+          "value": "https://gitlab.com/ceno-app"
+        },
+        {
+          "type": "website",
+          "label": "Ceno 官方主站",
+          "value": "https://ceno.app"
+        },
+        {
+          "type": "website",
+          "label": "Censorship.No 镜像网站",
+          "value": "https://censorship.no/en/index.html"
+        }
+      ],
+      "speedRating": "moderate",
+      "securityRating": "P2P 分布式缓存 / MPL 2.0 开源公益",
+      "visibility": "visible"
     },
     {
       "id": "rostamvpn",
