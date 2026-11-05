@@ -56,7 +56,7 @@ export const RichText: React.FC<RichTextProps> = ({
                 target="_blank"
                 rel="noopener noreferrer"
                 title={jiakuan?.title || `${linkText} (${linkUrl})`}
-                className="group inline-flex items-center gap-1.5 whitespace-nowrap rounded-lg border border-obsidian-800 bg-obsidian-900/80 hover:bg-obsidian-850 hover:border-obsidian-700 px-2 sm:px-2.5 py-1 text-xs font-medium text-white transition-colors shadow-sm align-middle mx-1"
+                className="group inline-flex items-center gap-1.5 whitespace-nowrap rounded-lg border border-obsidian-750 bg-obsidian-800 hover:bg-obsidian-750 hover:border-obsidian-700 px-2 sm:px-2.5 py-1 text-xs font-medium text-white transition-colors shadow-sm align-middle mx-1"
               >
                 {(jiakuan?.logo || '/images/jiakuan-logo.png') && (
                   <img

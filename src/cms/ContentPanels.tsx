@@ -489,7 +489,7 @@ export const SitePanel: React.FC<SitePanelProps> = ({ site, onChange }) => {
               href={jiakuan.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 rounded-lg border border-obsidian-800 bg-obsidian-900/80 px-2.5 py-1.5 text-xs font-medium text-white transition-colors hover:border-obsidian-700 hover:bg-obsidian-850"
+              className="group inline-flex items-center gap-1.5 rounded-lg border border-obsidian-750 bg-obsidian-800 px-2.5 py-1.5 text-xs font-medium text-white transition-colors hover:border-obsidian-700 hover:bg-obsidian-750"
               title={jiakuan.title}
             >
               {jiakuan.logo && (
@@ -500,7 +500,7 @@ export const SitePanel: React.FC<SitePanelProps> = ({ site, onChange }) => {
                 />
               )}
               <span className="font-sans font-medium">{jiakuan.label}</span>
-              <ExternalLink className="h-3 w-3 text-obsidian-400" />
+              <ExternalLink className="h-3 w-3 text-obsidian-400 group-hover:text-white transition-colors" />
             </a>
           ) : (
             <span className="text-[11px] font-sans text-obsidian-500">按钮已隐藏</span>

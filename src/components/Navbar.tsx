@@ -51,7 +51,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               href={jiakuan.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-center gap-1.5 rounded-lg border border-obsidian-800 bg-obsidian-900/80 hover:bg-obsidian-850 hover:border-obsidian-700 px-2 sm:px-2.5 py-1.5 text-xs font-medium text-white transition-colors shadow-sm"
+              className="group flex items-center gap-1.5 rounded-lg border border-obsidian-750 bg-obsidian-800 hover:bg-obsidian-750 hover:border-obsidian-700 px-2 sm:px-2.5 py-1.5 text-xs font-medium text-white transition-colors shadow-sm"
               title={jiakuan.title}
             >
               {jiakuan.logo && (
