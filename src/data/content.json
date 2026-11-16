@@ -84,8 +84,8 @@
       "entityLabel": "非盈利性机构",
       "entityDescription": "由非盈利组织发起。采用“互助共享”模式：免费用户可获取稳定基础流量，进阶用户升级会员的款项将全部用于扩容免费服务器池。使用推荐码 FSR-9Q23-TKVF 注册付费，会赠予额外时长。",
       "status": "available",
-      "statusText": "需注册获取订阅",
-      "pricingModel": "免费账户提供基础节点 / 赞助可获无限流量",
+      "statusText": "需注册获取",
+      "pricingModel": "免费账户提供基础节点，每月至少 50GB / 赞助可获无限流量",
       "platforms": [
         "android",
         "ios",
@@ -93,20 +93,20 @@
         "macos",
         "linux"
       ],
-      "officialUrl": "https://freesocks.org",
+      "officialUrl": "https://freesocks.org/?ref=FSR-9Q23-TKVF",
       "downloadLinks": [
         {
           "label": "前往官网注册获取订阅链接",
-          "url": "https://freesocks.org",
+          "url": "https://freesocks.org/?ref=FSR-9Q23-TKVF",
           "platform": "browser",
-          "note": "注册后在用户后台一键复制订阅 URL"
+          "note": "链接带 aff ，使用邀请码注册会员可获得额外时长。"
         }
       ],
       "quickStartSteps": [
         {
           "step": 1,
           "title": "访问官网注册账号",
-          "desc": "使用任意可用邮箱在 FreeSocks 官网注册一个免费账号，登录进入控制台。"
+          "desc": "无需邮箱在 FreeSocks 官网注册一个免费账号，登录进入控制台。"
         },
         {
           "step": 2,
@@ -128,7 +128,6 @@
             "免费配额每个月都会重置，非常适合当作主力梯子的第一备用方案。"
           ],
           "tips": [
-            "建议使用临时邮箱或海外邮箱（如 Outlook / Gmail / ProtonMail）注册。",
             "如果某个节点突然变慢，在客户端中选择延迟测速并切换到绿色低延迟节点。"
           ]
         }
@@ -840,132 +839,6 @@
       "visibility": "visible"
     },
     {
-      "id": "mahsanet",
-      "name": "MahsaNet",
-      "aliases": [
-        "MahsaVPN",
-        "MahsaNG",
-        "玛莎网络",
-        "Mahsa Server"
-      ],
-      "tagline": "专为严苛网络审查地区研发的去中心化公益抗封锁工具，主打伊朗抗阻断",
-      "entityType": "self-organized",
-      "entityLabel": "自组织机构",
-      "entityDescription": "由为纪念阿米尼（Mahsa Amini）并捍卫自由互联网的海外伊朗技术社群发起成立的非营利公益组织。构建去中心化的 Mahsa Server 平台，汇聚全球志愿者捐赠的抗封锁节点与混淆配置，主打为遭受严重断网与深度审查地区的人民提供可靠、安全的人权网络访问通道。",
-      "status": "available",
-      "statusText": "主打伊朗",
-      "badgeNote": "主打伊朗",
-      "pricingModel": "100% 永久免费 / 社区公益众包",
-      "platforms": [
-        "android",
-        "ios"
-      ],
-      "officialUrl": "https://mahsanet.com",
-      "downloadLinks": [
-        {
-          "label": "MahsaVPN (Apple App Store)",
-          "url": "https://apps.apple.com/us/app/mahsa-vpn/id6751109099",
-          "platform": "ios",
-          "note": "支持 iPhone 与 iPad（需海外 Apple ID 登录下载）"
-        },
-        {
-          "label": "MahsaNG VPN (Google Play 商店)",
-          "url": "https://play.google.com/store/apps/details?id=com.MahsaNet.MahsaNG",
-          "platform": "android",
-          "note": "Google Play 官方商店获取（基于 v2rayNG 深度定制）"
-        },
-        {
-          "label": "MahsaServer 官方下载中心",
-          "url": "https://www.mahsaserver.com/download",
-          "platform": "android",
-          "isDirect": true,
-          "note": "官方免翻墙镜像下载中心，直接获取安卓 APK 安装包"
-        },
-        {
-          "label": "GitHub Releases 源码与发布页",
-          "url": "https://github.com/mahsanet/MahsaNG/releases",
-          "platform": "android",
-          "note": "GitHub 官方开源代码仓库与原生编译安装包下载"
-        }
-      ],
-      "mirrors": [
-        {
-          "name": "Mahsa Server 官方镜像站",
-          "url": "https://www.mahsaserver.com",
-          "description": "官方备用镜像站点，提供最新节点配置与安卓客户端下载"
-        }
-      ],
-      "quickStartSteps": [
-        {
-          "step": 1,
-          "title": "下载并安装客户端",
-          "desc": "安卓设备推荐访问 MahsaServer 官方下载页或 Google Play 安装 MahsaNG；iOS 用户在海外区 App Store 安装 MahsaVPN。"
-        },
-        {
-          "step": 2,
-          "title": "自动拉取抗审查配置",
-          "desc": "启动软件后，客户端将自动连接 Mahsa Server 众包节点池，拉取最新验证可用的抗封锁加密配置。"
-        },
-        {
-          "step": 3,
-          "title": "一键开启加密连接",
-          "desc": "在节点列表中测速并选择延迟较低的配置，点击主界面底部或中央的连接开关，即可快速建立安全隧道。"
-        }
-      ],
-      "detailedGuide": [
-        {
-          "title": "众包节点池与抗审查技术架构",
-          "content": [
-            "众包节点生命周期管理：Mahsa Server 平台拥有自动化的配置测试与分发机制。来自全球志愿者的捐助节点在经过连通性、速度与安全性全自动筛查后，被动态推送至客户端。",
-            "深度包检测对抗（DPI）：针对严苛审查地区的协议阻断，客户端集成了 TLS 分片（Fragment）、DoH（DNS over HTTPS）防劫持解析等先进混淆技术，破坏防火墙的指纹识别。",
-            "专为断网严酷环境优化：在遇到区域性大面积丢包或限流时，软件拥有强大的快速重连机制与备用配置轮询方案，确保维持基础信息通道。"
-          ],
-          "tips": [
-            "若当前连接节点速度下降或失效，可下拉配置列表重新刷新从 Mahsa Server 获取最新的一批可用节点。",
-            "MahsaNG 允许用户导入自定义 V2Ray/Xray 订阅链接，兼具简便性与高级扩展能力。"
-          ]
-        },
-        {
-          "title": "数字安全与隐私原则",
-          "content": [
-            "完全免注册：使用 MahsaNet 系列软件无需提供手机号、邮箱或任何个人身份信息。",
-            "零日志收集：官方不记录任何用户访问日志与网络传输数据。",
-            "节点安全考量：由于节点由社区众包提供，强烈建议仅用于打破信息封锁与正常网页浏览；处理高价值敏感事务时，请确保全程使用 HTTPS 加密或配合端到端加密通信工具。"
-          ]
-        }
-      ],
-      "contacts": [
-        {
-          "type": "website",
-          "label": "MahsaNet 官方主站",
-          "value": "https://mahsanet.com"
-        },
-        {
-          "type": "website",
-          "label": "Mahsa Server 镜像站",
-          "value": "https://www.mahsaserver.com"
-        },
-        {
-          "type": "github",
-          "label": "GitHub 官方开源组织",
-          "value": "https://github.com/mahsanet"
-        },
-        {
-          "type": "twitter",
-          "label": "官方 X (Twitter)",
-          "value": "https://x.com/mahsanet"
-        },
-        {
-          "type": "telegram",
-          "label": "Telegram 官方频道",
-          "value": "https://t.me/mahsa_net"
-        }
-      ],
-      "speedRating": "moderate",
-      "securityRating": "去中心化众包节点 / TLS 分片混淆抗封锁",
-      "visibility": "visible"
-    },
-    {
       "id": "warp",
       "name": "1.1.1.1",
       "aliases": [
@@ -1357,6 +1230,132 @@
       ],
       "speedRating": "moderate",
       "securityRating": "全球军工级匿名 / 3重节点中继",
+      "visibility": "visible"
+    },
+    {
+      "id": "mahsanet",
+      "name": "MahsaNet",
+      "aliases": [
+        "MahsaVPN",
+        "MahsaNG",
+        "玛莎网络",
+        "Mahsa Server"
+      ],
+      "tagline": "专为严苛网络审查地区研发的去中心化公益抗封锁工具，主打伊朗抗阻断",
+      "entityType": "self-organized",
+      "entityLabel": "自组织机构",
+      "entityDescription": "由为纪念阿米尼（Mahsa Amini）并捍卫自由互联网的海外伊朗技术社群发起成立的非营利公益组织。构建去中心化的 Mahsa Server 平台，汇聚全球志愿者捐赠的抗封锁节点与混淆配置，主打为遭受严重断网与深度审查地区的人民提供可靠、安全的人权网络访问通道。",
+      "status": "available",
+      "statusText": "主打伊朗",
+      "badgeNote": "主打伊朗",
+      "pricingModel": "100% 永久免费 / 社区公益众包",
+      "platforms": [
+        "android",
+        "ios"
+      ],
+      "officialUrl": "https://mahsanet.com",
+      "downloadLinks": [
+        {
+          "label": "MahsaVPN (Apple App Store)",
+          "url": "https://apps.apple.com/us/app/mahsa-vpn/id6751109099",
+          "platform": "ios",
+          "note": "支持 iPhone 与 iPad（需海外 Apple ID 登录下载）"
+        },
+        {
+          "label": "MahsaNG VPN (Google Play 商店)",
+          "url": "https://play.google.com/store/apps/details?id=com.MahsaNet.MahsaNG",
+          "platform": "android",
+          "note": "Google Play 官方商店获取（基于 v2rayNG 深度定制）"
+        },
+        {
+          "label": "MahsaServer 官方下载中心",
+          "url": "https://www.mahsaserver.com/download",
+          "platform": "android",
+          "isDirect": true,
+          "note": "官方免翻墙镜像下载中心，直接获取安卓 APK 安装包"
+        },
+        {
+          "label": "GitHub Releases 源码与发布页",
+          "url": "https://github.com/mahsanet/MahsaNG/releases",
+          "platform": "android",
+          "note": "GitHub 官方开源代码仓库与原生编译安装包下载"
+        }
+      ],
+      "mirrors": [
+        {
+          "name": "Mahsa Server 官方镜像站",
+          "url": "https://www.mahsaserver.com",
+          "description": "官方备用镜像站点，提供最新节点配置与安卓客户端下载"
+        }
+      ],
+      "quickStartSteps": [
+        {
+          "step": 1,
+          "title": "下载并安装客户端",
+          "desc": "安卓设备推荐访问 MahsaServer 官方下载页或 Google Play 安装 MahsaNG；iOS 用户在海外区 App Store 安装 MahsaVPN。"
+        },
+        {
+          "step": 2,
+          "title": "自动拉取抗审查配置",
+          "desc": "启动软件后，客户端将自动连接 Mahsa Server 众包节点池，拉取最新验证可用的抗封锁加密配置。"
+        },
+        {
+          "step": 3,
+          "title": "一键开启加密连接",
+          "desc": "在节点列表中测速并选择延迟较低的配置，点击主界面底部或中央的连接开关，即可快速建立安全隧道。"
+        }
+      ],
+      "detailedGuide": [
+        {
+          "title": "众包节点池与抗审查技术架构",
+          "content": [
+            "众包节点生命周期管理：Mahsa Server 平台拥有自动化的配置测试与分发机制。来自全球志愿者的捐助节点在经过连通性、速度与安全性全自动筛查后，被动态推送至客户端。",
+            "深度包检测对抗（DPI）：针对严苛审查地区的协议阻断，客户端集成了 TLS 分片（Fragment）、DoH（DNS over HTTPS）防劫持解析等先进混淆技术，破坏防火墙的指纹识别。",
+            "专为断网严酷环境优化：在遇到区域性大面积丢包或限流时，软件拥有强大的快速重连机制与备用配置轮询方案，确保维持基础信息通道。"
+          ],
+          "tips": [
+            "若当前连接节点速度下降或失效，可下拉配置列表重新刷新从 Mahsa Server 获取最新的一批可用节点。",
+            "MahsaNG 允许用户导入自定义 V2Ray/Xray 订阅链接，兼具简便性与高级扩展能力。"
+          ]
+        },
+        {
+          "title": "数字安全与隐私原则",
+          "content": [
+            "完全免注册：使用 MahsaNet 系列软件无需提供手机号、邮箱或任何个人身份信息。",
+            "零日志收集：官方不记录任何用户访问日志与网络传输数据。",
+            "节点安全考量：由于节点由社区众包提供，强烈建议仅用于打破信息封锁与正常网页浏览；处理高价值敏感事务时，请确保全程使用 HTTPS 加密或配合端到端加密通信工具。"
+          ]
+        }
+      ],
+      "contacts": [
+        {
+          "type": "website",
+          "label": "MahsaNet 官方主站",
+          "value": "https://mahsanet.com"
+        },
+        {
+          "type": "website",
+          "label": "Mahsa Server 镜像站",
+          "value": "https://www.mahsaserver.com"
+        },
+        {
+          "type": "github",
+          "label": "GitHub 官方开源组织",
+          "value": "https://github.com/mahsanet"
+        },
+        {
+          "type": "twitter",
+          "label": "官方 X (Twitter)",
+          "value": "https://x.com/mahsanet"
+        },
+        {
+          "type": "telegram",
+          "label": "Telegram 官方频道",
+          "value": "https://t.me/mahsa_net"
+        }
+      ],
+      "speedRating": "moderate",
+      "securityRating": "去中心化众包节点 / TLS 分片混淆抗封锁",
       "visibility": "visible"
     },
     {
