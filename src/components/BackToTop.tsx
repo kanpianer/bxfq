@@ -1,27 +1,80 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { ArrowUp } from 'lucide-react';
 
 export const BackToTop: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const hideTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const isHoveredRef = useRef(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      // Show when page is scrolled down more than 200px
-      if (window.scrollY > 200) {
-        setIsVisible(true);
-      } else {
+      const scrollY = window.scrollY || document.documentElement?.scrollTop || document.body?.scrollTop || 0;
+
+      // 距离顶部较近时始终不显示
+      if (scrollY <= 200) {
+        if (hideTimeoutRef.current) {
+          clearTimeout(hideTimeoutRef.current);
+          hideTimeoutRef.current = null;
+        }
         setIsVisible(false);
+        return;
+      }
+
+      // 正在滑动且超过阈值时显示
+      setIsVisible(true);
+
+      // 清除之前的隐藏定时器
+      if (hideTimeoutRef.current) {
+        clearTimeout(hideTimeoutRef.current);
+      }
+
+      // 若鼠标未悬停在按钮上，滑动停止 2 秒后自动隐藏
+      if (!isHoveredRef.current) {
+        hideTimeoutRef.current = setTimeout(() => {
+          setIsVisible(false);
+          hideTimeoutRef.current = null;
+        }, 2000);
       }
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    // Check initial scroll position
-    handleScroll();
 
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (hideTimeoutRef.current) {
+        clearTimeout(hideTimeoutRef.current);
+      }
+    };
   }, []);
 
+  const handleMouseEnter = () => {
+    isHoveredRef.current = true;
+    if (hideTimeoutRef.current) {
+      clearTimeout(hideTimeoutRef.current);
+      hideTimeoutRef.current = null;
+    }
+  };
+
+  const handleMouseLeave = () => {
+    isHoveredRef.current = false;
+    const scrollY = window.scrollY || document.documentElement?.scrollTop || document.body?.scrollTop || 0;
+    if (scrollY > 200) {
+      if (hideTimeoutRef.current) {
+        clearTimeout(hideTimeoutRef.current);
+      }
+      hideTimeoutRef.current = setTimeout(() => {
+        setIsVisible(false);
+        hideTimeoutRef.current = null;
+      }, 1500);
+    }
+  };
+
   const scrollToTop = () => {
+    if (hideTimeoutRef.current) {
+      clearTimeout(hideTimeoutRef.current);
+      hideTimeoutRef.current = null;
+    }
+    setIsVisible(false);
     window.scrollTo({
       top: 0,
       behavior: 'smooth',
@@ -34,6 +87,9 @@ export const BackToTop: React.FC = () => {
         <button
           type="button"
           onClick={scrollToTop}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+          onTouchStart={handleMouseEnter}
           aria-label="返回顶部"
           title="返回顶部"
           className={`pointer-events-auto group flex h-10 w-10 items-center justify-center rounded-xl border border-obsidian-800 bg-obsidian-900/85 text-obsidian-400 backdrop-blur-md shadow-xl transition-all duration-300 hover:border-obsidian-700 hover:bg-obsidian-850 hover:text-white hover:scale-105 active:scale-95 focus:outline-none focus:ring-1 focus:ring-obsidian-700 ${
