@@ -159,6 +159,162 @@
       "visibility": "visible"
     },
     {
+      "id": "urnetwork",
+      "name": "URnetwork",
+      "aliases": [
+        "UR.io",
+        "The Privacy Network",
+        "BringYour"
+      ],
+      "tagline": "去中心化分布式隐私网络，每日免费 30 GiB 家宽出口流量，后量子加密与抗审查",
+      "entityType": "commercial",
+      "entityLabel": "商业机构",
+      "entityDescription": "由位于美国旧金山的 BringYour, Inc. 研发运营。基于去中心化对等网络架构（P2P），流量经由全球社区家庭宽带（并不是所有）中继节点传输，具备后量子加密（PQE）与双重中继隔离，全平台客户端与协议 100% 开源。",
+      "status": "available",
+      "statusText": "每日30GB免费",
+      "badgeNote": "每日30GB免费",
+      "pricingModel": "免费版每日 30 GiB 流量（无广告、零日志、后量子加密） / UR Pro 会员 $5/月 或 $40/年（每月 10 TiB + WireGuard/SOCKS5 代理）",
+      "platforms": [
+        "android",
+        "ios",
+        "windows",
+        "macos",
+        "linux",
+        "browser"
+      ],
+      "officialUrl": "https://ur.io",
+      "downloadLinks": [
+        {
+          "label": "官网全平台安装中心 (ur.io/install)",
+          "url": "https://ur.io/install",
+          "platform": "browser",
+          "note": "自动识别当前操作系统并提供下载引导"
+        },
+        {
+          "label": "GitHub Releases 官方开源构建直链",
+          "url": "https://github.com/urnetwork/build/releases",
+          "platform": "windows",
+          "isDirect": true,
+          "note": "提供 Windows (.msi)、Android (.apk)、Linux (.deb / .AppImage) 最新安装包"
+        },
+        {
+          "label": "Google Play 商店",
+          "url": "https://play.google.com/store/apps/details?id=com.bringyour.network",
+          "platform": "android",
+          "note": "Android 官方应用市场下载"
+        },
+        {
+          "label": "F-Droid 开源应用仓库",
+          "url": "https://f-droid.org/packages/com.bringyour.network/",
+          "platform": "android",
+          "note": "开源应用市场无 Google 框架直接安装"
+        },
+        {
+          "label": "Apple App Store (iOS / iPadOS / macOS)",
+          "url": "https://apps.apple.com/us/app/urnetwork/id6741000606",
+          "platform": "ios",
+          "note": "支持 iPhone、iPad 及 Mac 苹果全家桶"
+        },
+        {
+          "label": "Windows 安装包 (MSI x64 / ARM64)",
+          "url": "https://ur.io/install/windows",
+          "platform": "windows",
+          "note": "支持 Windows 10 / 11 系统"
+        },
+        {
+          "label": "Ubuntu / Linux 安装包 (deb / AppImage)",
+          "url": "https://ur.io/install/ubuntu",
+          "platform": "linux",
+          "note": "提供 .deb 守护进程包与跨发行版 AppImage 桌面版"
+        },
+        {
+          "label": "Chrome 网上应用店扩展",
+          "url": "https://chromewebstore.google.com/detail/urnetwork/kpnklgbgjkihebbieiggfeokkddjbkfb",
+          "platform": "browser",
+          "note": "支持 Chrome、Edge、Brave 等 Chromium 内核浏览器"
+        },
+        {
+          "label": "Firefox 附加组件扩展",
+          "url": "https://addons.mozilla.org/en-US/firefox/addon/urnetwork/",
+          "platform": "browser",
+          "note": "支持 Mozilla Firefox 浏览器"
+        }
+      ],
+      "quickStartSteps": [
+        {
+          "step": 1,
+          "title": "下载安装客户端",
+          "desc": "访问 ur.io/install 或前往 GitHub Releases 下载对应您设备（Android、iOS、Windows、macOS、Linux 或浏览器扩展）的官方安装程序。"
+        },
+        {
+          "step": 2,
+          "title": "一键开启安全连接",
+          "desc": "打开 URnetwork 应用，无需强制绑定实名手机号或复杂配置，点击主界面的连接大按钮即可自动接入分布式网络。"
+        },
+        {
+          "step": 3,
+          "title": "畅享 30 GiB/日家宽出口",
+          "desc": "连接成功后网络流量通过全球社区家庭宽带节点中继，每日享受 30 GiB 免费高带宽额度，轻松突破网络阻断。"
+        }
+      ],
+      "detailedGuide": [
+        {
+          "title": "去中心化架构与社区真实家宽出口（Residential IP）",
+          "content": [
+            "告别机房中心化 IP：URnetwork 采用分布式对等（P2P）隐私网络，不依赖容易被大面积 IP 封锁的中心化数据中心服务器，而是通过全球社区志愿者家庭宽带设备中继流量。",
+            "原生家宽住宅 IP 出口：网络出口呈现真实家庭宽带住宅 IP（Residential IP），能大幅降低访问学术服务、流媒体或社交平台时被识别为数据中心代理而弹出人机验证的概率。",
+            "每天 30 GiB 充沛免费额度：所有设备每日均享 30 GiB 免费高带宽流量，无广告、无日志，足以满足日常查阅资料、技术文档搜索与音视频浏览需求。"
+          ],
+          "tips": [
+            "如需更大流量池（10 TiB/月）或 WireGuard / SOCKS5 代理配置，可按需升级 UR Pro 专业版（$5/月 或 $40/年）。"
+          ]
+        },
+        {
+          "title": "后量子加密与双重中继链路隔离",
+          "content": [
+            "后量子密码学抗破解（PQE）：在用户与去中心化中继节点之间部署抗量子计算破解的先进加密，防止未来的量子计算机对已记录流量进行离线逆向解密。",
+            "双重中继零知识隔离：流量在客户端本地封装，由两个独立的中继角色分别处理——出口节点无法获取用户真实 IP，入口与中继节点无法解密流量内容，URnetwork 官方亦无法读取密封会话。",
+            "内置隐私防护：原生拦截广告、追踪器、恶意软件与网络僵尸，保护全设备通讯隐私。"
+          ]
+        },
+        {
+          "title": "100% 源代码公开与全平台生态覆盖",
+          "content": [
+            "开源可复现验证：核心协议与客户端代码完全开源于 GitHub (github.com/urnetwork)，构建脚本公开可验证，拒绝任何闭源黑盒与蜜罐后门。",
+            "全生态无缝支持：全面适配 Android、iOS/macOS (App Store)、Windows 10/11、Linux (Ubuntu deb/AppImage) 以及 Chrome/Edge/Firefox 浏览器扩展，一个账号跨多端同步。"
+          ],
+          "tips": [
+            "国内直连下载推荐使用 GitHub Releases 官方构建直链，或在已配置好各系统官方商店环境中直接安装。"
+          ]
+        }
+      ],
+      "contacts": [
+        {
+          "type": "website",
+          "label": "URnetwork 官方网站",
+          "value": "https://ur.io"
+        },
+        {
+          "type": "github",
+          "label": "GitHub 官方开源组织",
+          "value": "https://github.com/urnetwork"
+        },
+        {
+          "type": "website",
+          "label": "网络状态与故障监控 (Live Status)",
+          "value": "https://ur.io/outages"
+        },
+        {
+          "type": "email",
+          "label": "官方技术支持",
+          "value": "support@ur.io"
+        }
+      ],
+      "speedRating": "high",
+      "securityRating": "后量子加密 (PQE) / 分布式双重中继 / 100% 开源 / 零日志",
+      "visibility": "visible"
+    },
+    {
       "id": "openrung",
       "name": "OpenRung",
       "aliases": [
@@ -281,7 +437,7 @@
       "status": "available",
       "statusText": "免费版有限额",
       "badgeNote": "老牌抗封锁",
-      "pricingModel": "基础版永久免费，每天512MB，付费解锁无限高速流量与全球节点挑选，广告屏蔽",
+      "pricingModel": "基础版永久免费，每天512MB，付费解锁无限高速流量与全球节点挑选，增加广告屏蔽功能。",
       "platforms": [
         "android",
         "ios",
@@ -355,19 +511,7 @@
           "desc": "蓝灯内置智能路由分流，访问国内网站直连不消耗流量，访问受阻网站自动走加密通道代理。"
         }
       ],
-      "detailedGuide": [
-        {
-          "title": "智能分流与多协议抗阻断架构",
-          "content": [
-            "动态抗阻断协议：蓝灯集成了包括自研混淆传输、多重回退中继、域前置等一系列抗审查协议。当某种连接方式受到防火墙干扰时，客户端会自动切换备用路由通道。",
-            "智能分流省流量：软件默认只对被审查封锁的域名和 IP 启用代理隧道，国内主流网站与服务依然保持本地直连，既不减慢国内网络速度，又极大节省了代理流量。",
-            "去中心化与集中式混合中继：综合了集中式高性能服务器与分布式对等中继的弹性，确保即使在网络敏感期也能维持基本连通性。"
-          ],
-          "tips": [
-            "电脑端启动后系统托盘会常驻小灯笼图标，若需全局代理或更改端口，可在右键托盘菜单【设置】中进行调整。"
-          ]
-        }
-      ],
+      "detailedGuide": [],
       "contacts": [
         {
           "type": "twitter",
