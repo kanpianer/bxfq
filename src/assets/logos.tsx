@@ -1,6 +1,7 @@
 import React from 'react';
 import mahsanetImg from './mahsanet.png';
 import openTunnelImg from './opentunnel.png';
+import urNetworkImg from './urnetwork.png';
 
 interface LogoProps {
   className?: string;
@@ -405,6 +406,17 @@ export const OpenTunnelLogo: React.FC<LogoProps> = ({ className = "w-6 h-6", siz
   />
 );
 
+// 15. URnetwork: 官方应用徽标 (来自 ur.io 官方母版)
+export const URnetworkLogo: React.FC<LogoProps> = ({ className = "w-6 h-6", size = 24 }) => (
+  <img
+    src={urNetworkImg}
+    width={size}
+    height={size}
+    alt="URnetwork Logo"
+    className={`rounded-xl object-contain ${className}`}
+  />
+);
+
 export const ToolLogoMap: Record<string, React.FC<LogoProps>> = {
   openrung: OpenRungLogo,
   freesocks: FreeSocksLogo,
@@ -420,5 +432,6 @@ export const ToolLogoMap: Record<string, React.FC<LogoProps>> = {
   mahsanet: MahsaNetLogo,
   freebrowser: FreeBrowserLogo,
   opentunnel: OpenTunnelLogo,
+  urnetwork: URnetworkLogo,
 };
 

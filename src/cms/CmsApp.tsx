@@ -6,18 +6,24 @@ import {
   Cloud,
   ExternalLink,
   FileText,
+  Laptop,
   LayoutGrid,
   Loader2,
-  RefreshCw,
   Save,
   Settings,
   ShieldAlert,
+  UploadCloud,
   WifiOff,
   X,
 } from 'lucide-react';
 import { SITE_CONTENT } from '../content';
 import type { SiteContent, VPNTool } from '../types';
 import { getToolVisibility } from '../types';
+import {
+  isLocalNetwork,
+  fetchLocalContent,
+  saveLocalContent,
+} from './localApi';
 import {
   clearDraft,
   commitContent,
@@ -36,7 +42,6 @@ import {
   Badge,
   Button,
   ConfirmModal,
-  IconButton,
 } from './CmsUI';
 import { ToolsPanel } from './ToolsPanel';
 import { ToolEditor } from './ToolEditor';
@@ -139,10 +144,12 @@ const ToastCard: React.FC<{ toast: ToastData; onDismiss: () => void }> = ({
 export const CmsApp: React.FC = () => {
   const [content, setContent] = useState<SiteContent>(SITE_CONTENT);
   const [source, setSource] = useState<'github' | 'local'>('local');
+  const [isLocalMode, setIsLocalMode] = useState<boolean>(() => isLocalNetwork());
   const [sha, setSha] = useState<string | undefined>();
   const [dirty, setDirty] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [busy, setBusy] = useState(false);
+  const [saving, setSaving] = useState(false);
+  const [pushing, setPushing] = useState(false);
   const [tab, setTab] = useState<Tab>('tools');
   const [editingId, setEditingId] = useState<string | null>(null);
   const [token, setToken] = useState<string>(() => loadToken());
@@ -181,67 +188,94 @@ export const CmsApp: React.FC = () => {
 
   const loadLatest = useCallback(async () => {
     setLoading(true);
-    setBusy(true);
     const editMark = editedRef.current;
+
     try {
-      const remote = await fetchRemoteContent(repo, token);
-      setSha(remote.sha);
-      setSource('github');
+      // 1. 本地网络环境优先：直接从本地代码库 (src/data/content.json) 读取，不使用浏览器暂存
+      if (isLocalNetwork()) {
+        try {
+          const localContent = await fetchLocalContent();
+          setIsLocalMode(true);
+          setSource('local');
+          setSha(undefined);
+          clearDraft(); // 本地网络模式下清理浏览器的历史草稿
+          setDraftSavedAt(null);
 
-      if (editedRef.current !== editMark) {
-        showToast('info', '已读取云端内容，但检测到新的本地编辑，已保留当前编辑。');
-        return;
-      }
+          if (editedRef.current !== editMark) {
+            showToast('info', '已读取本地代码库内容，但检测到新的编辑，已保留当前编辑。');
+            return;
+          }
 
-      const draft = loadDraft();
-      if (draft && draft.repoKey === repoKey) {
-        setContent(draft.content);
-        setDirty(true);
-        setDraftSavedAt(draft.savedAt);
-        showToast(
-          'info',
-          `已恢复本地未提交草稿（保存于 ${new Date(draft.savedAt).toLocaleString('zh-CN', {
-            hour12: false,
-          })}）。提交前不会丢失。`
-        );
-      } else {
-        setContent(remote.content);
-        setDirty(false);
-        setDraftSavedAt(null);
-        if (remote.warning) {
-          showToast('error', `${remote.warning}（已读取 ${remote.content.tools.length} 个项目）`);
-        } else {
-          showToast('success', `已从 GitHub 读取最新内容（${remote.content.tools.length} 个项目）`);
+          setContent(localContent);
+          setDirty(false);
+          showToast('success', `已直连本地代码库 (src/data/content.json)，共 ${localContent.tools.length} 个项目`);
+          return;
+        } catch (localError) {
+          console.warn('本地代码库接口不可用，将尝试使用线上配置:', localError);
         }
       }
-    } catch (error) {
-      const message = error instanceof Error ? error.message : '未知错误';
-      setSha(undefined);
-      setSource('local');
 
-      if (editedRef.current !== editMark) {
-        showToast('error', `读取 GitHub 内容失败：${message}。已保留当前本地编辑。`);
-        return;
-      }
+      // 2. 线上 GitHub 模式
+      setIsLocalMode(false);
+      try {
+        const remote = await fetchRemoteContent(repo, token);
+        setSha(remote.sha);
+        setSource('github');
 
-      const draft = loadDraft();
-      if (draft && draft.repoKey === repoKey) {
-        setContent(draft.content);
-        setDirty(true);
-        setDraftSavedAt(draft.savedAt);
-        showToast('error', `读取 GitHub 内容失败：${message}。已恢复本地未提交草稿。`);
-      } else {
-        setContent(SITE_CONTENT);
-        setDirty(false);
-        setDraftSavedAt(null);
-        showToast(
-          'error',
-          `读取 GitHub 内容失败：${message}。已载入本站内置内容，仍可编辑，但提交前请先配置 PAT 并重新载入。`
-        );
+        if (editedRef.current !== editMark) {
+          showToast('info', '已读取云端内容，但检测到新的本地编辑，已保留当前编辑。');
+          return;
+        }
+
+        const draft = loadDraft();
+        if (draft && draft.repoKey === repoKey) {
+          setContent(draft.content);
+          setDirty(true);
+          setDraftSavedAt(draft.savedAt);
+          showToast(
+            'info',
+            `已恢复本地未提交草稿（保存于 ${new Date(draft.savedAt).toLocaleString('zh-CN', {
+              hour12: false,
+            })}）。提交前不会丢失。`
+          );
+        } else {
+          setContent(remote.content);
+          setDirty(false);
+          setDraftSavedAt(null);
+          if (remote.warning) {
+            showToast('error', `${remote.warning}（已读取 ${remote.content.tools.length} 个项目）`);
+          } else {
+            showToast('success', `已从 GitHub 读取最新内容（${remote.content.tools.length} 个项目）`);
+          }
+        }
+      } catch (error) {
+        const message = error instanceof Error ? error.message : '未知错误';
+        setSha(undefined);
+        setSource('local');
+
+        if (editedRef.current !== editMark) {
+          showToast('error', `读取 GitHub 内容失败：${message}。已保留当前本地编辑。`);
+          return;
+        }
+
+        const draft = loadDraft();
+        if (draft && draft.repoKey === repoKey) {
+          setContent(draft.content);
+          setDirty(true);
+          setDraftSavedAt(draft.savedAt);
+          showToast('error', `读取 GitHub 内容失败：${message}。已恢复本地未提交草稿。`);
+        } else {
+          setContent(SITE_CONTENT);
+          setDirty(false);
+          setDraftSavedAt(null);
+          showToast(
+            'error',
+            `读取 GitHub 内容失败：${message}。已载入本站内置内容，仍可编辑，但提交前请先配置 PAT 并重新载入。`
+          );
+        }
       }
     } finally {
       setLoading(false);
-      setBusy(false);
     }
   }, [repo, token, repoKey, showToast]);
 
@@ -268,11 +302,13 @@ export const CmsApp: React.FC = () => {
   }, []);
 
   // 自动把未提交的修改保存为本地草稿，防止刷新或跳转页面导致内容丢失。
+  // 注意：在本地网络模式下，不将内容暂存到浏览器，而是直接在点击保存时写入本地文件系统。
   useEffect(() => {
+    if (isLocalMode) return;
     if (!dirty) return;
     const timer = window.setTimeout(() => saveDraft(content, repoKey), 400);
     return () => window.clearTimeout(timer);
-  }, [content, dirty, repoKey]);
+  }, [content, dirty, repoKey, isLocalMode]);
 
   const selectedTool = useMemo(
     () => content.tools.find((tool) => tool.id === editingId) || null,
@@ -294,7 +330,7 @@ export const CmsApp: React.FC = () => {
     mutate((previous) => ({ ...previous, tools: [tool, ...previous.tools] }));
     setTab('tools');
     setEditingId(tool.id);
-    showToast('info', '已新增项目，编辑完成后记得点击右上角「提交更改」。');
+    showToast('info', '已新增项目，编辑完成后记得点击右上角「保存」。');
   };
 
   const handleToolChange = (updated: VPNTool) => {
@@ -319,21 +355,37 @@ export const CmsApp: React.FC = () => {
     }));
     if (editingId === targetId) setEditingId(null);
     setDeleteTarget(null);
-    showToast('info', '项目已删除，提交后生效。');
+    showToast('info', '项目已删除，保存后生效。');
   };
 
-  const handleMoveTool = (id: string, direction: -1 | 1) => {
+  const handleReorderTools = (sourceIndex: number, destinationIndex: number) => {
+    if (sourceIndex === destinationIndex) return;
     mutate((previous) => {
-      const index = previous.tools.findIndex((tool) => tool.id === id);
-      const target = index + direction;
-      if (index < 0 || target < 0 || target >= previous.tools.length) return previous;
       const tools = [...previous.tools];
-      [tools[index], tools[target]] = [tools[target], tools[index]];
+      const [removed] = tools.splice(sourceIndex, 1);
+      tools.splice(destinationIndex, 0, removed);
       return { ...previous, tools };
     });
   };
 
   const handleSave = async () => {
+    if (isLocalMode) {
+      setSaving(true);
+      try {
+        const msg = await saveLocalContent(content);
+        setDirty(false);
+        clearDraft();
+        setDraftSavedAt(null);
+        showToast('success', msg || '已成功保存至本地代码库 (src/data/content.json)');
+      } catch (error) {
+        const message = error instanceof Error ? error.message : '未知错误';
+        showToast('error', `保存到本地代码库失败：${message}`);
+      } finally {
+        setSaving(false);
+      }
+      return;
+    }
+
     if (!token) {
       setTab('settings');
       showToast('error', '请先在「设置」中配置 GitHub Personal Access Token。');
@@ -346,7 +398,7 @@ export const CmsApp: React.FC = () => {
       if (!confirmed) return;
     }
 
-    setBusy(true);
+    setSaving(true);
     try {
       const currentSha = sha || (await getFileSha(repo, token));
       const now = new Date();
@@ -368,12 +420,54 @@ export const CmsApp: React.FC = () => {
       const message = error instanceof Error ? error.message : '未知错误';
       showToast('error', `提交失败：${message}`);
     } finally {
-      setBusy(false);
+      setSaving(false);
+    }
+  };
+
+  const handlePush = async () => {
+    if (!token) {
+      setTab('settings');
+      showToast('error', '请先在「设置」中配置 GitHub Personal Access Token 才能推送到 GitHub。');
+      return;
+    }
+
+    setPushing(true);
+    try {
+      // 1. 本地模式下若有未保存修改，先直接保存到本地文件
+      if (isLocalMode && dirty) {
+        await saveLocalContent(content);
+        setDirty(false);
+      }
+
+      // 2. 获取远端最新 SHA 并推送到 GitHub
+      const currentSha = await getFileSha(repo, token).catch(() => sha);
+      const now = new Date();
+      const stamp = now.toLocaleString('zh-CN', { hour12: false });
+      const result = await commitContent(
+        repo,
+        token,
+        content,
+        currentSha,
+        `chore(cms): update site content (${stamp})`
+      );
+      setSha(result.sha);
+      setDirty(false);
+      clearDraft();
+      setDraftSavedAt(null);
+      showToast('success', '已成功推送到 GitHub，托管平台构建完成后全站生效。', result.commitUrl);
+    } catch (error) {
+      const message = error instanceof Error ? error.message : '未知错误';
+      showToast('error', `推送到 GitHub 失败：${message}`);
+    } finally {
+      setPushing(false);
     }
   };
 
   const handleReload = () => {
-    if (dirty && !window.confirm('当前有未提交的修改，重新载入会丢弃这些修改。确定继续吗？')) {
+    const confirmMsg = isLocalMode
+      ? '当前有未保存的修改，重新载入会丢弃这些修改并从本地代码库重新读取。确定继续吗？'
+      : '当前有未提交的修改，重新载入会丢弃这些修改。确定继续吗？';
+    if (dirty && !window.confirm(confirmMsg)) {
       return;
     }
     setDirty(false);
@@ -425,6 +519,11 @@ export const CmsApp: React.FC = () => {
                   <Loader2 className="h-3 w-3 animate-spin" />
                   正在读取
                 </Badge>
+              ) : isLocalMode ? (
+                <Badge className="border-emerald-800/80 bg-emerald-950/60 text-emerald-300">
+                  <Laptop className="h-3 w-3 text-emerald-400" />
+                  本地代码库直连
+                </Badge>
               ) : source === 'github' ? (
                 <Badge className="border-emerald-900/60 bg-emerald-950/30 text-emerald-300">
                   <Cloud className="h-3 w-3" />
@@ -438,9 +537,9 @@ export const CmsApp: React.FC = () => {
                 </Badge>
               )}
               {dirty && (
-                <Badge className="border-white/20 bg-white/5 text-white">
-                  <span className="h-1.5 w-1.5 rounded-full bg-white" />
-                  未提交
+                <Badge className="border-amber-700/60 bg-amber-950/40 text-amber-200">
+                  <span className="h-1.5 w-1.5 rounded-full bg-amber-400" />
+                  {isLocalMode ? '未保存到本地' : '未提交'}
                 </Badge>
               )}
             </div>
@@ -454,22 +553,48 @@ export const CmsApp: React.FC = () => {
               <ExternalLink className="h-3 w-3" />
               查看网站
             </a>
-            <IconButton title="从 GitHub 重新载入" onClick={handleReload} disabled={busy}>
-              <RefreshCw className={`h-3.5 w-3.5 ${loading ? 'animate-spin' : ''}`} />
-            </IconButton>
             <Button
-              variant="primary"
+              variant={dirty ? 'primary' : 'ghost'}
               size="sm"
               onClick={handleSave}
-              disabled={busy || !dirty}
-              title={!dirty ? '没有待提交的修改' : '提交更改到 GitHub'}
+              disabled={saving || !dirty}
+              title={
+                !dirty
+                  ? '没有待保存的修改'
+                  : isLocalMode
+                    ? '保存到本地代码库 (src/data/content.json)'
+                    : '保存更改'
+              }
             >
-              {busy ? (
+              {saving ? (
                 <Loader2 className="h-3.5 w-3.5 animate-spin" />
               ) : (
                 <Save className="h-3.5 w-3.5" />
               )}
-              提交更改
+              保存
+            </Button>
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={handlePush}
+              disabled={pushing || saving}
+              title={
+                token
+                  ? '将代码库内容推送到 GitHub 仓库'
+                  : '推送到 GitHub（需先在设置中配置 GitHub PAT）'
+              }
+              className={
+                token
+                  ? 'hover:border-emerald-700/80 hover:bg-emerald-950/40 hover:text-emerald-300'
+                  : ''
+              }
+            >
+              {pushing ? (
+                <Loader2 className="h-3.5 w-3.5 animate-spin" />
+              ) : (
+                <UploadCloud className="h-3.5 w-3.5" />
+              )}
+              推送
             </Button>
           </div>
         </div>
@@ -507,8 +632,24 @@ export const CmsApp: React.FC = () => {
           </div>
         </nav>
 
-        {/* Restored local draft */}
-        {draftSavedAt && (
+        {/* Local mode banner */}
+        {isLocalMode && (
+          <div className="mt-4 flex flex-col gap-2 rounded-xl border border-emerald-900/50 bg-emerald-950/20 px-4 py-2.5 sm:flex-row sm:items-center sm:justify-between">
+            <div className="flex items-center gap-2">
+              <span className="flex h-2 w-2 rounded-full bg-emerald-400" />
+              <p className="font-sans text-[11px] leading-relaxed text-emerald-200/90">
+                本地代码库直连模式：加载与修改均直接作用于本地文件（
+                <code className="rounded bg-emerald-950/80 px-1 py-0.5 font-mono text-[10px] text-emerald-300">
+                  src/data/content.json
+                </code>
+                ）。点击「保存」直接写入本地代码库；配置 PAT 后点击「推送」即可同步到 GitHub。
+              </p>
+            </div>
+          </div>
+        )}
+
+        {/* Restored local draft (Only in online mode) */}
+        {!isLocalMode && draftSavedAt && (
           <div className="mt-4 flex flex-col gap-2 rounded-xl border border-white/15 bg-white/5 px-4 py-3 sm:flex-row sm:items-center sm:justify-between">
             <div className="flex items-start gap-2">
               <FileText className="mt-0.5 h-4 w-4 shrink-0 text-white" />
@@ -524,8 +665,8 @@ export const CmsApp: React.FC = () => {
           </div>
         )}
 
-        {/* No token warning */}
-        {!token && (
+        {/* No token warning (Only in online mode) */}
+        {!isLocalMode && !token && (
           <div className="mt-4 flex flex-col gap-2 rounded-xl border border-amber-900/50 bg-amber-950/20 px-4 py-3 sm:flex-row sm:items-center sm:justify-between">
             <div className="flex items-start gap-2">
               <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0 text-amber-400" />
@@ -558,7 +699,7 @@ export const CmsApp: React.FC = () => {
                   const tool = content.tools.find((item) => item.id === id);
                   if (tool) setDeleteTarget(tool);
                 }}
-                onMove={handleMoveTool}
+                onReorder={handleReorderTools}
               />
             ))}
 
@@ -593,21 +734,24 @@ export const CmsApp: React.FC = () => {
               onRepoChange={setRepo}
               sha={sha}
               source={source}
-              busy={busy}
+              busy={loading}
               onReload={handleReload}
+              isLocalMode={isLocalMode}
             />
           )}
         </main>
 
         <footer className="mt-12 border-t border-obsidian-850 pt-5 text-center font-mono text-[10px] text-obsidian-500">
-          内容通过 GitHub Contents API 提交 · PAT 仅保存在本机浏览器 · 支持任意绑定域名访问 /dtms
+          {isLocalMode
+            ? '当前为本地代码库直连模式 · 点击「保存」写入本地文件 · 点击「推送」同步到 GitHub'
+            : '内容通过 GitHub Contents API 提交 · PAT 仅保存在本机浏览器 · 支持任意绑定域名访问 /dtms'}
         </footer>
       </div>
 
       {deleteTarget && (
         <ConfirmModal
           title={`删除项目「${deleteTarget.name}」？`}
-          description="删除后需点击右上角「提交更改」才会写入 GitHub。此操作会将该工具从网站中移除。"
+          description="删除后需点击右上角「保存」才会写入代码库。此操作会将该工具从项目中移除。"
           confirmLabel="删除项目"
           danger
           onConfirm={handleDeleteTool}

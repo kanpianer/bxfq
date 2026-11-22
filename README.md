@@ -21,6 +21,7 @@
 | **9. Cloudflare One**| `[商业机构]` | 🟢 稳定可用 | Android, iOS, Win, Mac, Linux | 企业级零信任通道，个人享受 50 席位免费配额，通道优先级高 |
 | **10. Tor Browser** | `[非盈利性机构]` | 🟡 国内需配网桥 | Android, iOS, Win, Mac, Linux | 顶尖匿名防御，普林斯顿大学直连镜像，内置 Snowflake/电报申请网桥与开源社区网桥源 |
 | **11. Proton VPN** | `[非盈利性机构监督]` | 🟢 稳定可用 | Android, iOS, Win, Mac, Linux, 扩展 | 瑞士中立国法律管辖，免费无限流量，指引切换 Stealth 隐形协议 |
+| **12. URnetwork** | `[商业机构]` | 🟢 每日 30GB 免费 | Android, iOS, Win, Mac, Linux, 扩展 | 去中心化分布式隐私网络，每日免费 30 GiB 家宽出口流量，后量子加密与开源可复现构建 |
 
 ## 🛠️ 内容管理台（CMS）
 
@@ -44,13 +45,17 @@
 
 ### 内容存储与提交
 
-- 全部内容集中保存在 `src/data/content.json`，网站构建时直接读取，CMS 修改后提交的也是这个文件。
-- 打开 CMS 会自动从 GitHub 读取最新内容；读取失败时回退到当前构建内置的版本，仍可继续编辑。
-- 未提交的编辑会自动保存为浏览器本地草稿，刷新或跳转后自动恢复；也可以随时「放弃草稿」。
-- 提交更改需要 GitHub Personal Access Token（PAT）：
-  - 推荐 Fine-grained token，仅授权 `kanpianer/bxfq` 仓库的 **Contents: Read and write** 权限
-  - 或经典 token，勾选 `repo` 权限
-  - PAT 仅保存在当前浏览器的 `localStorage`，不会上传到除 GitHub API 以外的任何服务器
+- **本地网络直连模式（推荐本地开发使用）**：
+  - 当在本地网络或局域网中访问 CMS（如 `localhost`、`127.0.0.1`、`192.168.*`）时，自动直连本地开发服务与本地文件系统。
+  - 打开 CMS 直接加载本地代码库中的 `src/data/content.json`，无需也绝不暂存浏览器缓存，修改后点击右上角「保存到本地」直接写入本地代码库，无需配置 GitHub PAT。
+  - 项目排序全面升级为**上下拖拽排序**（按住卡片左侧手柄拖动即可实时重排）。
+- **线上远程模式（线上公开域名使用）**：
+  - 在线上部署域名访问时，CMS 自动从 GitHub 读取最新内容 JSON；读取失败时回退到当前构建内置的版本。
+  - 未提交的编辑会自动保存为浏览器本地草稿，刷新或跳转后自动恢复。
+  - 提交更改需要 GitHub Personal Access Token（PAT）：
+    - 推荐 Fine-grained token，仅授权本仓库的 **Contents: Read and write** 权限
+    - 或经典 token，勾选 `repo` 权限
+    - PAT 仅保存在当前浏览器的 `localStorage`，不会上传到除 GitHub API 以外的任何服务器。
 - 仓库、分支与内容文件路径可在 CMS「设置」中修改，方便 Fork 部署后使用。
 - 提交后由 Cloudflare Pages 等托管平台自动重新构建，全站及所有备用域名同步生效。
 

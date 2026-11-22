@@ -1,7 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import {
-  ArrowDown,
-  ArrowUp,
+  GripVertical,
   Pencil,
   Plus,
   Search,
@@ -25,7 +24,8 @@ interface ToolsPanelProps {
   onAdd: () => void;
   onEdit: (id: string) => void;
   onDelete: (id: string) => void;
-  onMove: (id: string, direction: -1 | 1) => void;
+  onReorder: (sourceIndex: number, destinationIndex: number) => void;
+  onMove?: (id: string, direction: -1 | 1) => void;
 }
 
 type VisibilityFilter = 'all' | ToolVisibility;
@@ -35,10 +35,13 @@ export const ToolsPanel: React.FC<ToolsPanelProps> = ({
   onAdd,
   onEdit,
   onDelete,
-  onMove,
+  onReorder,
 }) => {
   const [query, setQuery] = useState('');
   const [filter, setFilter] = useState<VisibilityFilter>('all');
+  const [draggedId, setDraggedId] = useState<string | null>(null);
+  const [dragOverId, setDragOverId] = useState<string | null>(null);
+  const [dropPosition, setDropPosition] = useState<'above' | 'below' | null>(null);
 
   const counts = useMemo(() => {
     return tools.reduce(
@@ -63,6 +66,73 @@ export const ToolsPanel: React.FC<ToolsPanelProps> = ({
       );
     });
   }, [tools, query, filter]);
+
+  const handleDragStart = (e: React.DragEvent, id: string) => {
+    const target = e.target as HTMLElement;
+    if (target.closest('button, a, input, select')) {
+      e.preventDefault();
+      return;
+    }
+    setDraggedId(id);
+    e.dataTransfer.effectAllowed = 'move';
+    e.dataTransfer.setData('text/plain', id);
+  };
+
+  const handleDragOver = (e: React.DragEvent, id: string) => {
+    e.preventDefault();
+    e.dataTransfer.dropEffect = 'move';
+    if (!draggedId || draggedId === id) {
+      setDragOverId(null);
+      setDropPosition(null);
+      return;
+    }
+    const rect = e.currentTarget.getBoundingClientRect();
+    const offsetY = e.clientY - rect.top;
+    const isAbove = offsetY < rect.height / 2;
+    setDragOverId(id);
+    setDropPosition(isAbove ? 'above' : 'below');
+  };
+
+  const handleDragLeave = (e: React.DragEvent) => {
+    if (!e.currentTarget.contains(e.relatedTarget as Node)) {
+      setDragOverId(null);
+      setDropPosition(null);
+    }
+  };
+
+  const handleDrop = (e: React.DragEvent, targetId: string) => {
+    e.preventDefault();
+    if (!draggedId || draggedId === targetId) {
+      setDraggedId(null);
+      setDragOverId(null);
+      setDropPosition(null);
+      return;
+    }
+
+    const sourceIndex = tools.findIndex((t) => t.id === draggedId);
+    const targetIndex = tools.findIndex((t) => t.id === targetId);
+
+    if (sourceIndex >= 0 && targetIndex >= 0) {
+      const isAbove = dropPosition === 'above';
+      let destIndex = targetIndex;
+      if (isAbove) {
+        destIndex = sourceIndex < targetIndex ? targetIndex - 1 : targetIndex;
+      } else {
+        destIndex = sourceIndex < targetIndex ? targetIndex : targetIndex + 1;
+      }
+      onReorder(sourceIndex, destIndex);
+    }
+
+    setDraggedId(null);
+    setDragOverId(null);
+    setDropPosition(null);
+  };
+
+  const handleDragEnd = () => {
+    setDraggedId(null);
+    setDragOverId(null);
+    setDropPosition(null);
+  };
 
   return (
     <div className="space-y-4">
@@ -94,6 +164,14 @@ export const ToolsPanel: React.FC<ToolsPanelProps> = ({
         </Button>
       </div>
 
+      <div className="flex items-center justify-between px-1 text-[11px] font-sans text-obsidian-500">
+        <span className="flex items-center gap-1.5">
+          <GripVertical className="h-3.5 w-3.5 opacity-60" />
+          按住卡片左侧图标可直接上下拖拽调整项目排序
+        </span>
+        <span>共 {filtered.length} 个项目</span>
+      </div>
+
       {filtered.length === 0 ? (
         <EmptyState
           title="没有匹配的项目"
@@ -103,14 +181,38 @@ export const ToolsPanel: React.FC<ToolsPanelProps> = ({
         <div className="space-y-2">
           {filtered.map((tool) => {
             const visibility = getToolVisibility(tool);
-            const index = tools.findIndex((item) => item.id === tool.id);
+            const isDragging = draggedId === tool.id;
+            const isOver = dragOverId === tool.id;
 
             return (
               <article
                 key={tool.id}
-                className="group flex flex-col gap-3 rounded-xl border border-obsidian-800 bg-obsidian-900/50 p-4 transition-colors hover:border-obsidian-700 sm:flex-row sm:items-center"
+                draggable={true}
+                onDragStart={(e) => handleDragStart(e, tool.id)}
+                onDragOver={(e) => handleDragOver(e, tool.id)}
+                onDragLeave={handleDragLeave}
+                onDrop={(e) => handleDrop(e, tool.id)}
+                onDragEnd={handleDragEnd}
+                className={`group relative flex flex-col gap-3 rounded-xl border p-4 transition-all duration-150 sm:flex-row sm:items-center ${
+                  isDragging
+                    ? 'border-dashed border-white/40 bg-obsidian-950/40 opacity-40 scale-[0.99]'
+                    : isOver
+                      ? dropPosition === 'above'
+                        ? 'border-obsidian-700 bg-obsidian-900/80 border-t-2 border-t-emerald-400 shadow-[0_-4px_12px_rgba(52,211,153,0.15)]'
+                        : 'border-obsidian-700 bg-obsidian-900/80 border-b-2 border-b-emerald-400 shadow-[0_4px_12px_rgba(52,211,153,0.15)]'
+                      : 'border-obsidian-800 bg-obsidian-900/50 hover:border-obsidian-700'
+                }`}
               >
-                <div className="flex min-w-0 flex-1 items-start gap-3">
+                <div className="flex min-w-0 flex-1 items-start gap-2.5 sm:items-center">
+                  {/* 拖拽指示手柄 */}
+                  <div
+                    className="flex shrink-0 items-center justify-center -ml-1 p-1 text-obsidian-600 transition-colors group-hover:text-obsidian-300 cursor-grab active:cursor-grabbing rounded hover:bg-obsidian-800/60"
+                    title="按住拖拽上下调整排序"
+                    aria-label="按住拖拽上下调整排序"
+                  >
+                    <GripVertical className="h-5 w-5" />
+                  </div>
+
                   <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-obsidian-750 bg-obsidian-950">
                     <ToolLogo tool={tool} className="h-6 w-6" />
                   </div>
@@ -141,20 +243,6 @@ export const ToolsPanel: React.FC<ToolsPanelProps> = ({
                 </div>
 
                 <div className="flex shrink-0 items-center gap-1.5 self-end sm:self-center">
-                  <IconButton
-                    title="上移"
-                    disabled={index <= 0}
-                    onClick={() => onMove(tool.id, -1)}
-                  >
-                    <ArrowUp className="h-3.5 w-3.5" />
-                  </IconButton>
-                  <IconButton
-                    title="下移"
-                    disabled={index < 0 || index >= tools.length - 1}
-                    onClick={() => onMove(tool.id, 1)}
-                  >
-                    <ArrowDown className="h-3.5 w-3.5" />
-                  </IconButton>
                   <Button variant="ghost" size="sm" onClick={() => onEdit(tool.id)}>
                     <Pencil className="h-3 w-3" />
                     编辑

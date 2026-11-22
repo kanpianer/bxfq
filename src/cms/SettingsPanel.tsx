@@ -5,6 +5,7 @@ import {
   EyeOff,
   Github,
   KeyRound,
+  Laptop,
   RefreshCw,
   RotateCcw,
   ShieldCheck,
@@ -30,6 +31,7 @@ interface SettingsPanelProps {
   source: 'github' | 'local';
   busy: boolean;
   onReload: () => void;
+  isLocalMode?: boolean;
 }
 
 export const SettingsPanel: React.FC<SettingsPanelProps> = ({
@@ -41,6 +43,7 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
   source,
   busy,
   onReload,
+  isLocalMode = false,
 }) => {
   const [showToken, setShowToken] = useState(false);
   const [tokenDraft, setTokenDraft] = useState(token);
@@ -57,9 +60,29 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
 
   return (
     <div className="space-y-4">
+      {isLocalMode && (
+        <div className="rounded-xl border border-emerald-800/80 bg-emerald-950/30 p-4">
+          <div className="flex items-start gap-3">
+            <Laptop className="mt-0.5 h-5 w-5 shrink-0 text-emerald-400" />
+            <div>
+              <h3 className="font-sans text-sm font-bold text-emerald-200">
+                当前处于本地网络直连模式
+              </h3>
+              <p className="mt-1 font-sans text-xs leading-relaxed text-emerald-300/80">
+                检测到当前在本地局域网环境中运行，CMS 已直连本地代码库（
+                <code className="rounded bg-emerald-950 px-1 py-0.5 font-mono text-[11px] text-emerald-200">
+                  src/data/content.json
+                </code>
+                ）。点击右上角「保存」可直接写入本地文件系统；配置 GitHub PAT 令牌后，可随时点击右上角「推送」将修改同步提交到 GitHub 仓库。
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
+
       <SectionCard
         title="GitHub Personal Access Token"
-        description="用于读取最新内容并提交更改。令牌仅保存在当前浏览器的 localStorage，不会写入仓库或发送到 GitHub 以外的服务器。"
+        description="用于将修改推送到 GitHub 远端仓库。令牌仅保存在当前浏览器的 localStorage，不会写入仓库或发送到 GitHub 以外的服务器。"
       >
         <div className="space-y-3">
           <Field
@@ -206,7 +229,11 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
             <span>
               当前内容来源：
               <span className="text-obsidian-200">
-                {source === 'github' ? 'GitHub 最新提交' : '本站内置内容'}
+                {isLocalMode
+                  ? '本地代码库 (src/data/content.json)'
+                  : source === 'github'
+                    ? 'GitHub 最新提交'
+                    : '本站内置内容'}
               </span>
             </span>
             {sha && (
