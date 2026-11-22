@@ -169,10 +169,10 @@
       "tagline": "去中心化分布式隐私网络，每日免费 30 GiB 家宽出口流量，后量子加密与抗审查",
       "entityType": "commercial",
       "entityLabel": "商业机构",
-      "entityDescription": "由位于美国旧金山的 BringYour, Inc. 研发运营。基于去中心化对等网络架构（P2P），流量经由全球社区家庭宽带（并不是所有）中继节点传输，具备后量子加密（PQE）与双重中继隔离，全平台客户端与协议 100% 开源。",
+      "entityDescription": "由位于美国旧金山的 BringYour, Inc. 研发运营。基于去中心化对等网络架构（P2P），流量经由全球社区家庭宽带中继节点传输，具备后量子加密（PQE）与双重中继隔离，全平台客户端与协议 100% 开源。",
       "status": "available",
       "statusText": "每日30GB免费",
-      "badgeNote": "每日30GB免费",
+      "badgeNote": "",
       "pricingModel": "免费版每日 30 GiB 流量（无广告、零日志、后量子加密） / UR Pro 会员 $5/月 或 $40/年（每月 10 TiB + WireGuard/SOCKS5 代理）",
       "platforms": [
         "android",
@@ -422,123 +422,6 @@
       "visibility": "visible"
     },
     {
-      "id": "lantern",
-      "name": "蓝灯 (Lantern)",
-      "aliases": [
-        "Lantern",
-        "蓝灯",
-        "Lantern VPN",
-        "GetLantern"
-      ],
-      "tagline": "老牌非营利抗审查网络工具，智能分流与多协议抗阻断",
-      "entityType": "non-profit",
-      "entityLabel": "非盈利性机构",
-      "entityDescription": "由美国 501(c)(3) 非营利机构 Brave New Software Project, Inc. 于 2013 年发起研发（早期曾获美国国际广播局 BBG 与开放技术基金会 OTF 资助）。致力于向全球互联网审查严苛地区的人群提供无障碍、安全且快速的互联网访问。",
-      "status": "available",
-      "statusText": "免费版有限额",
-      "badgeNote": "老牌抗封锁",
-      "pricingModel": "基础版永久免费，每天512MB，付费解锁无限高速流量与全球节点挑选，增加广告屏蔽功能。",
-      "platforms": [
-        "android",
-        "ios",
-        "windows",
-        "macos",
-        "linux"
-      ],
-      "officialUrl": "https://lantern.io/zh",
-      "downloadLinks": [
-        {
-          "label": "Windows 官方客户端下载",
-          "url": "https://github.com/getlantern/lantern/releases",
-          "platform": "windows",
-          "isDirect": true,
-          "note": "GitHub 官方最新发布页，获取 .exe 安装包"
-        },
-        {
-          "label": "macOS 官方客户端下载",
-          "url": "https://github.com/getlantern/lantern/releases",
-          "platform": "macos",
-          "isDirect": true,
-          "note": "GitHub 官方最新发布页，获取 .dmg 安装包"
-        },
-        {
-          "label": "Android 官方 APK 下载",
-          "url": "https://github.com/getlantern/lantern/releases",
-          "platform": "android",
-          "isDirect": true,
-          "note": "GitHub 官方直链获取安卓 .apk 原生安装包"
-        },
-        {
-          "label": "Google Play 商店",
-          "url": "https://play.google.com/store/apps/details?id=org.getlantern.lantern",
-          "platform": "android",
-          "note": "海外区/具备 Google Play 服务的安卓设备"
-        },
-        {
-          "label": "Apple App Store",
-          "url": "https://apps.apple.com/us/app/lantern-open-internet/id1457872372",
-          "platform": "ios",
-          "note": "支持 iPhone 与 iPad（需海外 Apple ID）"
-        },
-        {
-          "label": "Linux (Ubuntu/Debian) 客户端",
-          "url": "https://github.com/getlantern/lantern/releases",
-          "platform": "linux",
-          "isDirect": true,
-          "note": "GitHub 官方最新发布页，获取 .deb 安装包"
-        },
-        {
-          "label": "蓝灯官方下载中心",
-          "url": "https://lantern.io/zh#download",
-          "platform": "browser",
-          "note": "官方网站多系统客户端直达下载指引"
-        }
-      ],
-      "quickStartSteps": [
-        {
-          "step": 1,
-          "title": "下载并安装客户端",
-          "desc": "根据操作系统从 GitHub Releases 官方发布页或应用商店下载对应的安装包并完成安装。"
-        },
-        {
-          "step": 2,
-          "title": "启动即连，无需注册",
-          "desc": "打开蓝灯软件，点击中央主开关即可一键开启保护。无需注册账号或繁琐配置，基础免费版立即可用。"
-        },
-        {
-          "step": 3,
-          "title": "智能分流与按需使用",
-          "desc": "蓝灯内置智能路由分流，访问国内网站直连不消耗流量，访问受阻网站自动走加密通道代理。"
-        }
-      ],
-      "detailedGuide": [],
-      "contacts": [
-        {
-          "type": "twitter",
-          "label": "官方 X (Twitter)",
-          "value": "https://x.com/getlantern"
-        },
-        {
-          "type": "github",
-          "label": "GitHub 官方仓库",
-          "value": "https://github.com/getlantern/lantern"
-        },
-        {
-          "type": "email",
-          "label": "官方支持邮箱",
-          "value": "support@lantern.io"
-        },
-        {
-          "type": "website",
-          "label": "蓝灯官方主站",
-          "value": "https://lantern.io/zh"
-        }
-      ],
-      "speedRating": "high",
-      "securityRating": "多协议动态混淆 / 501(c)(3) 非营利机构背景",
-      "visibility": "visible"
-    },
-    {
       "id": "geph",
       "name": "迷雾通 Geph",
       "aliases": [
@@ -745,6 +628,143 @@
       "visibility": "visible"
     },
     {
+      "id": "lantern",
+      "name": "蓝灯 (Lantern)",
+      "aliases": [
+        "Lantern",
+        "蓝灯",
+        "Lantern VPN",
+        "GetLantern"
+      ],
+      "tagline": "老牌非营利抗审查网络工具，智能分流与多协议抗阻断",
+      "entityType": "non-profit",
+      "entityLabel": "非盈利性机构",
+      "entityDescription": "由美国 501(c)(3) 非营利机构 Brave New Software Project, Inc. 于 2013 年发起研发（早期曾获美国国际广播局 BBG 与开放技术基金会 OTF 资助）。致力于向全球互联网审查严苛地区的人群提供无障碍、安全且快速的互联网访问。",
+      "status": "available",
+      "statusText": "免费版有限额",
+      "badgeNote": "老牌抗封锁",
+      "pricingModel": "基础版永久免费，每天512MB，会自动跳节点。付费解锁无限高速流量与全球节点挑选，和广告屏蔽功能。",
+      "platforms": [
+        "android",
+        "ios",
+        "windows",
+        "macos",
+        "linux"
+      ],
+      "officialUrl": "https://lantern.io/zh",
+      "downloadLinks": [
+        {
+          "label": "Windows 官方客户端下载",
+          "url": "https://github.com/getlantern/lantern/releases",
+          "platform": "windows",
+          "isDirect": true,
+          "note": "GitHub 官方最新发布页，获取 .exe 安装包"
+        },
+        {
+          "label": "macOS 官方客户端下载",
+          "url": "https://github.com/getlantern/lantern/releases",
+          "platform": "macos",
+          "isDirect": true,
+          "note": "GitHub 官方最新发布页，获取 .dmg 安装包"
+        },
+        {
+          "label": "Android 官方 APK 下载",
+          "url": "https://github.com/getlantern/lantern/releases",
+          "platform": "android",
+          "isDirect": true,
+          "note": "GitHub 官方直链获取安卓 .apk 原生安装包"
+        },
+        {
+          "label": "Google Play 商店",
+          "url": "https://play.google.com/store/apps/details?id=org.getlantern.lantern",
+          "platform": "android",
+          "note": "海外区/具备 Google Play 服务的安卓设备"
+        },
+        {
+          "label": "Apple App Store",
+          "url": "https://apps.apple.com/us/app/lantern-open-internet/id1457872372",
+          "platform": "ios",
+          "note": "支持 iPhone 与 iPad（需海外 Apple ID）"
+        },
+        {
+          "label": "Linux (Ubuntu/Debian) 客户端",
+          "url": "https://github.com/getlantern/lantern/releases",
+          "platform": "linux",
+          "isDirect": true,
+          "note": "GitHub 官方最新发布页，获取 .deb 安装包"
+        },
+        {
+          "label": "蓝灯官方下载中心",
+          "url": "https://lantern.io/zh#download",
+          "platform": "browser",
+          "note": "官方网站多系统客户端直达下载指引"
+        }
+      ],
+      "quickStartSteps": [
+        {
+          "step": 1,
+          "title": "下载并安装客户端",
+          "desc": "根据操作系统从 GitHub Releases 官方发布页或应用商店下载对应的安装包并完成安装。"
+        },
+        {
+          "step": 2,
+          "title": "启动即连，无需注册",
+          "desc": "打开蓝灯软件，点击中央主开关即可一键开启保护。无需注册账号或繁琐配置，基础免费版立即可用。"
+        },
+        {
+          "step": 3,
+          "title": "智能分流与按需使用",
+          "desc": "蓝灯内置智能路由分流，访问国内网站直连不消耗流量，访问受阻网站自动走加密通道代理。"
+        }
+      ],
+      "detailedGuide": [
+        {
+          "title": "智能分流与多协议抗阻断架构",
+          "content": [
+            "动态抗阻断协议：蓝灯集成了包括自研混淆传输、多重回退中继、域前置等一系列抗审查协议。当某种连接方式受到防火墙干扰时，客户端会自动切换备用路由通道。",
+            "智能分流省流量：软件默认只对被审查封锁的域名和 IP 启用代理隧道，国内主流网站与服务依然保持本地直连，既不减慢国内网络速度，又极大节省了代理流量。",
+            "去中心化与集中式混合中继：综合了集中式高性能服务器与分布式对等中继的弹性，确保即使在网络敏感期也能维持基本连通性。"
+          ],
+          "tips": [
+            "电脑端启动后系统托盘会常驻小灯笼图标，若需全局代理或更改端口，可在右键托盘菜单【设置】中进行调整。"
+          ]
+        },
+        {
+          "title": "免费版 (Free) 与专业版 (Pro) 差异",
+          "content": [
+            "免费版额度：蓝灯每月免费提供 500MB 高速抗封锁流量。高速流量用完后，连接不会中断，但速率会被限制（可用于文字阅读和即时通讯），直到次月自动重置。",
+            "专业版权益：Pro 会员提供无上限的高速带宽、支持挑选指定国家/地区服务器节点，并支持在多台设备（电脑与手机）上同时登录使用。",
+            "安全防范提示：官方应用没有任何弹窗诈骗或强制绑定；请认准官方 GitHub (getlantern/lantern) 和官方主站 (lantern.io)，切勿从非官方第三方破解站下载改包版。"
+          ]
+        }
+      ],
+      "contacts": [
+        {
+          "type": "twitter",
+          "label": "官方 X (Twitter)",
+          "value": "https://x.com/getlantern"
+        },
+        {
+          "type": "github",
+          "label": "GitHub 官方仓库",
+          "value": "https://github.com/getlantern/lantern"
+        },
+        {
+          "type": "email",
+          "label": "官方支持邮箱",
+          "value": "support@lantern.io"
+        },
+        {
+          "type": "website",
+          "label": "蓝灯官方主站",
+          "value": "https://lantern.io/zh"
+        }
+      ],
+      "speedRating": "high",
+      "securityRating": "多协议动态混淆 / 501(c)(3) 非营利机构背景",
+      "visibility": "visible"
+    },
+    {
       "id": "freebrowser",
       "name": "自由浏览",
       "aliases": [
@@ -876,13 +896,139 @@
       "visibility": "visible"
     },
     {
+      "id": "mahsanet",
+      "name": "MahsaNet",
+      "aliases": [
+        "MahsaVPN",
+        "MahsaNG",
+        "玛莎网络",
+        "Mahsa Server"
+      ],
+      "tagline": "专为严苛网络审查地区研发的去中心化公益抗封锁工具，主打伊朗抗阻断",
+      "entityType": "self-organized",
+      "entityLabel": "自组织机构",
+      "entityDescription": "由为纪念阿米尼（Mahsa Amini）并捍卫自由互联网的海外伊朗技术社群发起成立的非营利公益组织。构建去中心化的 Mahsa Server 平台，汇聚全球志愿者捐赠的抗封锁节点与混淆配置，主打为遭受严重断网与深度审查地区的人民提供可靠、安全的人权网络访问通道。",
+      "status": "available",
+      "statusText": "主打伊朗",
+      "badgeNote": "主打伊朗",
+      "pricingModel": "100% 永久免费 / 社区公益众包",
+      "platforms": [
+        "android",
+        "ios"
+      ],
+      "officialUrl": "https://mahsanet.com",
+      "downloadLinks": [
+        {
+          "label": "MahsaVPN (Apple App Store)",
+          "url": "https://apps.apple.com/us/app/mahsa-vpn/id6751109099",
+          "platform": "ios",
+          "note": "支持 iPhone 与 iPad（需海外 Apple ID 登录下载）"
+        },
+        {
+          "label": "MahsaNG VPN (Google Play 商店)",
+          "url": "https://play.google.com/store/apps/details?id=com.MahsaNet.MahsaNG",
+          "platform": "android",
+          "note": "Google Play 官方商店获取（基于 v2rayNG 深度定制）"
+        },
+        {
+          "label": "MahsaServer 官方下载中心",
+          "url": "https://www.mahsaserver.com/download",
+          "platform": "android",
+          "isDirect": true,
+          "note": "官方免翻墙镜像下载中心，直接获取安卓 APK 安装包"
+        },
+        {
+          "label": "GitHub Releases 源码与发布页",
+          "url": "https://github.com/mahsanet/MahsaNG/releases",
+          "platform": "android",
+          "note": "GitHub 官方开源代码仓库与原生编译安装包下载"
+        }
+      ],
+      "mirrors": [
+        {
+          "name": "Mahsa Server 官方镜像站",
+          "url": "https://www.mahsaserver.com",
+          "description": "官方备用镜像站点，提供最新节点配置与安卓客户端下载"
+        }
+      ],
+      "quickStartSteps": [
+        {
+          "step": 1,
+          "title": "下载并安装客户端",
+          "desc": "安卓设备推荐访问 MahsaServer 官方下载页或 Google Play 安装 MahsaNG；iOS 用户在海外区 App Store 安装 MahsaVPN。"
+        },
+        {
+          "step": 2,
+          "title": "自动拉取抗审查配置",
+          "desc": "启动软件后，客户端将自动连接 Mahsa Server 众包节点池，拉取最新验证可用的抗封锁加密配置。"
+        },
+        {
+          "step": 3,
+          "title": "一键开启加密连接",
+          "desc": "在节点列表中测速并选择延迟较低的配置，点击主界面底部或中央的连接开关，即可快速建立安全隧道。"
+        }
+      ],
+      "detailedGuide": [
+        {
+          "title": "众包节点池与抗审查技术架构",
+          "content": [
+            "众包节点生命周期管理：Mahsa Server 平台拥有自动化的配置测试与分发机制。来自全球志愿者的捐助节点在经过连通性、速度与安全性全自动筛查后，被动态推送至客户端。",
+            "深度包检测对抗（DPI）：针对严苛审查地区的协议阻断，客户端集成了 TLS 分片（Fragment）、DoH（DNS over HTTPS）防劫持解析等先进混淆技术，破坏防火墙的指纹识别。",
+            "专为断网严酷环境优化：在遇到区域性大面积丢包或限流时，软件拥有强大的快速重连机制与备用配置轮询方案，确保维持基础信息通道。"
+          ],
+          "tips": [
+            "若当前连接节点速度下降或失效，可下拉配置列表重新刷新从 Mahsa Server 获取最新的一批可用节点。",
+            "MahsaNG 允许用户导入自定义 V2Ray/Xray 订阅链接，兼具简便性与高级扩展能力。"
+          ]
+        },
+        {
+          "title": "数字安全与隐私原则",
+          "content": [
+            "完全免注册：使用 MahsaNet 系列软件无需提供手机号、邮箱或任何个人身份信息。",
+            "零日志收集：官方不记录任何用户访问日志与网络传输数据。",
+            "节点安全考量：由于节点由社区众包提供，强烈建议仅用于打破信息封锁与正常网页浏览；处理高价值敏感事务时，请确保全程使用 HTTPS 加密或配合端到端加密通信工具。"
+          ]
+        }
+      ],
+      "contacts": [
+        {
+          "type": "website",
+          "label": "MahsaNet 官方主站",
+          "value": "https://mahsanet.com"
+        },
+        {
+          "type": "website",
+          "label": "Mahsa Server 镜像站",
+          "value": "https://www.mahsaserver.com"
+        },
+        {
+          "type": "github",
+          "label": "GitHub 官方开源组织",
+          "value": "https://github.com/mahsanet"
+        },
+        {
+          "type": "twitter",
+          "label": "官方 X (Twitter)",
+          "value": "https://x.com/mahsanet"
+        },
+        {
+          "type": "telegram",
+          "label": "Telegram 官方频道",
+          "value": "https://t.me/mahsa_net"
+        }
+      ],
+      "speedRating": "moderate",
+      "securityRating": "去中心化众包节点 / TLS 分片混淆抗封锁",
+      "visibility": "visible"
+    },
+    {
       "id": "beepass",
       "name": "BeePass VPN",
       "aliases": [
         "蜜蜂VPN",
         "伊朗自由梯子"
       ],
-      "tagline": "基于 Shadowsocks 架构，专为受限地区人民研发的抗封锁工具",
+      "tagline": "基于 outline 架构，专为受限地区人民研发的抗封锁工具",
       "entityType": "self-organized",
       "entityLabel": "自组织机构",
       "entityDescription": "由民间自组织机构发起成立，主要为伊朗等遭受严重断网与网络审查地区的公民提供数字人权援助。",
@@ -987,7 +1133,7 @@
       "entityLabel": "商业机构",
       "entityDescription": "由纳斯达克上市全球云网络巨头 Cloudflare (NET) 运营。依托全球数千个数据中心的 Anycast 网络，免费向公众提供安全的现代加密通道。",
       "status": "available",
-      "statusText": "Cloudflare美国IP",
+      "statusText": "可能有美国IP",
       "pricingModel": "永久免费 / 可通过邀请或 Key 获取 WARP+ 流量",
       "platforms": [
         "android",
@@ -1055,7 +1201,7 @@
       "speedRating": "high",
       "securityRating": "WireGuard 协议 / 全球 Anycast 加密",
       "visibility": "visible",
-      "badgeNote": "美国IP"
+      "badgeNote": "赛博活佛出品"
     },
     {
       "id": "cloudflare-one",
@@ -1369,132 +1515,6 @@
       "visibility": "visible"
     },
     {
-      "id": "mahsanet",
-      "name": "MahsaNet",
-      "aliases": [
-        "MahsaVPN",
-        "MahsaNG",
-        "玛莎网络",
-        "Mahsa Server"
-      ],
-      "tagline": "专为严苛网络审查地区研发的去中心化公益抗封锁工具，主打伊朗抗阻断",
-      "entityType": "self-organized",
-      "entityLabel": "自组织机构",
-      "entityDescription": "由为纪念阿米尼（Mahsa Amini）并捍卫自由互联网的海外伊朗技术社群发起成立的非营利公益组织。构建去中心化的 Mahsa Server 平台，汇聚全球志愿者捐赠的抗封锁节点与混淆配置，主打为遭受严重断网与深度审查地区的人民提供可靠、安全的人权网络访问通道。",
-      "status": "available",
-      "statusText": "主打伊朗",
-      "badgeNote": "主打伊朗",
-      "pricingModel": "100% 永久免费 / 社区公益众包",
-      "platforms": [
-        "android",
-        "ios"
-      ],
-      "officialUrl": "https://mahsanet.com",
-      "downloadLinks": [
-        {
-          "label": "MahsaVPN (Apple App Store)",
-          "url": "https://apps.apple.com/us/app/mahsa-vpn/id6751109099",
-          "platform": "ios",
-          "note": "支持 iPhone 与 iPad（需海外 Apple ID 登录下载）"
-        },
-        {
-          "label": "MahsaNG VPN (Google Play 商店)",
-          "url": "https://play.google.com/store/apps/details?id=com.MahsaNet.MahsaNG",
-          "platform": "android",
-          "note": "Google Play 官方商店获取（基于 v2rayNG 深度定制）"
-        },
-        {
-          "label": "MahsaServer 官方下载中心",
-          "url": "https://www.mahsaserver.com/download",
-          "platform": "android",
-          "isDirect": true,
-          "note": "官方免翻墙镜像下载中心，直接获取安卓 APK 安装包"
-        },
-        {
-          "label": "GitHub Releases 源码与发布页",
-          "url": "https://github.com/mahsanet/MahsaNG/releases",
-          "platform": "android",
-          "note": "GitHub 官方开源代码仓库与原生编译安装包下载"
-        }
-      ],
-      "mirrors": [
-        {
-          "name": "Mahsa Server 官方镜像站",
-          "url": "https://www.mahsaserver.com",
-          "description": "官方备用镜像站点，提供最新节点配置与安卓客户端下载"
-        }
-      ],
-      "quickStartSteps": [
-        {
-          "step": 1,
-          "title": "下载并安装客户端",
-          "desc": "安卓设备推荐访问 MahsaServer 官方下载页或 Google Play 安装 MahsaNG；iOS 用户在海外区 App Store 安装 MahsaVPN。"
-        },
-        {
-          "step": 2,
-          "title": "自动拉取抗审查配置",
-          "desc": "启动软件后，客户端将自动连接 Mahsa Server 众包节点池，拉取最新验证可用的抗封锁加密配置。"
-        },
-        {
-          "step": 3,
-          "title": "一键开启加密连接",
-          "desc": "在节点列表中测速并选择延迟较低的配置，点击主界面底部或中央的连接开关，即可快速建立安全隧道。"
-        }
-      ],
-      "detailedGuide": [
-        {
-          "title": "众包节点池与抗审查技术架构",
-          "content": [
-            "众包节点生命周期管理：Mahsa Server 平台拥有自动化的配置测试与分发机制。来自全球志愿者的捐助节点在经过连通性、速度与安全性全自动筛查后，被动态推送至客户端。",
-            "深度包检测对抗（DPI）：针对严苛审查地区的协议阻断，客户端集成了 TLS 分片（Fragment）、DoH（DNS over HTTPS）防劫持解析等先进混淆技术，破坏防火墙的指纹识别。",
-            "专为断网严酷环境优化：在遇到区域性大面积丢包或限流时，软件拥有强大的快速重连机制与备用配置轮询方案，确保维持基础信息通道。"
-          ],
-          "tips": [
-            "若当前连接节点速度下降或失效，可下拉配置列表重新刷新从 Mahsa Server 获取最新的一批可用节点。",
-            "MahsaNG 允许用户导入自定义 V2Ray/Xray 订阅链接，兼具简便性与高级扩展能力。"
-          ]
-        },
-        {
-          "title": "数字安全与隐私原则",
-          "content": [
-            "完全免注册：使用 MahsaNet 系列软件无需提供手机号、邮箱或任何个人身份信息。",
-            "零日志收集：官方不记录任何用户访问日志与网络传输数据。",
-            "节点安全考量：由于节点由社区众包提供，强烈建议仅用于打破信息封锁与正常网页浏览；处理高价值敏感事务时，请确保全程使用 HTTPS 加密或配合端到端加密通信工具。"
-          ]
-        }
-      ],
-      "contacts": [
-        {
-          "type": "website",
-          "label": "MahsaNet 官方主站",
-          "value": "https://mahsanet.com"
-        },
-        {
-          "type": "website",
-          "label": "Mahsa Server 镜像站",
-          "value": "https://www.mahsaserver.com"
-        },
-        {
-          "type": "github",
-          "label": "GitHub 官方开源组织",
-          "value": "https://github.com/mahsanet"
-        },
-        {
-          "type": "twitter",
-          "label": "官方 X (Twitter)",
-          "value": "https://x.com/mahsanet"
-        },
-        {
-          "type": "telegram",
-          "label": "Telegram 官方频道",
-          "value": "https://t.me/mahsa_net"
-        }
-      ],
-      "speedRating": "moderate",
-      "securityRating": "去中心化众包节点 / TLS 分片混淆抗封锁",
-      "visibility": "visible"
-    },
-    {
       "id": "opentunnel",
       "name": "OpenTunnel",
       "aliases": [
@@ -1796,7 +1816,7 @@
           "content": [
             "默认的 Smart Protocol 可能会尝试常规 WireGuard UDP，在中国大陆大概率会被运营商 QoS 丢包。",
             "一定要在客户端设置中将协议明确指定为【Stealth】。该协议专为绕过审查防火墙设计，会将 VPN 流量伪装成正常的 TLS 网页流量。",
-            "免费版提供【无限流量】，不限使用时长，是全球极少真正不限速不限流的合规 VPN。"
+            "免费版提供【无限流量】，不限使用���长，是全球极少真正不限速不限流的合规 VPN。"
           ],
           "tips": [
             "如遇到连不上，可尝试断开后再次点击连接，Proton 会轮询换到另一个可用服务器。"
