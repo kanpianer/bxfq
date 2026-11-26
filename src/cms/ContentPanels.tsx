@@ -407,6 +407,7 @@ interface SitePanelProps {
 
 export const SitePanel: React.FC<SitePanelProps> = ({ site, onChange }) => {
   const { jiakuan } = site;
+  const portalEnabled = site.portalEnabled !== false;
 
   const patch = (partial: Partial<SiteMeta>) => onChange({ ...site, ...partial });
   const patchJiakuan = (partial: Partial<SiteMeta['jiakuan']>) =>
@@ -430,6 +431,34 @@ export const SitePanel: React.FC<SitePanelProps> = ({ site, onChange }) => {
               className={inputClass}
             />
           </Field>
+        </div>
+      </SectionCard>
+
+      <SectionCard
+        title="入口覆盖页面"
+        description="打开网站时全屏展示的 Y 字形三区导航覆盖页，可随时在此关闭或开启。"
+        actions={
+          <label className="flex cursor-pointer items-center gap-2 text-[11px] font-sans text-obsidian-300">
+            <input
+              type="checkbox"
+              checked={portalEnabled}
+              onChange={(event) => patch({ portalEnabled: event.target.checked })}
+              className="h-3.5 w-3.5 accent-white"
+            />
+            显示覆盖页面
+          </label>
+        }
+      >
+        <div className="rounded-lg border border-obsidian-800 bg-obsidian-950/70 px-4 py-3 text-[11px] font-sans leading-relaxed text-obsidian-400">
+          {portalEnabled ? (
+            <span>
+              当前状态：<strong className="font-semibold text-white">已开启</strong> — 用户打开网站后每隔 5 次显示一次覆盖页面（第 1 次显示，随后跳过 5 次，第 7 次再次显示）。
+            </span>
+          ) : (
+            <span>
+              当前状态：<strong className="font-semibold text-obsidian-300">已关闭</strong> — 用户打开网站将直接显示「不想翻墙」主页面，不再展示覆盖页面。
+            </span>
+          )}
         </div>
       </SectionCard>
 

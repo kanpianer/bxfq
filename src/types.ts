@@ -134,6 +134,7 @@ export interface JiakuanConfig {
 export interface SiteMeta {
   brand: string;
   notice: string;
+  portalEnabled?: boolean;
   jiakuan: JiakuanConfig;
 }
 

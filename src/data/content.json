@@ -3,6 +3,7 @@
   "site": {
     "brand": "不想翻墙",
     "notice": "免费备用梯子首选",
+    "portalEnabled": true,
     "jiakuan": {
       "enabled": true,
       "label": "家宽导航",

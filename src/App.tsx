@@ -8,6 +8,7 @@ import { ToolDetail } from './components/ToolDetail';
 import { BeginnerGuideModal } from './components/BeginnerGuideModal';
 import { BackToTop } from './components/BackToTop';
 import { Footer } from './components/Footer';
+import { PizzaPortalOverlay } from './components/PizzaPortalOverlay';
 import { SearchX } from 'lucide-react';
 import { applyToolSeo, resetHomeSeo } from './utils/seo';
 
@@ -16,19 +17,90 @@ interface AppProps {
 }
 
 const GUIDE_STORAGE_KEY = 'bxfq_beginner_guide_viewed';
+const PORTAL_SKIP_REMAINING_KEY = 'bxfq_portal_skip_remaining';
+const PORTAL_SKIP_INTERVAL = 5;
+
+let cachedPortalDecision: boolean | null = null;
+
+const shouldShowInitialPortal = (): boolean => {
+  if (cachedPortalDecision !== null) return cachedPortalDecision;
+  if (typeof window === 'undefined') return false;
+
+  if (SITE_CONTENT.site.portalEnabled === false) {
+    cachedPortalDecision = false;
+    return false;
+  }
+
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('portal') === '1') {
+    cachedPortalDecision = true;
+    return true;
+  }
+  if (params.has('tool') || params.has('test') || params.get('portal') === '0') {
+    cachedPortalDecision = false;
+    return false;
+  }
+  if (window.location.hash.startsWith('#tool-')) {
+    cachedPortalDecision = false;
+    return false;
+  }
+
+  // 每隔 5 次打开一次覆盖页面：第 1 次展示，之后连续 5 次跳过，第 7 次再次展示
+  try {
+    const raw = localStorage.getItem(PORTAL_SKIP_REMAINING_KEY);
+    const remaining = raw === null ? 0 : Number.parseInt(raw, 10);
+    if (Number.isNaN(remaining) || remaining <= 0) {
+      localStorage.setItem(PORTAL_SKIP_REMAINING_KEY, String(PORTAL_SKIP_INTERVAL));
+      cachedPortalDecision = true;
+      return true;
+    }
+    localStorage.setItem(PORTAL_SKIP_REMAINING_KEY, String(remaining - 1));
+    cachedPortalDecision = false;
+    return false;
+  } catch {
+    cachedPortalDecision = true;
+    return true;
+  }
+};
 
 export const App: React.FC<AppProps> = ({ onOpenCms }) => {
   const [selectedToolId, setSelectedToolId] = useState<string | null>(null);
   const [selectedPlatform, setSelectedPlatform] = useState<Platform | 'all'>('all');
+  const [isPortalOpen, setIsPortalOpen] = useState<boolean>(shouldShowInitialPortal);
   const [isGuideOpen, setIsGuideOpen] = useState(() => {
     if (typeof window === 'undefined') return false;
     if (window.location.search.includes('test=guide')) return true;
+    if (shouldShowInitialPortal()) return false;
     try {
       return !localStorage.getItem(GUIDE_STORAGE_KEY);
     } catch {
       return false;
     }
   });
+
+  const guideTimerRef = useRef<number | null>(null);
+
+  const handleEnterCurrentSite = useCallback(() => {
+    setIsPortalOpen(false);
+    try {
+      if (!localStorage.getItem(GUIDE_STORAGE_KEY)) {
+        guideTimerRef.current = window.setTimeout(() => {
+          guideTimerRef.current = null;
+          setIsGuideOpen(true);
+        }, 220);
+      }
+    } catch {
+      // Ignore storage errors
+    }
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      if (guideTimerRef.current !== null) {
+        window.clearTimeout(guideTimerRef.current);
+      }
+    };
+  }, []);
 
   const handleCloseGuide = useCallback(() => {
     setIsGuideOpen(false);
@@ -75,8 +147,8 @@ export const App: React.FC<AppProps> = ({ onOpenCms }) => {
 
   // 连续在 1.5 秒内点击主页空白区域 5 次打开 CMS 管理界面
   useEffect(() => {
-    // 仅在主页（未查看特定工具详情且未打开指南弹窗）时生效
-    if (selectedToolId !== null || isGuideOpen) {
+    // 仅在主页（未查看特定工具详情、未打开指南弹窗且未处于入口覆盖层）时生效
+    if (selectedToolId !== null || isGuideOpen || isPortalOpen) {
       clickTimestampsRef.current = [];
       return;
     }
@@ -138,7 +210,7 @@ export const App: React.FC<AppProps> = ({ onOpenCms }) => {
       document.removeEventListener('mousedown', handleMouseDown);
       window.removeEventListener('blur', handleBlur);
     };
-  }, [selectedToolId, isGuideOpen, handleOpenCms]);
+  }, [selectedToolId, isGuideOpen, isPortalOpen, handleOpenCms]);
 
   // Sync with URL Hash (#tool-tor, etc.) and query param (?tool=tor) for browser history and SEO deep-linking
   useEffect(() => {
@@ -310,6 +382,11 @@ export const App: React.FC<AppProps> = ({ onOpenCms }) => {
 
       {/* Floating Back To Top Button */}
       <BackToTop />
+
+      {/* Fullscreen Y-Split 3D Pizza Portal Overlay */}
+      {isPortalOpen && (
+        <PizzaPortalOverlay onEnterCurrentSite={handleEnterCurrentSite} />
+      )}
     </div>
   );
 };
