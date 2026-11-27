@@ -85,7 +85,7 @@ const PIZZA_SLICES: PizzaSliceConfig[] = [
   },
 ];
 
-const AUTO_ENTER_SECONDS = 5;
+const AUTO_ENTER_SECONDS = 10;
 const WALL_DEPTH_PX = 44;
 const SEAM_GAP_OFFSET_PX = 0.9;
 const HOVER_SLIDE_PX = 15;
@@ -269,7 +269,7 @@ export const PizzaPortalOverlay: React.FC<PizzaPortalOverlayProps> = ({
     }, AUTO_ENTER_SECONDS * 1000);
   }, [clearAutoTimers, handleSelectSlice]);
 
-  // 5秒内未选择任意站点则自动进入「不想翻墙」
+  // 10秒内未选择任意站点则自动进入「不想翻墙」
   useEffect(() => {
     startAutoEnterCountdown();
 
