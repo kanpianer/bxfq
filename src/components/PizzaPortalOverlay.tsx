@@ -115,26 +115,17 @@ const SliceBrandIcon: React.FC<SliceBrandIconProps> = ({ id }) => {
         src="/images/jiakuan-logo.png"
         alt=""
         aria-hidden="true"
-        className="h-5 w-5 sm:h-6 sm:w-6 rounded-[4px] object-contain drop-shadow-[0_2px_8px_rgba(0,0,0,0.7)]"
+        className="h-5 w-5 sm:h-7 sm:w-7 md:h-9 md:w-9 rounded-[4px] sm:rounded-[5px] object-contain drop-shadow-[0_2px_8px_rgba(0,0,0,0.7)]"
       />
     );
   }
   return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.75"
-      strokeLinecap="round"
-      strokeLinejoin="round"
+    <img
+      src="/images/zstb-logo.png"
+      alt=""
       aria-hidden="true"
-      className="h-5 w-5 sm:h-6 sm:w-6 text-amber-100 drop-shadow-[0_2px_8px_rgba(0,0,0,0.7)]"
-    >
-      <path d="M5 4.5C8 3.8 11 4.8 14 4.2C16.5 3.7 18.2 4.3 19 4.7V19.2C17.2 18.6 14.5 18.9 12 19.4C9.5 19.9 6.8 19.3 5 18.8V4.5Z" />
-      <path d="M8.5 8.8H15.5" />
-      <path d="M8.5 12.2H14.5" />
-      <path d="M8.5 15.4H12.5" />
-    </svg>
+      className="h-6 w-6 sm:h-9 sm:w-9 md:h-11 md:w-11 object-contain drop-shadow-[0_2px_8px_rgba(0,0,0,0.7)]"
+    />
   );
 };
 
